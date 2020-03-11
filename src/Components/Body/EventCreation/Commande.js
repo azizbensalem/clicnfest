@@ -7,8 +7,17 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Button from '@material-ui/core/Button';
 import TextField from "@material-ui/core/TextField";
 import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import AppBar from '../../Header/AppBar';
+import {Link} from 'react-router-dom';
 
-
+function getSteps() {
+  return ['Créer un événement', 'Choisir les invités', 'Commander'];
+}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -63,8 +72,20 @@ export default function Commande() {
         setPartner(event.target.value);
     };
 
+  const steps = getSteps();
+  const activeStep = 2;
     return (
       <div className={classes.root}>
+        <AppBar />
+        <Card className={classes.card}>
+          <CardContent>
+        <Stepper activeStep={activeStep} alternativeLabel>
+          {steps.map(label => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
         <Typography variant="h6">Choisir les produits</Typography>
         <br></br>
         <form className={classes.WidthInput} noValidate autoComplete="off">
@@ -140,6 +161,23 @@ export default function Commande() {
           </Grid>
         </Paper>
         <br></br>
+            <div>
+              <Link to='/clicnfest/invite' style={{ textDecoration: 'none' }}>
+                <Button>
+                  Retour
+                </Button>
+              </Link>
+
+              <Link to='/clicnfest/commande' style={{ textDecoration: 'none' }}>
+                <Button variant="contained" color="primary" >
+                  Suivant
+                </Button>
+              </Link>
+
+
+            </div>
+        </CardContent>
+        </Card>
       </div>
     );
 }
