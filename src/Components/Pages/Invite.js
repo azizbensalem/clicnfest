@@ -18,7 +18,7 @@ import Container from '@material-ui/core/Container';
 
 
 function getSteps() {
-  return ['Créer un événement', 'Choisir les invités', 'Commander'];
+  return ['Organiser mon événement', 'Choisir les invités', 'Commander'];
 }
 
 function Invite() {

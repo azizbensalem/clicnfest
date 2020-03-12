@@ -23,7 +23,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 function getSteps() {
-  return ['Créer un événement', 'Choisir les invités', 'Commander'];
+  return ['Organiser mon événement', 'Choisir les invités', 'Commander'];
 }
 
 
@@ -45,8 +45,8 @@ const useStyles = makeStyles(theme => ({
     height: 128
   },
   imageMobile: {
-    width: 200,
-    height: 200
+    width: 190,
+    height: 190,
   },
   img: {
     margin: "auto",
@@ -87,7 +87,7 @@ export default function Commande() {
   const renderContent = () => {
     if (isAndroid) {
       return <div>              
-        <ButtonBase className={classes.imageMobile}>
+        <ButtonBase>
         <img
           className={classes.img}
           alt="complex"
@@ -132,12 +132,13 @@ export default function Commande() {
                 <Typography className={classes.heading}>Choisir les produits</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails style={{ display: 'block' }}>
-                <form className={classes.WidthInput} noValidate autoComplete="off">
-                          <FormControl variant="outlined" className={classes.formControl}>
+                <form noValidate autoComplete="off">
+                          <FormControl variant="outlined" >
                           <TextField
                             id="outlined-basic"
                             label="Nom du produit"
                             variant="outlined"
+                            className={classes.formControl}
                           />
                           </FormControl>
                           <FormControl variant="outlined" className={classes.formControl}>
@@ -190,8 +191,8 @@ export default function Commande() {
                   </Typography>
                         </Grid>
                         <Grid item>
-                          <Button>Voir les détails</Button>
-                          <Button>Ajouter au panier</Button>
+                            <Button>Voir&nbsp;les&nbsp;détails</Button>
+                          <Button>Ajouter&nbsp;au&nbsp;panier</Button>
                         </Grid>
                       </Grid>
                       <Grid item>

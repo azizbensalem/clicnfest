@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function getSteps() {
-  return ['Créer un événement', 'Choisir les invités', 'Commander'];
+  return ['Organiser mon événement', 'Choisir les invités', 'Commander'];
 }
 
 export default function CreerEvent() {
@@ -92,7 +92,7 @@ export default function CreerEvent() {
           <FormControl variant="outlined" className={classes.formControl}>
                 <TextField
                   id="outlined-basic"
-                  label="Nom du produit"
+                  label="Oú"
                   variant="outlined"
                 />
          </FormControl>
