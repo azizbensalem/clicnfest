@@ -15,7 +15,7 @@ import CardContent from "@material-ui/core/CardContent";
 import AppBar from '../Header/AppBar';
 import {Link} from 'react-router-dom';
 import Container from '@material-ui/core/Container';
-import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detect";
+import { BrowserView, MobileView, isBrowser, isMobile , isAndroid } from "react-device-detect";
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -31,12 +31,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
-  WidthInput: {
-    "& > *": {
-      margin: theme.spacing(1),
-      minWidth: 300
-    }
-  },
   paper: {
     padding: theme.spacing(2),
     textAlign: "auto",
@@ -51,8 +45,8 @@ const useStyles = makeStyles(theme => ({
     height: 128
   },
   imageMobile: {
-    width: 280,
-    height: 280
+    width: 200,
+    height: 200
   },
   img: {
     margin: "auto",
@@ -62,7 +56,7 @@ const useStyles = makeStyles(theme => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 300
+    minWidth: 220
   },
   selectEmpty: {
     marginTop: theme.spacing(2)
@@ -83,6 +77,7 @@ export default function Commande() {
       setType(event.target.value);
     };
 
+    
     const partnerChange = event => {
         setPartner(event.target.value);
     };
@@ -90,7 +85,7 @@ export default function Commande() {
   const steps = getSteps();
   const activeStep = 2;
   const renderContent = () => {
-    if (isMobile) {
+    if (isAndroid) {
       return <div>              
         <ButtonBase className={classes.imageMobile}>
         <img
@@ -138,11 +133,13 @@ export default function Commande() {
               </ExpansionPanelSummary>
               <ExpansionPanelDetails style={{ display: 'block' }}>
                 <form className={classes.WidthInput} noValidate autoComplete="off">
+                          <FormControl variant="outlined" className={classes.formControl}>
                           <TextField
                             id="outlined-basic"
                             label="Nom du produit"
                             variant="outlined"
                           />
+                          </FormControl>
                           <FormControl variant="outlined" className={classes.formControl}>
                                   <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
                                     Type du produit
@@ -222,12 +219,12 @@ export default function Commande() {
             </ExpansionPanel>
         <br></br>
             <div>
-              <Link to='/clicnfest/invite' style={{ textDecoration: 'none' }}>
+              <Link to='/invite' style={{ textDecoration: 'none' }}>
                 <Button>
                   Retour
                 </Button>
               </Link>
-              <Link to='/clicnfest/commande' style={{ textDecoration: 'none' }}>
+              <Link to='/commande' style={{ textDecoration: 'none' }}>
                 <Button variant="contained" color="primary" >
                   Suivant
                 </Button>

@@ -10,9 +10,9 @@ function App() {
   return (
     <div>
       <Switch>
-          <Route path='/clicnfest/create_event' component={CreerEvent} />
-          <Route path='/clicnfest/invite' component={Invite} />
-          <Route path='/clicnfest/commande' component={Commande} />
+          <Route path='/create_event' component={CreerEvent} />
+          <Route path='/invite' component={Invite} />
+          <Route path='/commande' component={Commande} />
       </Switch>
     </div>
   );

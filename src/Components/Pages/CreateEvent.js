@@ -21,7 +21,7 @@ import TextField from '@material-ui/core/TextField';
 const useStyles = makeStyles(theme => ({
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 300,
+        minWidth: 280,
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
@@ -104,7 +104,7 @@ export default function CreerEvent() {
           Retour
               </Button>
 
-        <Link to='/clicnfest/invite' style={{ textDecoration: 'none' }}>
+        <Link to='/invite' style={{ textDecoration: 'none' }}>
           <Button variant="contained" color="primary" >
             Suivant
                 </Button>

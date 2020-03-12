@@ -26,7 +26,7 @@ function Invite() {
         root: {
             '& > *': {
                 margin: theme.spacing(1),
-                width: 300,
+                width: 280,
             },
         },
     }));
@@ -131,13 +131,13 @@ function Invite() {
               </Fragment>
             ))}
             <div>
-              <Link to='/clicnfest/create_event' style={{ textDecoration: 'none' }}>
+              <Link to='/create_event' style={{ textDecoration: 'none' }}>
                 <Button>
                     Retour
                 </Button>
               </Link>
               
-              <Link to='/clicnfest/commande' style={{ textDecoration: 'none'}}>
+              <Link to='/commande' style={{ textDecoration: 'none'}}>
               <Button variant="contained" color="primary" >
                   Suivant
                 </Button>
