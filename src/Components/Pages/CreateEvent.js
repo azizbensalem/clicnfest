@@ -87,13 +87,15 @@ export default function CreerEvent() {
             <option value="Voyage dans le temps">Voyage dans le temps</option>
             <option value="Cinéma">Cinéma</option>
             <option value="Pyjama">Pyjama</option>
-          </Select><br></br>
+          </Select>
+          </FormControl>
+          <FormControl variant="outlined" className={classes.formControl}>
                 <TextField
                   id="outlined-basic"
                   label="Nom du produit"
                   variant="outlined"
                 />
-        </FormControl>
+         </FormControl>
         <div>
         <Button
           className={classes.backButton}
