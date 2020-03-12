@@ -13,7 +13,9 @@ import { Link } from 'react-router-dom';
 import Commande from './Commande';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import AppBar from '../../Header/AppBar';
+import AppBar from '../Header/AppBar';
+import Container from '@material-ui/core/Container';
+
 
 function getSteps() {
   return ['Créer un événement', 'Choisir les invités', 'Commander'];
@@ -78,6 +80,7 @@ function Invite() {
             </Step>
           ))}
         </Stepper>
+      <Container>
         <Typography variant="h6">Choisir les invités</Typography>
         <br></br>
         <form onSubmit={handleSubmit}>
@@ -152,6 +155,7 @@ function Invite() {
                 </button> 
                 {JSON.stringify(inputFields, null, 2)}*/}
         </form>
+        </Container>
         </CardContent>
         </Card>
       </div>

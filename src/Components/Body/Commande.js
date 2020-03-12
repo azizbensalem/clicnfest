@@ -12,8 +12,10 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import AppBar from '../../Header/AppBar';
+import AppBar from '../Header/AppBar';
 import {Link} from 'react-router-dom';
+import Container from '@material-ui/core/Container';
+
 
 function getSteps() {
   return ['Créer un événement', 'Choisir les invités', 'Commander'];
@@ -86,6 +88,7 @@ export default function Commande() {
             </Step>
           ))}
         </Stepper>
+            <Container>
         <Typography variant="h6">Choisir les produits</Typography>
         <br></br>
         <form className={classes.WidthInput} noValidate autoComplete="off">
@@ -173,9 +176,10 @@ export default function Commande() {
                   Suivant
                 </Button>
               </Link>
-
+       
 
             </div>
+            </Container>
         </CardContent>
         </Card>
       </div>

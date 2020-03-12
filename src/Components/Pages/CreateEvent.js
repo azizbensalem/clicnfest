@@ -11,7 +11,11 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import AppBar from '../../Header/AppBar';
+import AppBar from '../Header/AppBar';
+import Container from '@material-ui/core/Container';
+import TextField from '@material-ui/core/TextField';
+
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -62,7 +66,8 @@ export default function CreerEvent() {
             </Step>
           ))}
         </Stepper>
-        <Typography variant="h6">Créer un événement</Typography>
+      <Container>
+        <Typography variant="h6">Organiser mon événement</Typography>
         <br></br>
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel ref={inputLabel} htmlFor="outlined-type-native-simple">
@@ -78,10 +83,16 @@ export default function CreerEvent() {
               id: "outlined-type-native-simple"
             }}
           >
-            <option value="After Work">After Work</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
-          </Select>
+            <option value="After Work">Soirée déguisée</option>
+            <option value="Voyage dans le temps">Voyage dans le temps</option>
+            <option value="Cinéma">Cinéma</option>
+            <option value="Pyjama">Pyjama</option>
+          </Select><br></br>
+                <TextField
+                  id="outlined-basic"
+                  label="Nom du produit"
+                  variant="outlined"
+                />
         </FormControl>
         <div>
         <Button
@@ -97,6 +108,7 @@ export default function CreerEvent() {
                 </Button>
         </Link>
         </div>
+          </Container>
         </CardContent>
         </Card>
       </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from "react-router-dom";
-import Commande from './Components/Body/EventCreation/Commande';
-import Invite from './Components/Body/EventCreation/Invite';
-import CreerEvent from './Components/Body/EventCreation/CreateEvent';
+import Commande from './Components/Pages/Commande';
+import Invite from './Components/Pages//Invite';
+import CreerEvent from './Components/Pages/CreateEvent';
 
 
 function App() {
