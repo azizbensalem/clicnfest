@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.backgroundLogin {
+  background-color: linear-gradient(to right, #ff0099, #493240);
+}

@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import AppBar from '../Header/AppBar';
+import AppBar from '../../../Components/Header/AppBar';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 
@@ -45,7 +45,7 @@ export default function CreerEvent() {
         setLabelWidth(inputLabel.current.offsetWidth);
     }, []);
 
-    const handleChange = name => event => {
+  const handleChange = name => event => {
         setState({
             ...state,
             [name]: event.target.value,
@@ -83,10 +83,11 @@ export default function CreerEvent() {
               id: "outlined-type-native-simple"
             }}
           >
-            <option value="After Work">Soirée déguisée</option>
-            <option value="Voyage dans le temps">Voyage dans le temps</option>
-            <option value="Cinéma">Cinéma</option>
+            <option value="After Work">After Work</option>
+            <option value="Conventum">Conventum</option>
+            <option value="Team building">Team building</option>
             <option value="Pyjama">Pyjama</option>
+            <option value="Demande de mariage">Demande de mariage</option>
           </Select>
           </FormControl>
           <FormControl variant="outlined" className={classes.formControl}>

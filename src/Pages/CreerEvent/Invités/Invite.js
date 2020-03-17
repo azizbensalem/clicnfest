@@ -10,10 +10,9 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import { Link } from 'react-router-dom';
-import Commande from './Commande';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import AppBar from '../Header/AppBar';
+import AppBar from '../../../Components/Header/AppBar';
 import Container from '@material-ui/core/Container';
 
 
@@ -115,13 +114,19 @@ function Invite() {
                   onChange={event => handleInputChange(index, event)}
                 />
                 <Fragment>
-                  <IconButton
-                    aria-label="delete"
-                    color="secondary"
-                    onClick={() => handleRemoveFields(index)}
-                  >
-                    <DeleteIcon fontSize="large" />
-                  </IconButton>
+                { (() => {
+                  if (inputFields.length > 1) {
+                    return (
+                      <IconButton
+                        aria-label="delete"
+                        color="secondary"
+                        onClick={() => handleRemoveFields(index)}
+                      >
+                        <DeleteIcon fontSize="large" />
+                      </IconButton>
+                    );
+                  }
+                }) ()}
                   <IconButton color="primary" onClick={() => handleAddFields()}>
                     <AddCircleIcon fontSize="large" />
                   </IconButton>
