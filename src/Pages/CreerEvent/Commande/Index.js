@@ -17,7 +17,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { BrowserView, MobileView, isBrowser, isMobile, isAndroid, isMobileOnly } from "react-device-detect";
+import { isMobileOnly } from "react-device-detect";
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 
@@ -95,9 +95,9 @@ export default function Index() {
       <div className={classes.root}>
         <AppBar />
         <Card className={classes.card}>
-          <CardContent>
-            <Stepper activeStep={activeStep} alternativeLabel>
-              {steps.map(label => (
+            <CardContent>
+                <Stepper activeStep={activeStep} alternativeLabel>
+                {steps.map(label => (
                 <Step key={label}>
                   <StepLabel>{label}</StepLabel>
                 </Step>

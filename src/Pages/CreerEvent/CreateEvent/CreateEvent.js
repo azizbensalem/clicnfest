@@ -95,6 +95,7 @@ export default function CreerEvent() {
                   id="outlined-basic"
                   label="Oú"
                   variant="outlined"
+                  placeholder="Oú"
                 />
          </FormControl>
         <div>
