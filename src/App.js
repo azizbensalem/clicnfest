@@ -19,7 +19,7 @@ function App() {
         <Route path="/commande" component={Index} />
         <Route path="/login" component={Login} />
         <Route path="/inscription" component={Inscription} />
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Home} />
         <Route path="*" component={ () => "404 ERROR NOT FOUND"} />
       </Switch>
     </div>

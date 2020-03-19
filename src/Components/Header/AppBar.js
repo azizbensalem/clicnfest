@@ -12,31 +12,11 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useHistory } from 'react-router-dom';
 
-
-
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
   },
 }));
-
-function ElevationScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined,
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
-}
-
-ElevationScroll.propTypes = {
-  children: PropTypes.element.isRequired,
-  window: PropTypes.func,
-};
 
 export default function PrimarySearchAppBar(props) {
   const classes = useStyles();
@@ -52,12 +32,10 @@ export default function PrimarySearchAppBar(props) {
   const history = useHistory();
   return (
     <div>
-      <CssBaseline />
-      <ElevationScroll {...props}>
       <AppBar position="static">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Clic'n Fest
           </Typography>
           <div className={classes.grow} />
           <IconButton
@@ -72,7 +50,6 @@ export default function PrimarySearchAppBar(props) {
           </IconButton>
         </Toolbar>
       </AppBar>
-      </ElevationScroll>
       <Menu
         anchorEl={anchorEl}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -83,7 +60,7 @@ export default function PrimarySearchAppBar(props) {
         onClose={handleMenuClose}
       >
         <MenuItem onClick={handleMenuClose}>Mon Profil</MenuItem>
-        <MenuItem onClick={() => history.push('/')}>Déconnexion</MenuItem>
+        <MenuItem onClick={() => history.push('/login')}>Déconnexion</MenuItem>
       </Menu>
     </div>
   );
