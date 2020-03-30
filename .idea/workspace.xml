@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8f95e781-7f0b-44bd-94a4-9957be617bad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Header/AppBar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/CreerEvent/Commande/Boissons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/CreerEvent/Commande/Boissons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/CreerEvent/Commande/Extra.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/CreerEvent/Commande/Extra.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/CreerEvent/Commande/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/CreerEvent/Commande/Index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/CreerEvent/Commande/SucreeSale.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/CreerEvent/Commande/SucreeSale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/CreerEvent/CreateEvent/CreateEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/CreerEvent/CreateEvent/CreateEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/CreerEvent/Invités/Invite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Home/Choix.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Home/Choix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Home/Image.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Home/Image.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Home/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Home/Index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Inscription/Inscription.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Inscription/Inscription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Login/Login.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="ProjectId" id="1ZaDhrr7LMgnU6PdBWr9vwWfj4O" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8f95e781-7f0b-44bd-94a4-9957be617bad" name="Default Changelist" comment="" />
+      <created>1585068434338</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585068434338</updated>
+      <workItem from="1585068472557" duration="14000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="379" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1585068473921">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585068473921" />
+  </component>
+</project>

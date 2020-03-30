@@ -1,19 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import AppBar from '../../Components/Header/AppBar';
-import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
-import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 import { Link } from 'react-router-dom';
-import { BrowserView, MobileView, isBrowser, isMobile, isAndroid, isMobileOnly } from "react-device-detect";
 import clicnfest from '../../clicnfest.PNG';
 import Grid from '@material-ui/core/Grid';
-
+import { useHistory } from 'react-router-dom';
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { FormHelperText } from "@material-ui/core";
 
 
 const useStyles = makeStyles(theme => ({ 
@@ -57,42 +55,123 @@ const useStyles = makeStyles(theme => ({
 
 export default function Login() {
     const classes = useStyles();
+    const history = useHistory();
     return (
       <div className={classes.Background}>
         <Grid>
-          <Grid item xs={12} style={{ textAlign: 'center' }}>
+          <Grid item xs={12} style={{ textAlign: "center" }}>
             <img src={clicnfest} className={classes.img} />
-          </Grid><br></br>
-        <Grid item xs={12}>
-        <Card className={classes.root}>
-          <CardContent>
-            <Typography className={classes.title} color="textPrimary" gutterBottom>
-              Se connecter à Clic'n Fest
-        </Typography><br></br>
-            <form className={classes.rootForm} noValidate autoComplete="off">
-              <TextField id="username" label="Nom d'utilisateur" variant="outlined" /><br></br>
-              <TextField id="password" type="Password" label="Mot de passe" variant="outlined" /><br></br>
-              <div style={{ textAlign: 'center' }}>
-              <Link to='/create_event' style={{ textDecoration: 'none' }}>
-                   <Button color="primary" variant="contained">Se connecter</Button>
-              </Link>
-              </div>
-            </form>
-            <div className={classes.link}>
-              <Typography className={classes.link}>
-              <Link to="" style={{ textDecoration: 'none' }}>
-                  Mot de passe oublié
-                </Link>
-              </Typography>
-              <Typography className={classes.link}>
-              <Link to="/inscription" style={{ textDecoration: 'none' }}>
-                  Inscrivez-vous à un compte
-                </Link>
-              </Typography>
-            </div>
-          </CardContent>
-        </Card>
-        </Grid>
+          </Grid>
+          <br></br>
+          <Grid item xs={12}>
+            <Card className={classes.root}>
+              <CardContent>
+                <Typography
+                  className={classes.title}
+                  color="textPrimary"
+                  gutterBottom
+                >
+                  Se connecter à Clic'n Fest
+                </Typography>
+                <br></br>
+                <Formik
+                  initialValues={{ username: "", password: "" }}
+                  onSubmit={(values, { setSubmitting }) => {
+                    setTimeout(() => {
+                      console.log("Logging in", values);
+                      setSubmitting(false);
+                      history.push("/");
+                    }, 500);
+                  }}
+                  validationSchema={Yup.object().shape({
+                    username: Yup.string().required(
+                      "Ce champ est obligatoire."
+                    ),
+                    password: Yup.string().required("Ce champ est obligatoire.")
+                  })}
+                >
+                  {props => {
+                    const {
+                      values,
+                      touched,
+                      errors,
+                      isSubmitting,
+                      handleChange,
+                      handleBlur,
+                      handleSubmit
+                    } = props;
+                    return (
+                      <form
+                        onSubmit={handleSubmit}
+                        className={classes.rootForm}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          error={errors.username && touched.username && true}
+                          name="username"
+                          label="Nom d'utilisateur"
+                          type="text"
+                          value={values.username}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          variant="outlined"
+                          helperText={
+                            errors.username &&
+                            touched.username && (
+                              <FormHelperText error>
+                                {errors.username}
+                              </FormHelperText>
+                            )
+                          }
+                        />
+                        <TextField
+                          error={errors.password && touched.password && true}
+                          name="password"
+                          label="Mot de passe"
+                          type="password"
+                          value={values.password}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          variant="outlined"
+                          helperText={
+                            errors.password &&
+                            touched.password && (
+                              <FormHelperText error>
+                                {errors.password}
+                              </FormHelperText>
+                            )
+                          }
+                        />
+                        <div style={{ textAlign: "center" }}>
+                          <Button
+                            type="submit"
+                            disabled={isSubmitting}
+                            color="primary"
+                            variant="contained"
+                          >
+                            Se connecter
+                          </Button>
+                        </div>
+                      </form>
+                    );
+                  }}
+                </Formik>
+                <div className={classes.link}>
+                  <Typography className={classes.link}>
+                    <Link to="" style={{ textDecoration: "none" }}>
+                      Mot de passe oublié
+                    </Link>
+                  </Typography>
+                  <Typography className={classes.link}>
+                    <Link to="/inscription" style={{ textDecoration: "none" }}>
+                      Inscrivez-vous à un compte
+                    </Link>
+                  </Typography>
+                </div>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
       </div>
     );

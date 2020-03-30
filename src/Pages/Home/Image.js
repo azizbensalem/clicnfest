@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
 import clicnfest from '../../clicnfest.PNG';
-import { isMobileOnly } from "react-device-detect";
 
 
 const useStyles = makeStyles(theme => ({
@@ -46,7 +45,7 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('md')]: {
             display: 'none',
         },
-        width: '80%',
+        width: '50%',
         paddingTop: '130px', 
         margin: 'auto'
     },

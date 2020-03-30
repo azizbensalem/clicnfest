@@ -1,53 +1,22 @@
-import React from 'react';
+import React , { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { BrowserView, MobileView, isBrowser, isMobile, isAndroid, isMobileOnly } from "react-device-detect";
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from "@material-ui/core/TextField";
-import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import { FormControl, InputLabel, Select, Typography } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
+import axios from 'axios';
+import Pagination from '@material-ui/lab/Pagination';
+import Product from '../../../Components/Product';
 
 
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1
     },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: "auto",
-        color: theme.palette.text.secondary
-    },
-    heading: {
-        fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightRegular,
-    },
-    image: {
-        width: 128,
-        height: 128
-    },
-    imageMobile: {
-        width: 190,
-        height: 190,
-    },
-    img: {
-        margin: "auto",
-        display: "block",
-        maxWidth: "100%",
-        maxHeight: "100%"
-    },
     formControl: {
         margin: theme.spacing(1),
         minWidth: 220
     },
-    selectEmpty: {
-        marginTop: theme.spacing(2)
-    }
+
 }));
 
 
@@ -59,91 +28,135 @@ export default function Boisson() {
     React.useEffect(() => {
         setLabelWidth(inputLabel.current.offsetWidth);
     }, []);
+    const [boisson, setBoisson] = React.useState([]);
+    // const [loading, setLoading] = React.useState(true);
+    const Produit = [
+      {
+        title: "Standard license",
+        volume: "1 L",
+        prix: "500",
+        type: "Boisson gazeuse",
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+      },
+      {
+        title: "Mabs",
+        volume: "Aziz",
+        prix: "250",
+        type: "Jus",
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+      },
+      {
+        title: "license",
+        volume: "1 L",
+        prix: "500",
+        type: "Boisson gazeuse",
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+      },
+      {
+        title: "Noussa",
+        volume: "Aziz",
+        prix: "250",
+        type: "Jus",
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+      },
+      {
+        title: "CA",
+        volume: "1 L",
+        prix: "500",
+        type: "Boisson gazeuse",
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+      },
+      {
+        title: "isamm",
+        volume: "Aziz",
+        prix: "250",
+        type: "Jus",
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+      },
+      {
+        title: "Coca",
+        volume: "1 L",
+        prix: "500",
+        type: "Boisson gazeuse",
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+      },
+      {
+        title: "Tunisie",
+        volume: "Aziz",
+        prix: "250",
+        type: "Jus",
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+      }]
+
+    useEffect(() => {
+        axios({
+            method: 'GET',
+            url: 'https://jsonplaceholder.typicode.com/posts',
+        }).then(res => {
+            setBoisson(res.data);
+            // setLoading(false)
+        });
+      });
+    
+
+    const [searchTerm, setSearchTerm] = React.useState('');
+    const [searchResults, setSearchResults] = React.useState([]);
     const handleChange = event => {
-        setType(event.target.value);
+      setSearchTerm(event.target.value);
     };
-    const renderContent = () => {
-        if (isMobileOnly) {
-            return <div>
-                <ButtonBase>
-                    <img
-                        className={classes.img}
-                        alt="complex"
-                        src="https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
-                    />
-                </ButtonBase></div>
-        }
-        return <div>
-            <ButtonBase className={classes.image}>
-                <img
-                    className={classes.img}
-                    alt="complex"
-                    src="https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
-                />
-            </ButtonBase></div>
-    };
-    const [expanded, setExpanded] = React.useState(false);
-    const expandChange = panel => (event, isExpanded) => {
-        setExpanded(isExpanded ? panel : false);
+    useEffect(() => {
+        const results = boisson.filter(item =>
+            item.title.toString().toLowerCase().includes(searchTerm)
+        );
+        setSearchResults(results);
+        console.log(currentPosts);
+
+    }, [searchTerm]);
+    
+    const [page, setPage] = React.useState(1);
+    const currentPosts = searchResults.slice(page*5-5, page*5);
+
+    const change = (event, value) => {
+      setPage(value);
     }
     return (
-
-                <div>
-                    <form noValidate autoComplete="off">
-                        <FormControl variant="outlined" >
-                            <TextField
-                                id="outlined-basic"
-                                label="Nom du produit"
-                                variant="outlined"
-                                className={classes.formControl}
-                            />
-                        </FormControl>
-                        <FormControl variant="outlined" className={classes.formControl}>
-                            <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
-                                Type
-                                  </InputLabel>
-                            <Select
-                                native
-                                labelId="demo-simple-select-outlined-label"
-                                id="demo-simple-select-outlined"
-                                value={type}
-                                onChange={handleChange}
-                                labelWidth={labelWidth}
-                            >
-                            <option value="After Work">Boisson gazeuse</option>
-                            </Select>
-                        </FormControl>
-                    </form>
-                    <br></br>
-                    <Paper className={classes.paper}>
-                        <Grid container spacing={2}>
-                            <Grid item>
-                                {renderContent()}
-                            </Grid>
-                            <Grid item xs={12} sm container>
-                                <Grid item xs container direction="column" spacing={2}>
-                                    <Grid item xs>
-                                        <Typography gutterBottom variant="subtitle1">
-                                            Standard license
-                  </Typography>
-                                        <Typography variant="body2" gutterBottom>
-                                            Full resolution 1920x1080 • JPEG
-                  </Typography>
-                                        <Typography variant="body2" color="textSecondary">
-                                            ID: 1030114
-                  </Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Button>Voir&nbsp;les&nbsp;détails</Button>
-                                        <Button>Ajouter&nbsp;au&nbsp;panier</Button>
-                                    </Grid>
-                                </Grid>
-                                <Grid item>
-                                    <Typography variant="subtitle1">19.000 DT</Typography>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                    </div>
+      <div>
+        <form noValidate autoComplete="off">
+          <FormControl variant="outlined">
+            <TextField
+              id="outlined-basic"
+              label="Nom du produit"
+              variant="outlined"
+              className={classes.formControl}
+              value={searchTerm}
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
+              Type
+            </InputLabel>
+            <Select
+              native
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              value={type}
+              labelWidth={labelWidth}
+            >
+              <option value="After Work">Boisson gazeuse</option>
+            </Select>
+          </FormControl>
+        </form>
+        <br></br>
+        { currentPosts.length > 0 ?
+          currentPosts.map(boisson => (
+          <Product image={boisson.img} titre={boisson.title} volume={boisson.volume} 
+          type={boisson.name} prix={boisson.prix} /> )) :
+          <Typography variant="h6" style={{ textAlign: 'center'}}>Aucun résultat</Typography>
+        }
+        {searchResults.length > 5 ? 
+        <Pagination count={Math.round(searchResults.length / 5)} page={page} onChange={change} color="primary" />
+         : null }
+      </div>
     );
 }

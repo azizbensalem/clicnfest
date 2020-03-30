@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import { Container } from '@material-ui/core';
 
 const images = [
     {
@@ -19,13 +20,29 @@ const images = [
         title: 'Camera',
         width: '34%',
     },
+    {
+        url: "https://media.eggs.ca/assets/RecipeThumbs/_resampled/FillWyIxMjgwIiwiNzIwIl0/Grab-n-Go-Egg-Breakfast-Box2-CMS.jpg",
+        title: 'Breakfast',
+        width: '33%',
+    },
+    {
+        url: 'https://www.seriouseats.com/recipes/images/2015/07/20150702-sous-vide-hamburger-anova-primary.jpg',
+        title: 'Burgers',
+        width: '33%',
+    },
+    {
+        url: 'https://petapixel.com/assets/uploads/2020/01/eosr_feature-800x421.jpg',
+        title: 'Camera',
+        width: '34%',
+    },
+
 ];
 
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
-        padding: '30px',
+        padding: '20px'
     },
     image: {
         position: 'relative',
@@ -92,12 +109,13 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create('opacity'),
     },
 }));
-
+ 
 export default function ButtonBases() {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
+         <Container>
             {images.map(image => (
                 <ButtonBase
                     focusRipple
@@ -128,6 +146,7 @@ export default function ButtonBases() {
                     </span>
                 </ButtonBase>
             ))}
+            </Container>
         </div>
     );
 }

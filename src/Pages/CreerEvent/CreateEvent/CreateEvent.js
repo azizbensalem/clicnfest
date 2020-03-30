@@ -9,9 +9,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import AppBar from '../../../Components/Header/AppBar';
+import AppBar from '../../../Components/Header/Navbar';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 
@@ -26,10 +24,16 @@ const useStyles = makeStyles(theme => ({
     selectEmpty: {
         marginTop: theme.spacing(2),
     },
+  padding: {
+    padding: '20px'
+  },
+  button: {
+    paddingTop: '15px',
+  }
 }));
 
 function getSteps() {
-  return ['Organiser mon événement', 'Choisir les invités', 'Commander'];
+  return ['Organiser mon événement', 'Choisir les participants', 'Commander'];
 }
 
 export default function CreerEvent() {
@@ -57,8 +61,7 @@ export default function CreerEvent() {
     return (
         <div className={classes.root}>
           <AppBar />
-          <Card className={classes.card}>
-            <CardContent>
+        <div className={classes.padding}>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map(label => (
             <Step key={label}>
@@ -98,7 +101,7 @@ export default function CreerEvent() {
                   placeholder="Oú"
                 />
          </FormControl>
-        <div>
+        <div className={classes.button}>
         <Button
           className={classes.backButton}
           disabled
@@ -113,8 +116,7 @@ export default function CreerEvent() {
         </Link>
         </div>
           </Container>
-        </CardContent>
-        </Card>
+        </div>
       </div>
     );
 }

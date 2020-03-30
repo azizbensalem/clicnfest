@@ -1,5 +1,5 @@
 import React from 'react';
-import AppBar from '../../Components/Header/AppBar';
+import AppBar from '../../Components/Header/Navbar';
 import Image from './Image';
 import Choix from './Choix';
 

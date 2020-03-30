@@ -10,14 +10,12 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import { Link } from 'react-router-dom';
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import AppBar from '../../../Components/Header/AppBar';
+import AppBar from '../../../Components/Header/Navbar';
 import Container from '@material-ui/core/Container';
 
 
 function getSteps() {
-  return ['Organiser mon événement', 'Choisir les invités', 'Commander'];
+  return ['Organiser mon événement', 'Choisir les participants', 'Commander'];
 }
 
 function Invite() {
@@ -28,6 +26,12 @@ function Invite() {
                 width: 280,
             },
         },
+        padding: {
+          padding: '20px'
+        },
+      button: {
+        paddingTop: '15px',
+      }
     }));
     const classes = useStyles();
     const [inputFields, setInputFields] = useState([
@@ -70,8 +74,7 @@ function Invite() {
     return (
         <div>
           <AppBar />
-          <Card className={classes.card}>
-            <CardContent>
+        <div className={classes.padding}>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map(label => (
             <Step key={label}>
@@ -80,7 +83,7 @@ function Invite() {
           ))}
         </Stepper>
       <Container>
-        <Typography variant="h6">Choisir les invités</Typography>
+        <Typography variant="h6">Choisir les participants</Typography>
         <br></br>
         <form onSubmit={handleSubmit}>
           <div className="form-row">
@@ -135,7 +138,7 @@ function Invite() {
 
               </Fragment>
             ))}
-            <div>
+            <div className={classes.button}>
               <Link to='/create_event' style={{ textDecoration: 'none' }}>
                 <Button>
                     Retour
@@ -161,8 +164,7 @@ function Invite() {
                 {JSON.stringify(inputFields, null, 2)}*/}
         </form>
         </Container>
-        </CardContent>
-        </Card>
+        </div>
       </div>
     );
 }

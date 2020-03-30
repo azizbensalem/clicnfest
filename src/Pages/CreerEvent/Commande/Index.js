@@ -5,9 +5,7 @@ import Button from '@material-ui/core/Button';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import AppBar from '../../../Components/Header/AppBar';
+import AppBar from '../../../Components/Header/Navbar';
 import {Link} from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Boissons from './Boissons';
@@ -20,45 +18,23 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { isMobileOnly } from "react-device-detect";
 import ButtonBase from '@material-ui/core/ButtonBase';
 
-
-
 function getSteps() {
-  return ['Organiser mon événement', 'Choisir les invités', 'Commander'];
+  return ['Organiser mon événement', 'Choisir les participants', 'Commander'];
 }
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "auto",
-    color: theme.palette.text.secondary
-  },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
-  image: {
-    width: 128,
-    height: 128
+  padding: {
+    padding: '20px'
   },
-  imageMobile: {
-    width: 190,
-    height: 190,
-  },
-  img: {
-    margin: "auto",
-    display: "block",
-    maxWidth: "100%",
-    maxHeight: "100%"
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 220
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2)
+  button: {
+    paddingTop: '15px',
   }
 }));
 
@@ -70,32 +46,10 @@ export default function Index() {
   const expandChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   }
-  const renderContent = () => {
-    if (isMobileOnly) {
-      return <div>
-        <ButtonBase>
-          <img
-            className={classes.img}
-            alt="complex"
-            src="https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
-          />
-        </ButtonBase></div>
-    }
-    return <div>
-      <ButtonBase className={classes.image}>
-        <img
-          className={classes.img}
-          alt="complex"
-          src="https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
-        />
-      </ButtonBase></div>
-  };
-
     return (
       <div className={classes.root}>
         <AppBar />
-        <Card className={classes.card}>
-            <CardContent>
+        <div className={classes.padding}>
                 <Stepper activeStep={activeStep} alternativeLabel>
                 {steps.map(label => (
                 <Step key={label}>
@@ -142,7 +96,7 @@ export default function Index() {
                 </ExpansionPanelDetails>
                 </ExpansionPanel>
         <br></br>
-            <div>
+            <div className={classes.button}>
               <Link to='/invite' style={{ textDecoration: 'none' }}>
                 <Button>
                   Retour
@@ -155,8 +109,7 @@ export default function Index() {
               </Link>
             </div>
             </Container>
-        </CardContent>
-        </Card>
+        </div>
       </div>
     );
 }

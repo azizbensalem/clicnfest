@@ -2,11 +2,14 @@ import React from 'react';
 import './App.css';
 import { Route, Switch } from "react-router-dom";
 import Index from './Pages/CreerEvent/Commande/Index';
-import Invite from './Pages/CreerEvent/Invités/Invite';
+import Invite from './Pages/CreerEvent/Participants/Participants';
 import CreerEvent from './Pages/CreerEvent/CreateEvent/CreateEvent';
 import Home from './Pages/Home/Index';
 import Login from './Pages/Login/Login';
+import Profil from './Pages/Profil/Index';
 import Inscription from './Pages/Inscription/Inscription';
+import MyEvent from './Pages/MyEvent/MyEvent';
+// import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 
 
@@ -14,11 +17,13 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route path="/create_event" component={CreerEvent} />
-        <Route path="/invite" component={Invite} />
-        <Route path="/commande" component={Index} />
-        <Route path="/login" component={Login} />
-        <Route path="/inscription" component={Inscription} />
+        <Route exact path="/create_event" component={CreerEvent} />
+        <Route exact path="/invite" component={Invite} />
+        <Route exact path="/commande" component={Index} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/inscription" component={Inscription} />
+        <Route exact path="/monprofil" component={Profil} />
+        <Route exact path="/mes_événements" component={MyEvent} />
         <Route exact path="/" component={Home} />
         <Route path="*" component={ () => "404 ERROR NOT FOUND"} />
       </Switch>

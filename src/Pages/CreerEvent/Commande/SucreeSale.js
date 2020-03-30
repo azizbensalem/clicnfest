@@ -1,49 +1,17 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { isMobileOnly } from "react-device-detect";
 import TextField from "@material-ui/core/TextField";
-import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-
+import { FormControl, InputLabel, Select } from "@material-ui/core";
+import Product from '../../../Components/Product';
 
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1
     },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: "auto",
-        color: theme.palette.text.secondary
-    },
-    heading: {
-        fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightRegular,
-    },
-    image: {
-        width: 128,
-        height: 128
-    },
-    imageMobile: {
-        width: 190,
-        height: 190,
-    },
-    img: {
-        margin: "auto",
-        display: "block",
-        maxWidth: "100%",
-        maxHeight: "100%"
-    },
     formControl: {
         margin: theme.spacing(1),
         minWidth: 220
     },
-    selectEmpty: {
-        marginTop: theme.spacing(2)
-    }
 }));
 
 export default function SucreeSale() {
@@ -54,33 +22,35 @@ export default function SucreeSale() {
     React.useEffect(() => {
         setLabelWidth(inputLabel.current.offsetWidth);
     }, []);
-    const handleChange = event => {
-        setType(event.target.value);
-    };
-    const renderContent = () => {
-        if (isMobileOnly) {
-            return <div>
-                <ButtonBase>
-                    <img
-                        className={classes.img}
-                        alt="complex"
-                        src="https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
-                    />
-                </ButtonBase></div>
-        }
-        return <div>
-            <ButtonBase className={classes.image}>
-                <img
-                    className={classes.img}
-                    alt="complex"
-                    src="https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
-                />
-            </ButtonBase></div>
-    };
-    const [expanded, setExpanded] = React.useState(false);
-    const expandChange = panel => (event, isExpanded) => {
-        setExpanded(isExpanded ? panel : false);
+
+    const [ss,setSs] = React.useState([{
+        title : "Standard license",
+        volume: "1 L",
+        prix: "500",
+        type: "Boisson gazeuse",
+        img : "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+    },
+    {
+        title : "Mabs",
+        volume: "Aziz",
+        prix: "250",
+        type: "Jus",
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
     }
+]);
+    const [searchTerm, setSearchTerm] = React.useState("");
+    const [searchResults, setSearchResults] = React.useState([]);
+    const handleChange = event => {
+        setSearchTerm(event.target.value);
+    };
+    React.useEffect(() => {
+        const results = ss.filter(person =>
+            person.title.toString().toLowerCase().includes(searchTerm)
+        );
+        setSearchResults(results);
+    }, [searchTerm]);
+    
+
     return (
              <div>
                     <form noValidate autoComplete="off">
@@ -90,6 +60,8 @@ export default function SucreeSale() {
                                 label="Nom du produit"
                                 variant="outlined"
                                 className={classes.formControl}
+                                value={searchTerm}
+                                onChange={handleChange}
                             />
                         </FormControl>
                         <FormControl variant="outlined" className={classes.formControl}>
@@ -101,7 +73,6 @@ export default function SucreeSale() {
                                 labelId="demo-simple-select-outlined-label"
                                 id="demo-simple-select-outlined"
                                 value={type}
-                                onChange={handleChange}
                                 labelWidth={labelWidth}
                             >
                             <option value="Sucrée">Sucrée</option>
@@ -110,35 +81,10 @@ export default function SucreeSale() {
                         </FormControl>
                     </form>
                     <br></br>
-                    <Paper className={classes.paper}>
-                        <Grid container spacing={2}>
-                            <Grid item>
-                                {renderContent()}
-                            </Grid>
-                            <Grid item xs={12} sm container>
-                                <Grid item xs container direction="column" spacing={2}>
-                                    <Grid item xs>
-                                    <Typography gutterBottom variant="subtitle1">
-                                            Standard license
-                                    </Typography>
-                                    <Typography variant="body2" gutterBottom>
-                                            Full resolution 1920x1080 • JPEG
-                                    </Typography>
-                                    <Typography variant="body2" color="textSecondary">
-                                            ID: 1030114
-                                    </Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Button>Voir&nbsp;les&nbsp;détails</Button>
-                                        <Button>Ajouter&nbsp;au&nbsp;panier</Button>
-                                    </Grid>
-                            </Grid>
-                            <Grid item>
-                                    <Typography variant="subtitle1">19.000 DT</Typography>
-                            </Grid>
-                            </Grid>
-                        </Grid>
-                    </Paper>
+                   { searchResults.map(ss => (
+                    <Product image={ss.img} titre={ss.title} volume={ss.volume} type={ss.type}
+                    prix={ss.prix} />
+                   ))}
                 </div>
     );
 }
