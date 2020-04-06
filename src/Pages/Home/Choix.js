@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
-        padding: '20px'
+        padding: '50px'
     },
     image: {
         position: 'relative',
@@ -116,6 +116,8 @@ export default function ButtonBases() {
     return (
         <div className={classes.root}>
          <Container>
+            <Typography variant="h5" style={{ textAlign: 'center'}}>Nos offres</Typography>
+            <br></br>
             {images.map(image => (
                 <ButtonBase
                     focusRipple

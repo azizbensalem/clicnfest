@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Modal from './Modal';
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -40,8 +41,16 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const Product = ({ image, titre, volume , type , prix}) => {
+const Product = ({ image, titre, volume , type , prix , description}) => {
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
                 <div>
                     <Paper className={classes.paper}>
@@ -81,10 +90,12 @@ const Product = ({ image, titre, volume , type , prix}) => {
                                     </Typography>
                                     </Grid>
                                     <Grid item>
-                                        <Button>Voir&nbsp;les&nbsp;détails</Button>
+                                <Button color="primary" onClick={handleClickOpen}>Voir&nbsp;les&nbsp;détails</Button>
                                         <Button>Ajouter&nbsp;au&nbsp;panier</Button>
                                     </Grid>
                                 </Grid>
+                                <Modal handleClose={handleClose} open={open} image={image} titre={titre} 
+                                volume={volume} type ={type} prix={prix} description={description} />
                                 <Grid item>
                                     <Typography variant="subtitle1">{prix}&nbsp;DT</Typography>
                                 </Grid>

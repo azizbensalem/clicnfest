@@ -36,76 +36,83 @@ export default function Boisson() {
         volume: "1 L",
         prix: "500",
         type: "Boisson gazeuse",
-        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg",
+        description: "",
       },
       {
         title: "Mabs",
         volume: "Aziz",
         prix: "250",
         type: "Jus",
-        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg",
+        description: "",
       },
       {
         title: "license",
         volume: "1 L",
         prix: "500",
         type: "Boisson gazeuse",
-        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg",
+        description: "",
       },
       {
         title: "Noussa",
         volume: "Aziz",
         prix: "250",
         type: "Jus",
-        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg",
+        description: "",
       },
       {
         title: "CA",
         volume: "1 L",
         prix: "500",
         type: "Boisson gazeuse",
-        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg",
+        description: "",
       },
       {
         title: "isamm",
         volume: "Aziz",
         prix: "250",
         type: "Jus",
-        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg",
+        description: "",
       },
       {
         title: "Coca",
         volume: "1 L",
         prix: "500",
         type: "Boisson gazeuse",
-        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg",
+        description: "",
       },
       {
         title: "Tunisie",
         volume: "Aziz",
         prix: "250",
         type: "Jus",
-        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg"
+        img: "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg",
+        description: ""
       }]
 
-    useEffect(() => {
-        axios({
-            method: 'GET',
-            url: 'https://jsonplaceholder.typicode.com/posts',
-        }).then(res => {
-            setBoisson(res.data);
-            // setLoading(false)
-        });
-      });
+    // useEffect(() => {
+    //     axios({
+    //         method: 'GET',
+    //         url: 'https://jsonplaceholder.typicode.com/posts',
+    //     }).then(res => {
+    //         setBoisson(res.data);
+    //         // setLoading(false)
+    //     });
+    //   });
     
-
     const [searchTerm, setSearchTerm] = React.useState('');
     const [searchResults, setSearchResults] = React.useState([]);
     const handleChange = event => {
       setSearchTerm(event.target.value);
     };
     useEffect(() => {
-        const results = boisson.filter(item =>
+        const results = Produit.filter(item =>
             item.title.toString().toLowerCase().includes(searchTerm)
         );
         setSearchResults(results);
@@ -151,7 +158,7 @@ export default function Boisson() {
         { currentPosts.length > 0 ?
           currentPosts.map(boisson => (
           <Product image={boisson.img} titre={boisson.title} volume={boisson.volume} 
-          type={boisson.name} prix={boisson.prix} /> )) :
+          type={boisson.name} prix={boisson.prix} description={boisson.description} /> )) :
           <Typography variant="h6" style={{ textAlign: 'center'}}>Aucun résultat</Typography>
         }
         {searchResults.length > 5 ? 

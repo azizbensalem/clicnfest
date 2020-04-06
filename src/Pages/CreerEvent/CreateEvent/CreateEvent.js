@@ -12,7 +12,10 @@ import { Link } from 'react-router-dom';
 import AppBar from '../../../Components/Header/Navbar';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
-
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { FormHelperText } from "@material-ui/core";
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -49,15 +52,9 @@ export default function CreerEvent() {
         setLabelWidth(inputLabel.current.offsetWidth);
     }, []);
 
-  const handleChange = name => event => {
-        setState({
-            ...state,
-            [name]: event.target.value,
-        });
-    };
   const activeStep = 0;
   const steps = getSteps();
-
+  const history = useHistory();
     return (
         <div className={classes.root}>
           <AppBar />
@@ -69,52 +66,135 @@ export default function CreerEvent() {
             </Step>
           ))}
         </Stepper>
-      <Container>
-        <Typography variant="h6">Organiser mon événement</Typography>
-        <br></br>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel ref={inputLabel} htmlFor="outlined-type-native-simple">
-            Type d'événement
-          </InputLabel>
-          <Select
-            native
-            value={state.type}
-            onChange={handleChange("type")}
-            labelWidth={labelWidth}
-            inputProps={{
-              name: "type",
-              id: "outlined-type-native-simple"
-            }}
-          >
-            <option value="After Work">After Work</option>
-            <option value="Conventum">Conventum</option>
-            <option value="Team building">Team building</option>
-            <option value="Pyjama">Pyjama</option>
-            <option value="Demande de mariage">Demande de mariage</option>
-          </Select>
-          </FormControl>
-          <FormControl variant="outlined" className={classes.formControl}>
-                <TextField
-                  id="outlined-basic"
-                  label="Oú"
-                  variant="outlined"
-                  placeholder="Oú"
-                />
-         </FormControl>
-        <div className={classes.button}>
-        <Button
-          className={classes.backButton}
-          disabled
-        >
-          Retour
-              </Button>
-
-        <Link to='/invite' style={{ textDecoration: 'none' }}>
-          <Button variant="contained" color="primary" >
-            Suivant
-                </Button>
-        </Link>
-        </div>
+        <Container>
+            <Typography variant="h6">Organiser mon événement</Typography>
+            <br></br>
+              <Formik
+              initialValues={{
+                type_event: "After Work",
+                local: "",
+                date: "",
+              }}
+              onSubmit={(values, { setSubmitting }) => {
+                setTimeout(() => {
+                  console.log("Logging in", values);
+                  history.push("/invite");
+                  setSubmitting(false);
+                }, 500);
+              }}
+              validationSchema={Yup.object().shape({
+                type_event: Yup.string().required("Ce champ est obligatoire."),
+                local: Yup.string().required("Ce champ est obligatoire."),
+                date: Yup.string().required("Ce champ est obligatoire."),
+              })}
+              >
+              {props => {
+                const {
+                  values,
+                  touched,
+                  errors,
+                  isSubmitting,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit
+                } = props;
+                return (
+                  <form
+                    onSubmit={handleSubmit}
+                    noValidate
+                    autoComplete="off"
+                  >
+                  <FormControl variant="outlined" className={classes.formControl}>
+                    <InputLabel ref={inputLabel} htmlFor="outlined-type-native-simple">
+                      Type d'événement
+                    </InputLabel>
+                    <Select
+                      native
+                      error={errors.type_event && touched.type_event && true}
+                      value={values.type_event}
+                      name="type_event"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      labelWidth={labelWidth}
+                      variant="outlined"
+                      helperText={
+                          errors.type_event &&
+                          touched.type_event && (
+                            <FormHelperText error>
+                              {errors.type_event}
+                            </FormHelperText>
+                          )
+                        }
+                    >
+                      <option value="After Work">After Work</option>
+                      <option value="Conventum">Conventum</option>
+                      <option value="Team building">Team building</option>
+                      <option value="Pyjama">Pyjama</option>
+                      <option value="Demande de mariage">Demande de mariage</option>
+                    </Select>
+                    </FormControl>
+                    <FormControl variant="outlined" className={classes.formControl}>
+                          <TextField
+                            error={errors.local && touched.local && true}
+                            name="local"
+                            label="Où"
+                            type="text"
+                            value={values.local}
+                            placeholder="Où"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            variant="outlined"
+                            helperText={
+                              errors.local &&
+                              touched.local && (
+                                <FormHelperText error>
+                                  {errors.local}
+                                </FormHelperText>
+                              )
+                            }
+                          />
+                    </FormControl>
+                    <FormControl variant="outlined" className={classes.formControl}>
+                                <TextField
+                                error={errors.date && touched.date && true}
+                                name="date"
+                                id="outlined-number"
+                                label="Date d'événement"
+                                type="date"
+                                InputLabelProps={{
+                                  shrink: true,
+                                }}
+                                variant="outlined"
+                                value={values.date}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                helperText={
+                                  errors.date &&
+                                  touched.date && (
+                                    <FormHelperText error>
+                                      {errors.date}
+                                    </FormHelperText>
+                                  )
+                                }
+                                />
+                      </FormControl>                   
+                              <div className={classes.button}>
+                                      <Button
+                                        className={classes.backButton}
+                                        disabled
+                                      >
+                                            Retour
+                                      </Button>
+                                      <Button variant="contained" type="submit"
+                                        disabled={isSubmitting}
+                                        color="primary" >
+                                          Suivant
+                                      </Button>
+                              </div>
+                      </form>
+                      );
+                    }}
+                  </Formik>
           </Container>
         </div>
       </div>

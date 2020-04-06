@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "50px"
   },
   img: {
-    width: "25%"
+    width: "30%"
   },
   title: {
     fontSize: 20,
@@ -51,7 +51,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "120vh"
   },
 }));
 
@@ -273,9 +272,10 @@ export default function Inscription() {
                       </form>
                     );
                   }}
-                </Formik>
+                </Formik>        
+
               </CardContent>
-            </Card>
+            </Card><br></br><br></br>
           </Grid>
         </Grid>
       </div>

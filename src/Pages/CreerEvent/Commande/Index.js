@@ -15,8 +15,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { isMobileOnly } from "react-device-detect";
-import ButtonBase from '@material-ui/core/ButtonBase';
+import ScrollTop from '../../../Components/Footer/ScrollTop';
 
 function getSteps() {
   return ['Organiser mon événement', 'Choisir les participants', 'Commander'];
@@ -38,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Index() {
+export default function Index(props) {
   const classes = useStyles();
   const steps = getSteps();
   const activeStep = 2;
@@ -110,6 +109,7 @@ export default function Index() {
             </div>
             </Container>
         </div>
+        <ScrollTop />
       </div>
     );
 }
