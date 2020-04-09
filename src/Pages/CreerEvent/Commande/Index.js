@@ -8,7 +8,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import AppBar from '../../../Components/Header/Navbar';
 import {Link} from 'react-router-dom';
 import Container from '@material-ui/core/Container';
-import Boissons from './Boissons';
+import { Boisson as Boissons } from './Boissons';
 import SucreeSale from './SucreeSale';
 import Extra from './Extra';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -16,6 +16,9 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ScrollTop from '../../../Components/Footer/ScrollTop';
+import Snackbar from '@material-ui/core/Snackbar';
+import { Somme } from '../../Total';
+
 
 function getSteps() {
   return ['Organiser mon événement', 'Choisir les participants', 'Commander'];
@@ -34,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     paddingTop: '15px',
-  }
+  },
 }));
 
 export default function Index(props) {
@@ -101,7 +104,7 @@ export default function Index(props) {
                   Retour
                 </Button>
               </Link>
-              <Link to='/commande' style={{ textDecoration: 'none' }}>
+              <Link to='/cart' style={{ textDecoration: 'none' }}>
                 <Button variant="contained" color="primary" >
                   Suivant
                 </Button>
@@ -109,6 +112,17 @@ export default function Index(props) {
             </div>
             </Container>
         </div>
+        <Snackbar
+          open
+          autoHideDuration={6000}
+          message={<Somme />}
+          action={
+            <Button color="inherit" size="small">
+              Voir les détails
+            </Button>
+          }
+          className={classes.snackbar}
+        />
         <ScrollTop />
       </div>
     );

@@ -10,9 +10,7 @@ import Profil from './Pages/Profil/Index';
 import Inscription from './Pages/Inscription/Inscription';
 import MyEvent from './Pages/MyEvent/MyEvent';
 import Linprog from './Components/Linprog';
-// import { TransitionGroup, CSSTransition } from "react-transition-group";
-
-
+import { Cart } from './Pages/Cart';
 
 class App extends React.Component {
 
@@ -27,13 +25,15 @@ class App extends React.Component {
       })
     }, 3000);
   }
-
+  
   render() {
   return (
     <div>
+    {/* <Provider store={store}> */}
       <Switch>
         <Route exact path="/create_event" component={CreerEvent} />
         {this.state.loading ? <Linprog /> : null}
+        <Route exact path="/cart" component={Cart} />
         <Route exact path="/invite" component={Invite} />
         <Route exact path="/commande" component={Index} />
         <Route exact path="/home" component={Home} />
@@ -44,6 +44,7 @@ class App extends React.Component {
         <Route exact path="/" component={Login} />
         <Route path="*" component={ () => "404 ERROR NOT FOUND"} />
       </Switch>
+    {/* </Provider> */}
     </div>
   );
 }

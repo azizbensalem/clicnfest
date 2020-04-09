@@ -11,7 +11,11 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
         bottom: theme.spacing(2),
         right: theme.spacing(2),
+        [theme.breakpoints.down('xs')]: {
+            bottom: 80,
+        },
     },
+    
 }));
 
 function ScrollTop(props) {

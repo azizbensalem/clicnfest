@@ -6,6 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Modal from './Modal';
+import { addToCart , removeItem } from './actions/cartActions';
+import { useDispatch } from "react-redux";
+
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -41,7 +44,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const Product = ({ image, titre, volume , type , prix , description}) => {
+const Product = ({ image, titre, volume , type , prix , description , click}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -51,6 +54,13 @@ const Product = ({ image, titre, volume , type , prix , description}) => {
     const handleClose = () => {
         setOpen(false);
     };
+    const dispatch = useDispatch();
+    const ajouter = (id) => {
+        dispatch(addToCart(id));
+    };
+    const supprimer = (id) => {
+        dispatch(removeItem(id));
+    }
     return (
                 <div>
                     <Paper className={classes.paper}>
@@ -90,8 +100,9 @@ const Product = ({ image, titre, volume , type , prix , description}) => {
                                     </Typography>
                                     </Grid>
                                     <Grid item>
-                                <Button color="primary" onClick={handleClickOpen}>Voir&nbsp;les&nbsp;détails</Button>
-                                        <Button>Ajouter&nbsp;au&nbsp;panier</Button>
+                                        <Button color="primary" onClick={handleClickOpen}>Voir&nbsp;les&nbsp;détails</Button>
+                                        <Button color="primary" onClick={() => ajouter(click)}>Ajouter&nbsp;au&nbsp;panier</Button>
+                                        <Button color="primary" onClick={() => supprimer(click)}>Supprimer</Button>
                                     </Grid>
                                 </Grid>
                                 <Modal handleClose={handleClose} open={open} image={image} titre={titre} 
