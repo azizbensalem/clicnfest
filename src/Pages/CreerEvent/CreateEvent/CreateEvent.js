@@ -4,11 +4,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
 import AppBar from '../../../Components/Header/Navbar';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
@@ -16,6 +12,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
 import { useHistory } from 'react-router-dom';
+import Etape from '../../../Components/Etape';
 
 
 
@@ -28,7 +25,7 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(2),
     },
   padding: {
-    padding: '20px'
+      justifyContent: 'center',
   },
   button: {
     paddingTop: '15px',
@@ -36,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function getSteps() {
-  return ['Organiser mon événement', 'Choisir les participants', 'Commander'];
+  return ['Organiser mon événement', 'Choisir les participants', 'Commander', 'Confirmer la commande'];
 }
 
 export default function CreerEvent() {
@@ -58,15 +55,9 @@ export default function CreerEvent() {
     return (
         <div className={classes.root}>
           <AppBar />
-        <div className={classes.padding}>
-        <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map(label => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
         <Container>
+            <Etape activeStep={0} />
+            <div className={classes.padding}>
             <Typography variant="h6">Organiser mon événement</Typography>
             <br></br>
               <Formik
@@ -195,8 +186,8 @@ export default function CreerEvent() {
                       );
                     }}
                   </Formik>
+                </div>
           </Container>
         </div>
-      </div>
     );
 }

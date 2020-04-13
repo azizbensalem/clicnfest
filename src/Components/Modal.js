@@ -8,6 +8,9 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
+import { Grid, Container } from '@material-ui/core';
 
 const styles = theme => ({
     root: {
@@ -23,6 +26,7 @@ const styles = theme => ({
 });
 
 const DialogTitle = withStyles(styles)(props => {
+
     const { children, classes, onClose, ...other } = props;
     return (
         <MuiDialogTitle disableTypography className={classes.root} {...other}>
@@ -50,31 +54,35 @@ const DialogActions = withStyles(theme => ({
 }))(MuiDialogActions);
 
 const CustomizedDialogs = ({ handleClose, open, image, titre, volume, type, prix, description }) => {
-
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
     return (
         <div>
-            <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+            <Dialog fullScreen={fullScreen} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
                 <DialogTitle id="customized-dialog-title" onClose={handleClose}>
                     {titre}
                 </DialogTitle>
                 <DialogContent dividers>
-                    <Typography gutterBottom>
-                        {type}
-                    </Typography>
-                    <Typography gutterBottom>
-                        {volume}
-                    </Typography>
+                    <Container>
+                        <Grid container spacing={3}>
+                            <Grid xs>
+                            <img style={{ width: 180 }} src={image} />
+                            </Grid>
+                            <Grid xs>
+                                <Typography gutterBottom>{type}</Typography>
+                                <Typography gutterBottom>{volume}</Typography>
+                                <Typography gutterBottom>{prix}&nbsp;DT</Typography>
+                            </Grid>
+                        </Grid>
+                    </Container>
                     <Typography gutterBottom>
                         {description}
-                    </Typography>
-                    <Typography gutterBottom>
-                        {prix}
                     </Typography>
                 </DialogContent>
                 <DialogActions>
                     <Button autoFocus onClick={handleClose} color="primary">
                         Save changes
-          </Button>
+                    </Button>
                 </DialogActions>
             </Dialog>
         </div>

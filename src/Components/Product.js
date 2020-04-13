@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Modal from './Modal';
 import { addToCart , removeItem } from './actions/cartActions';
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 
 const useStyles = makeStyles(theme => ({
@@ -44,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const Product = ({ image, titre, volume , type , prix , description , click}) => {
+const Product = ({ image, titre, volume , type , prix , description , click , quantity}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -61,6 +62,12 @@ const Product = ({ image, titre, volume , type , prix , description , click}) =>
     const supprimer = (id) => {
         dispatch(removeItem(id));
     }
+    const items = useSelector(state => state.addedItems);
+    let addedItems = items.length ? (
+        <Button color="primary" onClick={() => supprimer(click)}>Supprimer</Button>
+    )
+    : 
+    null
     return (
                 <div>
                     <Paper className={classes.paper}>
@@ -96,19 +103,20 @@ const Product = ({ image, titre, volume , type , prix , description , click}) =>
                                             {volume}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
-                                            {type}
+                                            {prix}
                                     </Typography>
                                     </Grid>
                                     <Grid item>
                                         <Button color="primary" onClick={handleClickOpen}>Voir&nbsp;les&nbsp;détails</Button>
                                         <Button color="primary" onClick={() => ajouter(click)}>Ajouter&nbsp;au&nbsp;panier</Button>
-                                        <Button color="primary" onClick={() => supprimer(click)}>Supprimer</Button>
+                                        {addedItems}
                                     </Grid>
                                 </Grid>
                                 <Modal handleClose={handleClose} open={open} image={image} titre={titre} 
                                 volume={volume} type ={type} prix={prix} description={description} />
                                 <Grid item>
-                                    <Typography variant="subtitle1">{prix}&nbsp;DT</Typography>
+                                    <Typography variant="subtitle1">{ quantity == null ? prix : prix*quantity }&nbsp;DT</Typography>
+                                    {quantity != null ? (<Typography variant="subtitle1">Quantité:&nbsp;{quantity}</Typography>) : null}
                                 </Grid>
                             </Grid>
                         </Grid>

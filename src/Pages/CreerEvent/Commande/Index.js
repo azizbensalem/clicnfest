@@ -2,9 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
 import AppBar from '../../../Components/Header/Navbar';
 import {Link} from 'react-router-dom';
 import Container from '@material-ui/core/Container';
@@ -15,14 +12,12 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import TotalSb from '../../../Components/Footer/TotalSb';
 import ScrollTop from '../../../Components/Footer/ScrollTop';
-import Snackbar from '@material-ui/core/Snackbar';
-import { Somme } from '../../Total';
+import Etape from '../../../Components/Etape';
+import { useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
 
-
-function getSteps() {
-  return ['Organiser mon événement', 'Choisir les participants', 'Commander'];
-}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,33 +28,27 @@ const useStyles = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
   padding: {
-    padding: '20px'
+    justifyContent: 'center',
   },
   button: {
-    paddingTop: '15px',
+    paddingBottom: '80px',
   },
 }));
 
-export default function Index(props) {
+export default function Index() {
   const classes = useStyles();
-  const steps = getSteps();
-  const activeStep = 2;
   const [expanded, setExpanded] = React.useState(false);
   const expandChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   }
+  const items = useSelector(state => state.addedItems);
+  const history = useHistory();
     return (
       <div className={classes.root}>
         <AppBar />
-        <div className={classes.padding}>
-                <Stepper activeStep={activeStep} alternativeLabel>
-                {steps.map(label => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-            <Container>
+        <Container>
+            <Etape activeStep={2}/>
+            <div className={classes.padding}>
             <Typography variant="h6">Commander</Typography><br></br>
               <ExpansionPanel expanded={expanded === 'panel1'} onChange={expandChange('panel1')}>
                 <ExpansionPanelSummary
@@ -99,31 +88,19 @@ export default function Index(props) {
                 </ExpansionPanel>
         <br></br>
             <div className={classes.button}>
-              <Link to='/invite' style={{ textDecoration: 'none' }}>
-                <Button>
+                <Button onClick={() => history.push('/invite')}>
                   Retour
                 </Button>
-              </Link>
-              <Link to='/cart' style={{ textDecoration: 'none' }}>
-                <Button variant="contained" color="primary" >
+                {console.log(items.length)}
+                <Button variant="contained" color="primary" onClick = {() => history.push('/cart')} 
+                disabled={ items.length > 0 ? false : true}>
                   Suivant
                 </Button>
-              </Link>
             </div>
-            </Container>
-        </div>
-        <Snackbar
-          open
-          autoHideDuration={6000}
-          message={<Somme />}
-          action={
-            <Button color="inherit" size="small">
-              Voir les détails
-            </Button>
-          }
-          className={classes.snackbar}
-        />
+            </div>
+        </Container>
         <ScrollTop />
+        <TotalSb />
       </div>
     );
 }

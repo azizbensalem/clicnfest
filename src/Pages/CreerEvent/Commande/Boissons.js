@@ -90,7 +90,7 @@ export const Boisson = () => {
         currentPosts.map(boisson => (
           <div>
             <Product image={boisson.img} titre={boisson.title} volume={boisson.volume}
-              type={boisson.name} prix={boisson.prix} description={boisson.description}
+              type={boisson.type} prix={boisson.prix} description={boisson.description}
               click={boisson.id} />
           </div>)) :
         <Typography variant="h6" style={{ textAlign: 'center' }}>Aucun résultat</Typography>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from "react-redux";
+import { Button, Typography } from '@material-ui/core';
 
 export const Somme = () => {
     const total = useSelector(state => state.total);
@@ -11,14 +12,9 @@ export const Somme = () => {
 export const Total = () => {
     const total = useSelector(state => state.total);
         return(
-            <div className="container">
-                    <div className="collection">
-                        <b>Total: {total} DT</b>
-                    </div>
-                    <div className="checkout">
-                        <button className="waves-effect waves-light btn">Checkout</button>
-                    </div>
-                 </div>
+            <div>
+                <Typography><b>Total: {total} DT</b></Typography><br></br>
+            </div>
         )
     }
 

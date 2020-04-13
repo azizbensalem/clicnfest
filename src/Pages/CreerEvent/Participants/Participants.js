@@ -5,10 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from "@material-ui/core/Typography";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
-import React, { Fragment, useState } from 'react';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '../../../Components/Header/Navbar';
 import Container from '@material-ui/core/Container';
@@ -16,11 +13,7 @@ import { Formik, Form, getIn, FieldArray } from "formik";
 import { useHistory } from 'react-router-dom';
 import * as Yup from "yup";
 import { Divider } from "@material-ui/core";
-
-
-function getSteps() {
-  return ['Organiser mon événement', 'Choisir les participants', 'Commander'];
-}
+import Etape from '../../../Components/Etape';
 
 function Invite() {
     const useStyles = makeStyles(theme => ({
@@ -45,31 +38,22 @@ function Invite() {
       }
     }));
     const classes = useStyles();
-  const activeStep = 1;
-  const steps = getSteps();
-  const history = useHistory();
-  const validationSchema = Yup.object().shape({
-    participant: Yup.array().of(
-      Yup.object().shape({
-        nom: Yup.string().required("Nom est obligatoire"),
-        prenom: Yup.string().required("Prénom est obligatoire"),
-        email: Yup.string().email("Email doit etre sous forme 'exemple@exemple.com'").required("Email est obligatoire"),
-      })
-    )
-  });
+    const history = useHistory();
+    const validationSchema = Yup.object().shape({
+      participant: Yup.array().of(
+        Yup.object().shape({
+          nom: Yup.string().required("Nom est obligatoire"),
+          prenom: Yup.string().required("Prénom est obligatoire"),
+          email: Yup.string().email("Email doit etre sous forme 'exemple@exemple.com'").required("Email est obligatoire"),
+        })
+      )
+    });
   
     return (
         <div>
-          <AppBar />
-        <div className={classes.padding}>
-        <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map(label => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-      <Container>
+        <AppBar />
+        <Container>
+        <Etape activeStep={1} />
         <Typography variant="h6">Choisir les participants</Typography>
         <br></br>
             <Formik
@@ -221,7 +205,6 @@ function Invite() {
               )}
             </Formik>
         </Container>
-        </div>
       </div>
     );
 }
