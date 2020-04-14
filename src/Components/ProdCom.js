@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Modal from './Modal';
 import { removeItem, addQuantity, subtractQuantity } from '../Components/actions/cartActions';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { Link } from 'react-router-dom'
