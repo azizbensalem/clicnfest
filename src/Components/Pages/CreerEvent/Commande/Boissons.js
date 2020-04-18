@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField";
 import { FormControl, InputLabel, Select, Typography, Button } from "@material-ui/core";
-import Skeleton from "@material-ui/lab/Skeleton";
 import axios from 'axios';
 import Pagination from '@material-ui/lab/Pagination';
-import Product from '../../../Components/Product';
+import Product from '../../../Product';
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from '../../../Components/actions/cartActions'
+import { addToCart } from '../../../Data/actions/cartActions'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -91,9 +90,9 @@ export const Boisson = () => {
           <div>
             <Product image={boisson.img} titre={boisson.title} volume={boisson.volume}
               type={boisson.type} prix={boisson.prix} description={boisson.description}
-              click={boisson.id} />
+              id={boisson.id} />
           </div>)) :
-        <Typography variant="h6" style={{ textAlign: 'center' }}>Aucun résultat</Typography>
+        <Typography variant="h6" style={{ textAlign: 'center' }}>Aucun résultat trouvé</Typography>
       }
       {currentPosts.length > 5 ?
         <Pagination count={Math.round(currentPosts.length / 5)} page={page} onChange={change} color="primary" />

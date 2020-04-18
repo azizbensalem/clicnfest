@@ -13,7 +13,10 @@ export const Total = () => {
     const total = useSelector(state => state.total);
         return(
             <div>
-                <Typography><b>Total: {total} DT</b></Typography><br></br>
+                <Button variant="contained" color="primary" style={{ backgroundColor: '#4caf50' }} >
+                    <Typography variant="h6">Total: {total} DT</Typography>
+                </Button>
+                <br></br><br></br>
             </div>
         )
     }

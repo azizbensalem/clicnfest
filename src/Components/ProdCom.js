@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Modal from './Modal';
-import { removeItem, addQuantity, subtractQuantity } from '../Components/actions/cartActions';
+import { removeItem, addQuantity, subtractQuantity } from '../Components/Data/actions/cartActions';
 import { useDispatch } from "react-redux";
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     paper: {
         padding: theme.spacing(2),
         textAlign: "auto",
-        color: theme.palette.text.secondary
+        color: theme.palette.text.secondary,
     },
     image: {
         width: 128,
@@ -50,9 +50,6 @@ const useStyles = makeStyles(theme => ({
 const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id }) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
     const handleClose = () => {
         setOpen(false);
     };
@@ -95,7 +92,7 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id }
                     <Grid item xs={12} sm container>
                         <Grid item xs container direction="column" spacing={2}>
                             <Grid item xs>
-                                <Typography gutterBottom variant="subtitle1">
+                                <Typography style={{ paddingRight: '60px' }} gutterBottom variant="subtitle1">
                                     {titre}
                                 </Typography>
                                 <Typography variant="body2" gutterBottom>
@@ -106,7 +103,6 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id }
                                 </Typography>
                             </Grid>
                             <Grid item>
-                                <Button color="primary" onClick={handleClickOpen}>Voir&nbsp;les&nbsp;détails</Button>
                                 <Button color="secondary" onClick={() => { handleRemove(id) }}>Supprimer</Button>
                             </Grid>
                         </Grid>
@@ -116,9 +112,9 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id }
                             <Typography variant="subtitle1">{quantity == null ? prix : prix * quantity}&nbsp;DT</Typography>
                             <Grid>
                                 <Typography>Quantité</Typography>
-                                <Link to="/cart"><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
+                                <Link to="/commande"><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
                                 {quantity}
-                                <Link to="/cart"><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link>
+                                <Link to="/commande"><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link>
                             </Grid>
                         </Grid>
                     </Grid>

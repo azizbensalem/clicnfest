@@ -1,10 +1,10 @@
 import React from 'react';
 import { Total } from './Total'
-import AppBar from '../Components/Header/Navbar';
-import ProdCom from '../Components/ProdCom';
+import AppBar from '../Header/Navbar';
+import ProdCom from '../ProdCom';
 import { Button, Container, Typography } from '@material-ui/core';
 import { useSelector } from "react-redux";
-import Etape from '../Components/Etape';
+import Etape from '../Etape';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 
@@ -56,6 +56,7 @@ export const ContentCom = () => {
                 <ContentCom />
                 <Button onClick={() => history.push('/commande')}>Retour</Button>
                 <Button variant="contained" color="primary" disabled={items.length > 0 ? false : true}>Passer au payement</Button>
+                <br></br><br></br>
             </Container>
             </div>
         )

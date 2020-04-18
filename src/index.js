@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { HashRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import cartReducer from './Components/reducers/cartReducer';
+import cartReducer from './Components/Data/reducers/cartReducer';
 
 const store = createStore(cartReducer);
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
-import clicnfest from '../../clicnfest.PNG';
+import clicnfest from '../../../clicnfest.PNG';
 import { Typography, Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 

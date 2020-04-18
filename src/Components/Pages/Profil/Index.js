@@ -1,9 +1,7 @@
 import React from 'react';
-import AppBar from '../../Components/Header/Navbar';
-import { Typography, Button } from '@material-ui/core';
+import AppBar from '../../Header/Navbar';
 import { makeStyles } from "@material-ui/core/styles";
 import Show from './Show';
-import { Route, Switch } from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({

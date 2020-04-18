@@ -2,8 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import AppBar from '../../../Components/Header/Navbar';
-import {Link} from 'react-router-dom';
+import AppBar from '../../../Header/Navbar';
 import Container from '@material-ui/core/Container';
 import { Boisson as Boissons } from './Boissons';
 import SucreeSale from './SucreeSale';
@@ -12,9 +11,9 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import TotalSb from '../../../Components/Footer/TotalSb';
-import ScrollTop from '../../../Components/Footer/ScrollTop';
-import Etape from '../../../Components/Etape';
+import TotalSb from '../../../Footer/TotalSb';
+import ScrollTop from '../../../Footer/ScrollTop';
+import Etape from '../../../Etape';
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 
@@ -31,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
   },
   button: {
-    paddingBottom: '80px',
+    paddingBottom: '100px',
   },
 }));
 
@@ -46,6 +45,8 @@ export default function Index() {
     return (
       <div className={classes.root}>
         <AppBar />
+        <ScrollTop />
+        <TotalSb />
         <Container>
             <Etape activeStep={2}/>
             <div className={classes.padding}>
@@ -99,8 +100,7 @@ export default function Index() {
             </div>
             </div>
         </Container>
-        <ScrollTop />
-        <TotalSb />
+
       </div>
     );
 }

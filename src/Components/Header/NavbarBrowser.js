@@ -44,7 +44,7 @@ export default function NavbarBrowser(props) {
                             Clic'n Fest
                          </Typography>
                         <div className={classes.grow} />
-                        <Button color="inherit" onClick={() => history.push('/cart')}>Accueil</Button>
+                        <Button color="inherit" onClick={() => history.push('/home')}>Accueil</Button>
                         <Button color="inherit" onClick={() => history.push('/mes_événements')}>Mes événements</Button>
                         <Button color="inherit" onClick={() => history.push('/create_event')}>Nouveau événement</Button>
                         <IconButton

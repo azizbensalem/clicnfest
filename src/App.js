@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from "react-router-dom";
-import Index from './Pages/CreerEvent/Commande/Index';
-import Invite from './Pages/CreerEvent/Participants/Participants';
-import CreerEvent from './Pages/CreerEvent/CreateEvent/CreateEvent';
-import Home from './Pages/Home/Index';
-import Login from './Pages/Login/Login';
-import Profil from './Pages/Profil/Index';
-import Inscription from './Pages/Inscription/Inscription';
-import MyEvent from './Pages/MyEvent/MyEvent';
+import Index from './Components/Pages/CreerEvent/Commande/Index';
+import Invite from './Components/Pages/CreerEvent/Participants/Participants';
+import CreerEvent from './Components/Pages/CreerEvent/CreateEvent/CreateEvent';
+import Home from './Components/Pages/Home/Index';
+import Login from './Components/Pages/Login/Login';
+import Profil from './Components/Pages/Profil/Index';
+import Inscription from './Components/Pages/Inscription/Inscription';
+import MyEvent from './Components/Pages/MyEvent/MyEvent';
 import Linprog from './Components/Linprog';
-import { Cart } from './Pages/Cart';
+import { Cart } from './Components/Pages/Cart';
 
 class App extends React.Component {
 

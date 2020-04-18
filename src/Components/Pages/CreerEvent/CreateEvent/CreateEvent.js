@@ -1,18 +1,18 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import AppBar from '../../../Components/Header/Navbar';
+import AppBar from '../../../Header/Navbar';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
 import { useHistory } from 'react-router-dom';
-import Etape from '../../../Components/Etape';
+import Etape from '../../../Etape';
 
 
 
@@ -38,19 +38,11 @@ function getSteps() {
 
 export default function CreerEvent() {
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        type: '',
-        name: 'hai',
-    });
-
     const inputLabel = React.useRef(null);
     const [labelWidth, setLabelWidth] = React.useState(0);
     React.useEffect(() => {
         setLabelWidth(inputLabel.current.offsetWidth);
     }, []);
-
-  const activeStep = 0;
-  const steps = getSteps();
   const history = useHistory();
     return (
         <div className={classes.root}>

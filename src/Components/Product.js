@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Modal from './Modal';
-import { addToCart , removeItem } from './actions/cartActions';
+import { addToCart , removeItem } from './Data/actions/cartActions';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const Product = ({ image, titre, volume , type , prix , description , click , quantity}) => {
+const Product = ({ id, image, titre, volume , type , prix , description , quantity}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -64,12 +64,12 @@ const Product = ({ image, titre, volume , type , prix , description , click , qu
     }
     const items = useSelector(state => state.addedItems);
     let addedItems = items.length ? (
-        <Button color="primary" onClick={() => supprimer(click)}>Supprimer</Button>
+        <Button color="primary" onClick={() => supprimer(id)}>Supprimer</Button>
     )
     : 
     null
     return (
-                <div>
+            <div key={id}>
                     <Paper className={classes.paper}>
                         <Grid container spacing={2}>
                             <Grid item>
@@ -108,7 +108,7 @@ const Product = ({ image, titre, volume , type , prix , description , click , qu
                                     </Grid>
                                     <Grid item>
                                         <Button color="primary" onClick={handleClickOpen}>Voir&nbsp;les&nbsp;détails</Button>
-                                        <Button color="primary" onClick={() => ajouter(click)}>Ajouter&nbsp;au&nbsp;panier</Button>
+                                        <Button color="primary" onClick={() => ajouter(id)}>Ajouter&nbsp;au&nbsp;panier</Button>
                                         {addedItems}
                                     </Grid>
                                 </Grid>

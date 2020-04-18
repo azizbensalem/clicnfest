@@ -7,13 +7,13 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppBar from '../../../Components/Header/Navbar';
+import AppBar from '../../../Header/Navbar';
 import Container from '@material-ui/core/Container';
 import { Formik, Form, getIn, FieldArray } from "formik";
 import { useHistory } from 'react-router-dom';
 import * as Yup from "yup";
 import { Divider } from "@material-ui/core";
-import Etape from '../../../Components/Etape';
+import Etape from '../../../Etape';
 
 function Invite() {
     const useStyles = makeStyles(theme => ({
