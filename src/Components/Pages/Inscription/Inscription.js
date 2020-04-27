@@ -12,6 +12,7 @@ import { useHistory } from 'react-router-dom';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
+import eventu from '../../../eventu.png';
 
 
 const useStyles = makeStyles(theme => ({
@@ -41,16 +42,13 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center"
   },
   Background: {
-    background: "linear-gradient(to right, #ff0099, #493240)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  BackgroundBrowser: {
-    background: "linear-gradient(to right, #ff0099, #493240)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundImage: `url(${eventu})`,
+    minHeight: '100vh',
+    textAlign: 'center',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    display: 'flex',
   },
 }));
 
@@ -58,11 +56,7 @@ export default function Inscription() {
     const classes = useStyles();
     const history = useHistory();
     return (
-      <div
-        className={
-          isMobileOnly ? classes.Background : classes.BackgroundBrowser
-        }
-      >
+      <div className={classes.Background}>
         <Grid style={{ margin: "auto", padding: "10px" }}>
           <Grid item xs={12} style={{ textAlign: "center" }}>
             <img src={clicnfest} className={classes.img} />
@@ -275,7 +269,7 @@ export default function Inscription() {
                 </Formik>        
 
               </CardContent>
-            </Card><br></br><br></br>
+            </Card>
           </Grid>
         </Grid>
       </div>

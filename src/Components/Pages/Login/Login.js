@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import clicnfest from '../../../clicnfest.PNG';
+import eventu from '../../../eventu.png';
 import Grid from '@material-ui/core/Grid';
 import { useHistory } from 'react-router-dom';
 import { Formik } from "formik";
@@ -41,15 +42,18 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     color: '#3f51b5'
   },
-  pos: {
-    marginBottom: 12
+  content: {
+    margin: 'auto'
   },
   Background: {
-    background: 'linear-gradient(to right, #ff0099, #493240)',
+    // background: 'linear-gradient(to right, #ff0099, #493240)',
+    backgroundImage: `url(${eventu})`,
+    minHeight: '100vh',
+    textAlign: 'center',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
     display: 'flex',
-    height: '100vh',
-    justifyContent: 'center',
-    alignItems: 'center',
   }
 }));
 
@@ -58,7 +62,7 @@ export default function Login() {
     const history = useHistory();
     return (
       <div className={classes.Background}>
-        <Grid>
+        <Grid className={classes.content}>
           <Grid item xs={12} style={{ textAlign: "center" }}>
             <img src={clicnfest} className={classes.img} />
           </Grid>

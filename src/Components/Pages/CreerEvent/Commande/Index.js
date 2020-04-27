@@ -5,8 +5,8 @@ import Button from '@material-ui/core/Button';
 import AppBar from '../../../Header/Navbar';
 import Container from '@material-ui/core/Container';
 import { Boisson as Boissons } from './Boissons';
-import SucreeSale from './SucreeSale';
-import Extra from './Extra';
+import { SucreeSale } from './SucreeSale';
+import { Extra } from './Extra';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -45,8 +45,6 @@ export default function Index() {
     return (
       <div className={classes.root}>
         <AppBar />
-        <ScrollTop />
-        <TotalSb />
         <Container>
             <Etape activeStep={2}/>
             <div className={classes.padding}>
@@ -100,7 +98,8 @@ export default function Index() {
             </div>
             </div>
         </Container>
-
+        <TotalSb />
+        <ScrollTop />
       </div>
     );
 }

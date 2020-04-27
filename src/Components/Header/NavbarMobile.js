@@ -87,7 +87,7 @@ export default function NavbarMobile(props) {
     );
     return (
             <div>
-            <AppBar style={{ background: '#6750fe' }}>
+            <AppBar style={{ background: '#2748ac' }}>
                         <Toolbar>
                             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                                 <MenuIcon onClick={toggleDrawer('left', true)} />

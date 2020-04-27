@@ -38,7 +38,7 @@ export default function NavbarBrowser(props) {
 
     return (
             <div>
-            <AppBar style={{ background: '#6750fe' }}>
+            <AppBar style={{ background: '#2748ac' }}>
                     <Toolbar>
                         <Typography className={classes.title} variant="h6" noWrap>
                             Clic'n Fest

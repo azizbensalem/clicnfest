@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
-import clicnfest from '../../../clicnfest.PNG';
 import { Typography, Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import eventu from '../../../eventu.png';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     },
     Background: {
         // background: 'linear-gradient(to right, #ff0099, #493240)',
-        backgroundImage: "url('https://cdn.pixabay.com/photo/2017/12/08/11/53/event-party-3005668_960_720.jpg')",
+        backgroundImage: `url(${eventu})`,
         height: '100vh',
         textAlign: 'center',
         backgroundPosition: 'center',
@@ -50,7 +50,8 @@ const useStyles = makeStyles(theme => ({
     section :{
         margin: 'auto',
         justifyContent: 'center',
-        padding: '20px'
+        padding: '20px',
+        color: 'white'
     }
 }));
 
@@ -66,7 +67,6 @@ export default function SimpleFade() {
             <div className={classes.container}>
                 <Fade in={setChecked} timeout={3000}>
                     <div className={classes.Background}>
-                        {/* <img src={clicnfest} className={classes.sectionDesktop} /> */}
                         <Fade in={setChecked} timeout={3000}>
                         <div style={{ paddingTop: '150px'}}>
                         <Typography className={classes.section} variant="h3" >Bienvenue dans Clic'&nbsp;Fest</Typography>
@@ -74,7 +74,6 @@ export default function SimpleFade() {
                         <Button onClick={() => history.push('/create_event')} variant="contained" color="primary">Nouveau événement</Button>
                         </div>
                         </Fade>
-                        {/* <img src={clicnfest} className={classes.sectionMobile} /> */}
                     </div>
                 </Fade>
             </div>

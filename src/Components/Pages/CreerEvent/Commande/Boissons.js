@@ -6,7 +6,6 @@ import axios from 'axios';
 import Pagination from '@material-ui/lab/Pagination';
 import Product from '../../../Product';
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from '../../../Data/actions/cartActions'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,9 +27,6 @@ export const Boisson = () => {
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
-  const [boisson, setBoisson] = React.useState([]);
-  // const [loading, setLoading] = React.useState(true);
-
   const [searchTerm, setSearchTerm] = React.useState('');
   const [searchResults, setSearchResults] = React.useState([]);
   const handleChange = event => {
@@ -50,9 +46,6 @@ export const Boisson = () => {
 
   const change = (event, value) => {
     setPage(value);
-  }
-  const handleClick = (id) => {
-    dispatch(addToCart(id));
   }
   const boissons = useSelector( state => state.items );
   const dispatch = useDispatch();

@@ -29,7 +29,6 @@ class App extends React.Component {
   render() {
   return (
     <div>
-    {/* <Provider store={store}> */}
       <Switch>
         <Route exact path="/create_event" component={CreerEvent} />
         {this.state.loading ? <Linprog /> : null}
@@ -44,7 +43,6 @@ class App extends React.Component {
         <Route exact path="/" component={Login} />
         <Route path="*" component={ () => "404 ERROR NOT FOUND"} />
       </Switch>
-    {/* </Provider> */}
     </div>
   );
 }

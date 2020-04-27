@@ -108,6 +108,11 @@ const useStyles = makeStyles(theme => ({
         left: 'calc(50% - 9px)',
         transition: theme.transitions.create('opacity'),
     },
+    text: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+    }
 }));
  
 export default function ButtonBases() {
@@ -116,7 +121,7 @@ export default function ButtonBases() {
     return (
         <div className={classes.root}>
          <Container>
-            <Typography variant="h5" style={{ textAlign: 'center'}}>Nos offres</Typography>
+                <Typography variant="h4" className={classes.text}>Nos offres</Typography>
             <br></br>
             {images.map(image => (
                 <ButtonBase
