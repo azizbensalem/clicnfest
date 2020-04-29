@@ -1,10 +1,10 @@
 import React from 'react';
 import { Total } from './Total'
-import AppBar from '../Header/Navbar';
-import ProdCom from '../ProdCom';
+import AppBar from '../../../Header/Navbar';
+import ProdCom from '../../../ProdCom';
 import { Button, Container, Typography } from '@material-ui/core';
 import { useSelector } from "react-redux";
-import Etape from '../Etape';
+import Etape from '../../../Etape';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 

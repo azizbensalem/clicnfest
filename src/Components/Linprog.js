@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-
+import clicnfest from '../clicnfestblue.png'
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
@@ -9,6 +9,16 @@ const useStyles = makeStyles(theme => ({
             marginTop: theme.spacing(2),
         },
     },
+    color: {
+        color: '#2748ac',
+    },
+    img: {
+        width: '31vh',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        display: 'block',
+        paddingTop: '32vh'
+    }
 }));
 
 export default function LinearDeterminate() {
@@ -34,8 +44,9 @@ export default function LinearDeterminate() {
 
     return (
         <div className={classes.root}>
-            <LinearProgress variant="determinate" value={completed} />
+            <LinearProgress variant="determinate" value={completed} className={classes.color} />
             {/* <LinearProgress variant="determinate" value={completed} color="secondary" /> */}
+            <img src={clicnfest} className={classes.img} />
         </div>
     );
 }

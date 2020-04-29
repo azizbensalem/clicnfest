@@ -3,7 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import { ContentCom  as Cart } from './Pages/Cart';
+import { ContentCom as Cart } from './Pages/Evenement/Confirmation/Cart';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Typography } from '@material-ui/core';

@@ -112,9 +112,9 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id }
                             <Typography variant="subtitle1">{quantity == null ? prix : prix * quantity}&nbsp;DT</Typography>
                             <Grid>
                                 <Typography>Quantité</Typography>
-                                <Link to="/commande"><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
+                                <Link to="/cart"><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
                                 {quantity}
-                                <Link to="/commande"><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link>
+                                <Link to="/cart"><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link>
                             </Grid>
                         </Grid>
                     </Grid>
