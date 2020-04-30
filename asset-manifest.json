@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/clicnfest/static/css/main.3d02b5d8.chunk.css",
-    "main.js": "/clicnfest/static/js/main.63a1dca6.chunk.js",
-    "main.js.map": "/clicnfest/static/js/main.63a1dca6.chunk.js.map",
+    "main.js": "/clicnfest/static/js/main.3dc29c72.chunk.js",
+    "main.js.map": "/clicnfest/static/js/main.3dc29c72.chunk.js.map",
     "runtime-main.js": "/clicnfest/static/js/runtime-main.2257920b.js",
     "runtime-main.js.map": "/clicnfest/static/js/runtime-main.2257920b.js.map",
     "static/js/2.237f61f0.chunk.js": "/clicnfest/static/js/2.237f61f0.chunk.js",
     "static/js/2.237f61f0.chunk.js.map": "/clicnfest/static/js/2.237f61f0.chunk.js.map",
     "index.html": "/clicnfest/index.html",
-    "precache-manifest.f16d3f59f10efda52df27fe3442762b8.js": "/clicnfest/precache-manifest.f16d3f59f10efda52df27fe3442762b8.js",
+    "precache-manifest.0b6ebcd4fc9d76f29bd985bba50a3b1b.js": "/clicnfest/precache-manifest.0b6ebcd4fc9d76f29bd985bba50a3b1b.js",
     "service-worker.js": "/clicnfest/service-worker.js",
     "static/css/main.3d02b5d8.chunk.css.map": "/clicnfest/static/css/main.3d02b5d8.chunk.css.map",
     "static/js/2.237f61f0.chunk.js.LICENSE.txt": "/clicnfest/static/js/2.237f61f0.chunk.js.LICENSE.txt",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.2257920b.js",
     "static/js/2.237f61f0.chunk.js",
     "static/css/main.3d02b5d8.chunk.css",
-    "static/js/main.63a1dca6.chunk.js"
+    "static/js/main.3dc29c72.chunk.js"
   ]
 }
