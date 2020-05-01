@@ -71,7 +71,7 @@ export default function SimpleFade() {
                         <div style={{ paddingTop: '150px'}}>
                         <Typography className={classes.section} variant="h3" >Bienvenue dans Clic'&nbsp;Fest</Typography>
                         <Typography className={classes.section} variant="h5" >Créer&nbsp;votre&nbsp;événement maintenant</Typography>
-                        <Button onClick={() => history.push('/create_event')} variant="contained" color="primary">Nouveau événement</Button>
+                        <Button onClick={() => history.push('/evenements/lieux')} variant="contained" color="primary">Nouveau événement</Button>
                         </div>
                         </Fade>
                     </div>

@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id }) => {
+const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id , page}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleClose = () => {
@@ -112,9 +112,9 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id }
                             <Typography variant="subtitle1">{quantity == null ? prix : prix * quantity}&nbsp;DT</Typography>
                             <Grid>
                                 <Typography>Quantité</Typography>
-                                <Link to="/cart"><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
+                                <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
                                 {quantity}
-                                <Link to="/cart"><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link>
+                                <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link>
                             </Grid>
                         </Grid>
                     </Grid>

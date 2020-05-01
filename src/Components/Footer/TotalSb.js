@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
-import { Somme } from '../Pages/Evenement/Confirmation/Total';
+import { Somme } from '../Pages/Confirmation/Total';
 import { Detail } from '../Detail';
 import { Typography, SnackbarContent } from '@material-ui/core';
 
@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function TotalSb() {
+export const TotalSb = ({ page }) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -38,7 +38,7 @@ export default function TotalSb() {
                      </Button>}
                 />
             </Snackbar>
-            <Detail handleClose={handleClose} open={open} />
+            <Detail handleClose={handleClose} open={open} page={page} />
         </div>
     );
 }

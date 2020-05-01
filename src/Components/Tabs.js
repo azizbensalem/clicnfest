@@ -26,6 +26,20 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         backgroundColor: theme.palette.background.paper,
     },
+    sectionDesktop: {
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'flex',
+        },
+        paddingLeft: '110px',
+        paddingRight: '110px',
+    },
+    sectionMobile: {
+        display: 'flex',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
+    },
 }));
 
 export const Menu = ({ value }) => {
@@ -42,15 +56,30 @@ export const Menu = ({ value }) => {
                     indicatorColor="primary"
                     textColor="primary"
                     aria-label="scrollable force tabs example"
+                    className={classes.sectionDesktop}
                 >
-                {/* <Container> */}
-                    <Tab label="Lieux" icon={<PlaceIcon />} {...a11yProps(0)} onClick={() => history.push('/lieux')}/>
-                    <Tab label="Menus" icon={<RestaurantMenuIcon />} {...a11yProps(1)} onClick={() => history.push('/menus')} />
-                    <Tab label="Boissons" icon={<FreeBreakfastIcon />} {...a11yProps(2)} onClick={() => history.push('/boissons')} />
-                    <Tab label="Extra" icon={<AddCircleIcon />} {...a11yProps(3)} onClick={() => history.push('/extras')} />
-                    <Tab label="Communication" icon={<ForumIcon />} {...a11yProps(4)} onClick={() => history.push('/communication')} />
-                    <Tab label="Participants" icon={<GroupIcon />} {...a11yProps(5)} onClick={() => history.push('/participants')} />
-                {/* </Container> */}
+                    <Tab label="Lieux" icon={<PlaceIcon />} {...a11yProps(0)} onClick={() => history.push('/evenements/lieux')}/>
+                    <Tab label="Menus" icon={<RestaurantMenuIcon />} {...a11yProps(1)} onClick={() => history.push('/evenements/menus')} />
+                    <Tab label="Boissons" icon={<FreeBreakfastIcon />} {...a11yProps(2)} onClick={() => history.push('/evenements/boissons')} />
+                    <Tab label="Extra" icon={<AddCircleIcon />} {...a11yProps(3)} onClick={() => history.push('/evenements/extras')} />
+                    <Tab label="Communication" icon={<ForumIcon />} {...a11yProps(4)} onClick={() => history.push('/evenements/communication')} />
+                    <Tab label="Participants" icon={<GroupIcon />} {...a11yProps(5)} onClick={() => history.push('/evenements/participants')} />
+                </Tabs>
+                <Tabs
+                    value={value}
+                    variant="scrollable"
+                    scrollButtons="on"
+                    indicatorColor="primary"
+                    textColor="primary"
+                    aria-label="scrollable force tabs example"
+                    className={classes.sectionMobile}
+                >
+                    <Tab label="Lieux" icon={<PlaceIcon />} {...a11yProps(0)} onClick={() => history.push('/evenements/lieux')} />
+                    <Tab label="Menus" icon={<RestaurantMenuIcon />} {...a11yProps(1)} onClick={() => history.push('/evenements/menus')} />
+                    <Tab label="Boissons" icon={<FreeBreakfastIcon />} {...a11yProps(2)} onClick={() => history.push('/evenements/boissons')} />
+                    <Tab label="Extra" icon={<AddCircleIcon />} {...a11yProps(3)} onClick={() => history.push('/evenements/extras')} />
+                    <Tab label="Communication" icon={<ForumIcon />} {...a11yProps(4)} onClick={() => history.push('/evenements/communication')} />
+                    <Tab label="Participants" icon={<GroupIcon />} {...a11yProps(5)} onClick={() => history.push('/evenements/participants')} />
                 </Tabs>
             </AppBar>
         </div>

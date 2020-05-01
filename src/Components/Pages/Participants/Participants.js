@@ -7,14 +7,13 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppBar from '../../../Header/Navbar';
+import AppBar from '../../Header/Navbar';
 import Container from '@material-ui/core/Container';
 import { Formik, Form, getIn, FieldArray } from "formik";
 import { useHistory } from 'react-router-dom';
 import * as Yup from "yup";
 import { Divider } from "@material-ui/core";
-import Etape from '../../../Etape';
-import {Menu} from '../../../Tabs';
+import {Menu} from '../../Tabs';
 
 function Invite() {
     const useStyles = makeStyles(theme => ({
@@ -55,7 +54,6 @@ function Invite() {
         <AppBar />
         <Menu value={5} />
         <Container className={classes.padding}>
-        {/* <Etape activeStep={1} /> */}
         <Typography variant="h6">Choisir les participants</Typography>
         <br></br>
             <Formik
@@ -72,7 +70,7 @@ function Invite() {
               validationSchema={validationSchema}
               onSubmit={values => {
                 console.log("onSubmit", JSON.stringify(values, null, 2));
-                history.push('/commande')
+                history.push('/evenements/commande')
               }}
             >
               {({ values, touched, errors, handleChange, handleBlur, isValid }) => (
@@ -189,18 +187,13 @@ function Invite() {
 
 
             <div className={classes.button}>
-              <Link to='/create_event' style={{ textDecoration: 'none' }}>
-                <Button>
-                  Retour
-                </Button>
-              </Link>
               <Button
                 type="submit"
                 color="primary"
                 variant="contained"
                 disabled={!isValid || values.participant.length === 0}
               >
-                Suivant
+                Confirmer les participants
               </Button>
             </div>
                 </Form>

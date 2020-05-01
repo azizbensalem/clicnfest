@@ -70,7 +70,7 @@ export default function NavbarMobile(props) {
             onKeyDown={toggleDrawer(side, false)}
         >
             <List>
-                <ListItem button onClick={() => history.push('/home')}>
+                <ListItem button onClick={() => history.push('/accueil')}>
                     <ListItemIcon><HomeIcon /></ListItemIcon>
                     <ListItemText primary="Accueil" />
                 </ListItem>
@@ -78,7 +78,7 @@ export default function NavbarMobile(props) {
                     <ListItemIcon><EventIcon /></ListItemIcon>
                     <ListItemText primary="Mes événements" />
                 </ListItem>
-                <ListItem button onClick={() => history.push('/lieux')}>
+                <ListItem button onClick={() => history.push('/evenements/lieux')}>
                     <ListItemIcon><AddBoxIcon /></ListItemIcon>
                     <ListItemText primary="Nouveau événement" />
                 </ListItem>

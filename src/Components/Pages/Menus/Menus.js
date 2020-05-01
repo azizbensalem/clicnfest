@@ -8,7 +8,7 @@ import Product from '../../Product';
 import { useDispatch, useSelector } from "react-redux";
 import AppBar from '../../Header/Navbar';
 import { Menu } from '../../Tabs';
-import TotalSb from '../../Footer/TotalSb';
+import {TotalSb} from '../../Footer/TotalSb';
 import ScrollTop from '../../Footer/ScrollTop';
 
 const useStyles = makeStyles(theme => ({
@@ -103,7 +103,7 @@ export const Menus = () => {
                 <Pagination count={Math.round(currentPosts.length / 5)} page={page} onChange={change} color="primary" />
                 : null}
             </Container>
-            <TotalSb />
+            <TotalSb page="menus"/>
             <ScrollTop />
         </div>
     );

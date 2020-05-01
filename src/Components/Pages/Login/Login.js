@@ -84,7 +84,7 @@ export default function Login() {
                     setTimeout(() => {
                       console.log("Logging in", values);
                       setSubmitting(false);
-                      history.push("/home");
+                      history.push("/accueil");
                     }, 500);
                   }}
                   validationSchema={Yup.object().shape({

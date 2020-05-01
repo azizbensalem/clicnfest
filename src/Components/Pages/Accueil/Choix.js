@@ -134,7 +134,7 @@ export default function ButtonBases() {
                     style={{
                         width: image.width,
                     }}
-                    onClick={() => history.push('/'+image.title)}
+                    onClick={() => history.push('/evenements/'+image.title)}
                 >
                     <span
                         className={classes.imageSrc}

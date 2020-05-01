@@ -5,14 +5,13 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import AppBar from '../../../Header/Navbar';
+import AppBar from '../../Header/Navbar';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
 import { useHistory } from 'react-router-dom';
-import Etape from '../../../Etape';
 
 
 
@@ -26,15 +25,15 @@ const useStyles = makeStyles(theme => ({
     },
   padding: {
       justifyContent: 'center',
+      paddingTop: '40px',
   },
   button: {
     paddingTop: '15px',
   }
 }));
 
-function getSteps() {
-  return ['Organiser mon événement', 'Choisir les participants', 'Commander', 'Confirmer la commande'];
-}
+
+
 
 export default function CreerEvent() {
     const classes = useStyles();
@@ -48,9 +47,8 @@ export default function CreerEvent() {
         <div className={classes.root}>
           <AppBar />
         <Container>
-            <Etape activeStep={0} />
             <div className={classes.padding}>
-            <Typography variant="h6">Organiser mon événement</Typography>
+            <Typography variant="h6">Créer l'événement</Typography>
             <br></br>
               <Formik
               initialValues={{
@@ -61,7 +59,7 @@ export default function CreerEvent() {
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                   console.log("Logging in", values);
-                  history.push("/invite");
+                  history.push("/mes_événements");
                   setSubmitting(false);
                 }, 500);
               }}
@@ -164,14 +162,14 @@ export default function CreerEvent() {
                               <div className={classes.button}>
                                       <Button
                                         className={classes.backButton}
-                                        disabled
+                                        onClick={() => history.push('/accueil')}
                                       >
-                                            Retour
+                                        Retour
                                       </Button>
                                       <Button variant="contained" type="submit"
                                         disabled={isSubmitting}
                                         color="primary" >
-                                          Suivant
+                                          Confirmer
                                       </Button>
                               </div>
                       </form>
