@@ -46,7 +46,7 @@ export default function NavbarBrowser(props) {
                         <div className={classes.grow} />
                         <Button color="inherit" onClick={() => history.push('/home')}>Accueil</Button>
                         <Button color="inherit" onClick={() => history.push('/mes_événements')}>Mes événements</Button>
-                        <Button color="inherit" onClick={() => history.push('/create_event')}>Nouveau événement</Button>
+                        <Button color="inherit" onClick={() => history.push('/lieux')}>Nouveau événement</Button>
                         <IconButton
                             edge="end"
                             aria-label="account of current user"

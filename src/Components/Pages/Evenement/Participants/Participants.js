@@ -14,6 +14,7 @@ import { useHistory } from 'react-router-dom';
 import * as Yup from "yup";
 import { Divider } from "@material-ui/core";
 import Etape from '../../../Etape';
+import {Menu} from '../../../Tabs';
 
 function Invite() {
     const useStyles = makeStyles(theme => ({
@@ -26,8 +27,8 @@ function Invite() {
       padding: {
         padding: '20px'
       },
-      button: {
-        paddingTop: '15px',
+      padding: {
+        paddingTop: '40px',
       },
       field: {
         margin: theme.spacing(1),
@@ -52,8 +53,9 @@ function Invite() {
     return (
         <div>
         <AppBar />
-        <Container>
-        <Etape activeStep={1} />
+        <Menu value={5} />
+        <Container className={classes.padding}>
+        {/* <Etape activeStep={1} /> */}
         <Typography variant="h6">Choisir les participants</Typography>
         <br></br>
             <Formik

@@ -78,7 +78,7 @@ export default function NavbarMobile(props) {
                     <ListItemIcon><EventIcon /></ListItemIcon>
                     <ListItemText primary="Mes événements" />
                 </ListItem>
-                <ListItem button onClick={() => history.push('/create_event')}>
+                <ListItem button onClick={() => history.push('/lieux')}>
                     <ListItemIcon><AddBoxIcon /></ListItemIcon>
                     <ListItemText primary="Nouveau événement" />
                 </ListItem>

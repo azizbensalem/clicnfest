@@ -11,7 +11,11 @@ import Inscription from './Components/Pages/Inscription/Inscription';
 import MyEvent from './Components/Pages/MesEvents/MyEvent';
 import Linprog from './Components/Linprog';
 import { Cart } from './Components/Pages/Evenement/Confirmation/Cart';
-
+import { Lieux } from './Components/Pages/Lieux/Lieux';
+import { Menus } from './Components/Pages/Menus/Menus';
+import { Boissons } from './Components/Pages/Boissons/Boissons';
+import { Extras } from './Components/Pages/Extras/Extras';
+import Error from './Components/Pages/404/404';
 class App extends React.Component {
 
   state = {
@@ -33,15 +37,19 @@ class App extends React.Component {
         <Route exact path="/create_event" component={CreerEvent} />
         {this.state.loading ? <Linprog /> : null}
         <Route exact path="/cart" component={Cart} />
-        <Route exact path="/invite" component={Invite} />
+        <Route exact path="/lieux" component={Lieux} />
+        <Route exact path="/menus" component={Menus} />
+        <Route exact path="/boissons" component={Boissons} />
+        <Route exact path="/extras" component={Extras} />
+        <Route exact path="/participants" component={Invite} />
         <Route exact path="/commande" component={Index} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/inscription" component={Inscription} />
         <Route exact path="/monprofil" component={Profil} />
         <Route exact path="/mes_événements" component={MyEvent} />
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/accueil" component={Home} />
         <Route exact path="/" component={Login} />
-        <Route path="*" component={ () => "404 ERROR NOT FOUND"} />
+        <Route path="*" component={Error} />
       </Switch>
     </div>
   );
