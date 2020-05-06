@@ -79,11 +79,11 @@ const CustomizedDialogs = ({ handleClose, open, image, titre, volume, type, prix
                         {description}
                     </Typography>
                 </DialogContent>
-                <DialogActions>
+                {/* <DialogActions>
                     <Button autoFocus onClick={handleClose} color="primary">
                         Save changes
                     </Button>
-                </DialogActions>
+                </DialogActions> */}
             </Dialog>
         </div>
     );

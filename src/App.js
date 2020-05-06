@@ -15,42 +15,36 @@ import { Menus } from './Components/Pages/Menus/Menus';
 import { Boissons } from './Components/Pages/Boissons/Boissons';
 import { Extras } from './Components/Pages/Extras/Extras';
 import Error from './Components/Pages/404/404';
-class App extends React.Component {
+import {ProtectedRoute} from './Components/ProtectedRoute';
 
-  state = {
-    loading : true
-  }
 
-  componentDidMount = () => {
+export default function App() {
+ const [state, setState] = React.useState(true);
+
+ React.useEffect(() =>{
     setTimeout(() => {
-      this.setState({
-        loading: false
-      })
+      setState(false)
     }, 3000);
-  }
-  
-  render() {
+  });
+
   return (
-    <div>
+    <div className="App">
       <Switch>
-        <Route exact path="/evenements/organisation" component={CreerEvent} />
-        {this.state.loading ? <Linprog /> : null}
-        <Route exact path="/evenements/commande" component={Cart} />
-        <Route exact path="/evenements/lieux" component={Lieux} />
-        <Route exact path="/evenements/menus" component={Menus} />
-        <Route exact path="/evenements/boissons" component={Boissons} />
-        <Route exact path="/evenements/extras" component={Extras} />
-        <Route exact path="/evenements/participants" component={Invite} />
-        <Route exact path="/inscription" component={Inscription} />
-        <Route exact path="/monprofil" component={Profil} />
-        <Route exact path="/mes_événements" component={MyEvent} />
-        <Route exact path="/accueil" component={Home} />
+        <ProtectedRoute exact path="/evenements/organisation" component={CreerEvent} />
+        {state ? <Linprog /> : null}
+        <ProtectedRoute exact path="/evenements/commande" component={Cart} />
+        <ProtectedRoute exact path="/evenements/lieux" component={Lieux} />
+        <ProtectedRoute exact path="/evenements/menus" component={Menus} />
+        <ProtectedRoute exact path="/evenements/boissons" component={Boissons} />
+        <ProtectedRoute exact path="/evenements/extras" component={Extras} />
+        <ProtectedRoute exact path="/evenements/participants" component={Invite} />
+        <ProtectedRoute exact path="/inscription" component={Inscription} />
+        <ProtectedRoute exact path="/monprofil" component={Profil} />
+        <ProtectedRoute exact path="/mes_événements" component={MyEvent} />
+        <ProtectedRoute exact path="/accueil" component={Home} />
         <Route exact path="/" component={Login} />
         <Route path="*" component={Error} />
       </Switch>
     </div>
   );
 }
-}
-
-export default App;

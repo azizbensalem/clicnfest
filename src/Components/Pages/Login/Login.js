@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
-
+import auth from '../../Auth';
 
 const useStyles = makeStyles(theme => ({ 
   root: {
@@ -84,7 +84,9 @@ export default function Login() {
                     setTimeout(() => {
                       console.log("Logging in", values);
                       setSubmitting(false);
-                      history.push("/accueil");
+                      auth.login(() => {
+                        history.push("/accueil");
+                      })
                     }, 500);
                   }}
                   validationSchema={Yup.object().shape({

@@ -6,13 +6,12 @@ import Typography from "@material-ui/core/Typography";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import AppBar from '../../Header/Navbar';
 import Container from '@material-ui/core/Container';
 import { Formik, Form, getIn, FieldArray } from "formik";
 import { useHistory } from 'react-router-dom';
 import * as Yup from "yup";
-import { Divider } from "@material-ui/core";
+import { Divider, Paper } from "@material-ui/core";
 import {Menu} from '../../Tabs';
 
 function Invite() {
@@ -23,11 +22,12 @@ function Invite() {
               width: 280,
           },
       },
-      padding: {
-        padding: '20px'
+      height: {
+        minHeight: '100vh',
       },
       padding: {
         paddingTop: '40px',
+        paddingBottom: '40px',
       },
       field: {
         margin: theme.spacing(1),
@@ -35,7 +35,12 @@ function Invite() {
       },
       button: {
         marginTop: theme.spacing(1),
-      }
+      },
+      paper: {
+        padding: theme.spacing(2),
+        textAlign: "auto",
+        color: theme.palette.text.secondary,
+      },
     }));
     const classes = useStyles();
     const history = useHistory();
@@ -50,10 +55,11 @@ function Invite() {
     });
   
     return (
-        <div>
+        <div className={classes.height}>
         <AppBar />
-        <Menu value={5} />
         <Container className={classes.padding}>
+        <Typography variant="h6">Participants</Typography><br></br>
+        <Paper className={classes.paper}>
         <Typography variant="h6">Choisir les participants</Typography>
         <br></br>
             <Formik
@@ -70,7 +76,7 @@ function Invite() {
               validationSchema={validationSchema}
               onSubmit={values => {
                 console.log("onSubmit", JSON.stringify(values, null, 2));
-                history.push('/evenements/commande')
+                history.push('/evenements/organisation')
               }}
             >
               {({ values, touched, errors, handleChange, handleBlur, isValid }) => (
@@ -183,10 +189,13 @@ function Invite() {
                       </div>
                     )}
                   </FieldArray>
-                  <Divider style={{ marginTop: 20, marginBottom: 20 }} />
-
-
             <div className={classes.button}>
+              <Button
+                className={classes.backButton}
+                onClick={() => history.push('/evenements/commande')}
+              >
+                Retour
+              </Button>
               <Button
                 type="submit"
                 color="primary"
@@ -199,6 +208,7 @@ function Invite() {
                 </Form>
               )}
             </Formik>
+          </Paper>
         </Container>
       </div>
     );

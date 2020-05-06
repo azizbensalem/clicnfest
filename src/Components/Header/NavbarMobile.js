@@ -17,7 +17,7 @@ import Menu from '@material-ui/core/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import EventIcon from '@material-ui/icons/Event';
 import AddBoxIcon from '@material-ui/icons/AddBox';
-
+import auth from '../Auth';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -120,7 +120,7 @@ export default function NavbarMobile(props) {
                         onClose={handleMenuClose}
                     >
                         <MenuItem onClick={() => history.push('/monprofil')}>Mon Profil</MenuItem>
-                        <MenuItem onClick={() => history.push('/')}>Déconnexion</MenuItem>
+                        <MenuItem onClick={() => auth.logout(() => { history.push('/')})}>Déconnexion</MenuItem>
                     </Menu>
                     <Toolbar id="back-to-top-anchor" />
                 </div>

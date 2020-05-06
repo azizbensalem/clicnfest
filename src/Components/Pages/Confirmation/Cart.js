@@ -8,6 +8,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
+    height : {
+        minHeight: '100vh'
+    },
     padding: {
         padding: '20px',
     },
@@ -50,14 +53,15 @@ export const ContentCom = ({ page }) => {
         const history = useHistory();
         const items = useSelector(state => state.addedItems);
         const classes = useStyles();
+
         return (
-            <div>
+            <div className={classes.height}>
             <AppBar />
             <Container className={classes.paddingTop}>
                 <Typography variant="h6">Confirmer la commande</Typography>
                 <ContentCom page={page}/>
-                <Button onClick={() => history.push('/lieux')}>Retour</Button>
-                <Button onClick={() => history.push('/evenements/organisation')} variant="contained" color="primary" disabled={items.length > 0 ? false : true}>Créer l'événement</Button>
+                <Button onClick={() => history.push('/evenements/lieux')}>Retour</Button>
+                <Button onClick={() => history.push('/evenements/participants')} variant="contained" color="primary" disabled={items.length > 0 ? false : true}>Créer l'événement</Button>
                 <br></br><br></br>
             </Container>
             </div>

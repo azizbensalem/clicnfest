@@ -10,7 +10,7 @@ import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { FormHelperText } from "@material-ui/core";
+import { FormHelperText, Paper } from "@material-ui/core";
 import { useHistory } from 'react-router-dom';
 
 
@@ -29,7 +29,15 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     paddingTop: '15px',
-  }
+  },
+  height: {
+    minHeight: '100vh',
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "auto",
+    color: theme.palette.text.secondary,
+  },
 }));
 
 
@@ -44,10 +52,11 @@ export default function CreerEvent() {
     }, []);
   const history = useHistory();
     return (
-        <div className={classes.root}>
+        <div className={classes.height}>
           <AppBar />
         <Container>
             <div className={classes.padding}>
+            <Paper className={classes.paper}>
             <Typography variant="h6">Créer l'événement</Typography>
             <br></br>
               <Formik
@@ -162,7 +171,7 @@ export default function CreerEvent() {
                               <div className={classes.button}>
                                       <Button
                                         className={classes.backButton}
-                                        onClick={() => history.push('/accueil')}
+                                        onClick={() => history.push('/evenements/participants')}
                                       >
                                         Retour
                                       </Button>
@@ -176,8 +185,10 @@ export default function CreerEvent() {
                       );
                     }}
                   </Formik>
+            </Paper>
                 </div>
           </Container>
+          <br></br>
         </div>
     );
 }

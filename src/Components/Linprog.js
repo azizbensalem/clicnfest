@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
         '& > * + *': {
             marginTop: theme.spacing(2),
         },
+        background: 'white',
     },
     color: {
         color: '#2748ac',

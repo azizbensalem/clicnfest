@@ -44,7 +44,8 @@ const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
-        padding: '50px'
+        padding: '50px',
+        background: 'white',
     },
     image: {
         position: 'relative',

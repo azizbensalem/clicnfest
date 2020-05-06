@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('md')]: {
             display: 'flex',
         },
-        paddingLeft: '110px',
-        paddingRight: '110px',
+        paddingLeft: '220px',
+        paddingRight: '220px',
     },
     sectionMobile: {
         display: 'flex',
@@ -63,7 +63,6 @@ export const Menu = ({ value }) => {
                     <Tab label="Boissons" icon={<FreeBreakfastIcon />} {...a11yProps(2)} onClick={() => history.push('/evenements/boissons')} />
                     <Tab label="Extra" icon={<AddCircleIcon />} {...a11yProps(3)} onClick={() => history.push('/evenements/extras')} />
                     <Tab label="Communication" icon={<ForumIcon />} {...a11yProps(4)} onClick={() => history.push('/evenements/communication')} />
-                    <Tab label="Participants" icon={<GroupIcon />} {...a11yProps(5)} onClick={() => history.push('/evenements/participants')} />
                 </Tabs>
                 <Tabs
                     value={value}
@@ -79,7 +78,6 @@ export const Menu = ({ value }) => {
                     <Tab label="Boissons" icon={<FreeBreakfastIcon />} {...a11yProps(2)} onClick={() => history.push('/evenements/boissons')} />
                     <Tab label="Extra" icon={<AddCircleIcon />} {...a11yProps(3)} onClick={() => history.push('/evenements/extras')} />
                     <Tab label="Communication" icon={<ForumIcon />} {...a11yProps(4)} onClick={() => history.push('/evenements/communication')} />
-                    <Tab label="Participants" icon={<GroupIcon />} {...a11yProps(5)} onClick={() => history.push('/evenements/participants')} />
                 </Tabs>
             </AppBar>
         </div>

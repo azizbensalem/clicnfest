@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from "react-redux";
 import { Button, Typography } from '@material-ui/core';
 
+
 export const Somme = () => {
     const total = useSelector(state => state.total);
     return (

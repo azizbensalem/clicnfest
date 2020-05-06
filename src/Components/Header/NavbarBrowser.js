@@ -9,7 +9,7 @@ import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import Linprog from '../Linprog';
+import auth from '../Auth';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -70,7 +70,7 @@ export default function NavbarBrowser(props) {
                     onClose={handleMenuClose}
                 >
                     <MenuItem onClick={() => history.push('/monprofil')}>Mon Profil</MenuItem>
-                    <MenuItem onClick={() => history.push('/')}>Déconnexion</MenuItem>
+                    <MenuItem onClick={() => auth.logout(() => { history.push('/') })}>Déconnexion</MenuItem>
                 </Menu>
             </div>
     );

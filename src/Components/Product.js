@@ -9,6 +9,11 @@ import Modal from './Modal';
 import { addToCart , removeItem } from './Data/actions/cartActions';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import {Rate} from './Rate';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { IconButton } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
@@ -18,8 +23,8 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.text.secondary
     },
     image: {
-        width: 128,
-        height: 128
+        width: 190,
+        height: 190
     },
     imageMobile: {
         width: 190,
@@ -43,6 +48,9 @@ const useStyles = makeStyles(theme => ({
             display: 'none',
         },
     },
+    spacing: {
+
+    }
 }))
 
 const Product = ({ id, image, titre, volume , type , prix , description , quantity}) => {
@@ -63,8 +71,18 @@ const Product = ({ id, image, titre, volume , type , prix , description , quanti
         dispatch(removeItem(id));
     }
     const items = useSelector(state => state.addedItems);
-    let addedItems = items.length ? (
-        <Button color="primary" onClick={() => supprimer(id)}>Supprimer</Button>
+    const results = items.filter(item =>
+        item.id.toString().toLowerCase().includes(id)
+    );    
+    let addedItems = results.length ? (
+            <IconButton
+            className={classes.spacing}
+            type="button"
+            variant="outlined"
+            onClick={() => supprimer(id)}
+            >
+                <DeleteForeverIcon color="secondary" />
+            </IconButton>   
     )
     : 
     null
@@ -94,32 +112,44 @@ const Product = ({ id, image, titre, volume , type , prix , description , quanti
                                 </div>
                             </Grid>
                             <Grid item xs={12} sm container>
-                                <Grid item xs container direction="column" spacing={2}>
-                                    <Grid item xs>
-                                        <Typography gutterBottom variant="subtitle1">
-                                            {titre}
-                                        </Typography>
-                                        <Typography variant="body2" gutterBottom>
-                                            {volume}
-                                        </Typography>
-                                        <Typography variant="body2" color="textSecondary">
-                                            {prix}
-                                    </Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Button color="primary" onClick={handleClickOpen}>Voir&nbsp;les&nbsp;détails</Button>
-                                        <Button color="primary" onClick={() => ajouter(id)}>Ajouter&nbsp;au&nbsp;panier</Button>
-                                        {addedItems}
+                                    <Grid item xs container direction="column" spacing={3}>
+                                            <Grid item xs>
+                                                <Typography gutterBottom variant="h6">
+                                                    {titre}
+                                                </Typography>
+                                                <Rate Data={5} /><br></br>
+                                                <Typography gutterBottom variant="body1">
+                                                    {type}
+                                                </Typography>
+                                                <Typography gutterBottom variant="body1">
+                                                    {volume}
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs>
+                                            <IconButton
+                                                className={classes.spacing}
+                                                type="button"
+                                                variant="outlined"
+                                                onClick={handleClickOpen}
+                                            >
+                                                <VisibilityIcon color="primary" />
+                                            </IconButton>                                            <IconButton
+                                                className={classes.spacing}
+                                                type="button"
+                                                variant="outlined"
+                                                onClick={() => ajouter(id)}
+                                            >
+                                                <AddCircleIcon color="primary" />
+                                            </IconButton>                                                {addedItems}
+                                            </Grid>
                                     </Grid>
                                 </Grid>
-                                <Modal handleClose={handleClose} open={open} image={image} titre={titre} 
-                                volume={volume} type ={type} prix={prix} description={description} />
                                 <Grid item>
-                                    <Typography variant="subtitle1">{ quantity == null ? prix : prix*quantity }&nbsp;DT</Typography>
-                                    {quantity != null ? (<Typography variant="subtitle1">Quantité:&nbsp;{quantity}</Typography>) : null}
+                                        <Typography variant="h5" className={classes.price}>{quantity == null ? prix : prix * quantity}&nbsp;DT</Typography>
                                 </Grid>
-                            </Grid>
-                        </Grid>
+                    </Grid>
+                    <Modal handleClose={handleClose} open={open} image={image} titre={titre}
+                    volume={volume} type={type} prix={prix} description={description} />
                     </Paper><br></br>
                 </div>
 
