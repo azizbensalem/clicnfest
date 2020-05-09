@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
         backgroundPosition: 'center',
     },
     title: {
-       padding: '21vh',
+       paddingTop: '21vh',
        fontWeight: 'bold',
     },
 }));

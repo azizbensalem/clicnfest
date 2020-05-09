@@ -18,6 +18,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import EventIcon from '@material-ui/icons/Event';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import auth from '../Auth';
+import { LinearDeterminate } from '../LinearDeterminate';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -61,7 +62,13 @@ export default function NavbarMobile(props) {
 
         setState({ ...state, [side]: open });
     };
-
+    const [prog, setProg] = React.useState(false);
+    const progress = (link) => {
+        setProg(true);
+        setTimeout(() => {
+            history.push(link);
+        }, 4000);
+    };
     const sideList = side => (
         <div
             className={classes.list}
@@ -70,15 +77,15 @@ export default function NavbarMobile(props) {
             onKeyDown={toggleDrawer(side, false)}
         >
             <List>
-                <ListItem button onClick={() => history.push('/accueil')}>
+                <ListItem button onClick={() => progress('/accueil')}>
                     <ListItemIcon><HomeIcon /></ListItemIcon>
                     <ListItemText primary="Accueil" />
                 </ListItem>
-                <ListItem button onClick={() => history.push('/mes_événements')}>
+                <ListItem button onClick={() => progress('/mes_événements')}>
                     <ListItemIcon><EventIcon /></ListItemIcon>
                     <ListItemText primary="Mes événements" />
                 </ListItem>
-                <ListItem button onClick={() => history.push('/evenements/lieux')}>
+                <ListItem button onClick={() => progress('/evenements/lieux')}>
                     <ListItemIcon><AddBoxIcon /></ListItemIcon>
                     <ListItemText primary="Nouveau événement" />
                 </ListItem>
@@ -88,6 +95,7 @@ export default function NavbarMobile(props) {
     return (
             <div>
             <AppBar style={{ background: '#2748ac' }}>
+                <LinearDeterminate bool={prog} />
                         <Toolbar>
                             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                                 <MenuIcon onClick={toggleDrawer('left', true)} />

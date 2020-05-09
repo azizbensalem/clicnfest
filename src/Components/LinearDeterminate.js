@@ -1,34 +1,23 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import clicnfest from '../clicnfestblue.png'
-const useStyles = makeStyles(theme => ({
+
+const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
         '& > * + *': {
             marginTop: theme.spacing(2),
         },
-        background: 'white',
     },
-    color: {
-        color: '#2748ac',
-    },
-    img: {
-        width: '31vh',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        display: 'block',
-        paddingTop: '32vh'
-    }
 }));
 
-export default function LinearDeterminate() {
+export const LinearDeterminate = ({ bool }) => {
     const classes = useStyles();
     const [completed, setCompleted] = React.useState(0);
 
     React.useEffect(() => {
         function progress() {
-            setCompleted(oldCompleted => {
+            setCompleted((oldCompleted) => {
                 if (oldCompleted === 100) {
                     return 0;
                 }
@@ -45,8 +34,7 @@ export default function LinearDeterminate() {
 
     return (
         <div className={classes.root}>
-            <LinearProgress variant="determinate" value={completed} className={classes.color} />
-            <img src={clicnfest} className={classes.img} />
+            { bool ? <LinearProgress variant="determinate" value={completed} /> : null}
         </div>
     );
 }

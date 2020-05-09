@@ -9,11 +9,11 @@ const useStyles = makeStyles(theme => ({
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
-      display: 'flex',
+      display: 'block',
     },
   },
   sectionMobile: {
-    display: 'flex',
+    display: 'block',
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },

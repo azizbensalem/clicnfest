@@ -10,6 +10,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import auth from '../Auth';
+import { LinearDeterminate } from '../LinearDeterminate';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -35,18 +36,25 @@ export default function NavbarBrowser(props) {
     };
     const menuId = 'primary-search-account-menu';
     const history = useHistory();
-
+    const [prog, setProg] = React.useState(false);
+    const progress = (link) => {
+        setProg(true);
+        setTimeout(() => {
+            history.push(link);
+        }, 3000);
+    };
     return (
             <div>
             <AppBar style={{ background: '#2748ac' }}>
+                <LinearDeterminate bool={prog} />
                     <Toolbar>
                         <Typography className={classes.title} variant="h6" noWrap>
                             Clic'n Fest
                          </Typography>
                         <div className={classes.grow} />
-                        <Button color="inherit" onClick={() => history.push('/accueil')}>Accueil</Button>
-                        <Button color="inherit" onClick={() => history.push('/mes_événements')}>Mes événements</Button>
-                        <Button color="inherit" onClick={() => history.push('/evenements/lieux')}>Nouveau événement</Button>
+                        <Button color="inherit" onClick={() => progress('/accueil')}>Accueil</Button>
+                        <Button color="inherit" onClick={() => progress('/mes_événements')}>Mes événements</Button>
+                        <Button color="inherit" onClick={() => progress('/evenements/lieux')}>Nouveau événement</Button>
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
@@ -69,8 +77,8 @@ export default function NavbarBrowser(props) {
                     open={isMenuOpen}
                     onClose={handleMenuClose}
                 >
-                    <MenuItem onClick={() => history.push('/monprofil')}>Mon Profil</MenuItem>
-                    <MenuItem onClick={() => auth.logout(() => { history.push('/') })}>Déconnexion</MenuItem>
+                    <MenuItem onClick={() => progress('/monprofil')}>Mon Profil</MenuItem>
+                    <MenuItem onClick={() => auth.logout(() => { progress('/') })}>Déconnexion</MenuItem>
                 </Menu>
             </div>
     );

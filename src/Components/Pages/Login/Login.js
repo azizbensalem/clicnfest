@@ -14,6 +14,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
 import auth from '../../Auth';
+import {LinearDeterminate} from '../../LinearDeterminate';
 
 const useStyles = makeStyles(theme => ({ 
   root: {
@@ -28,7 +29,6 @@ const useStyles = makeStyles(theme => ({
       maxWidth: 500,
       minWidth: 250,
   },
-
   },
   img: {
     width: '30%',
@@ -46,7 +46,6 @@ const useStyles = makeStyles(theme => ({
     margin: 'auto'
   },
   Background: {
-    // background: 'linear-gradient(to right, #ff0099, #493240)',
     backgroundImage: `url(${eventu})`,
     minHeight: '100vh',
     textAlign: 'center',
@@ -60,7 +59,16 @@ const useStyles = makeStyles(theme => ({
 export default function Login() {
     const classes = useStyles();
     const history = useHistory();
+    const [prog, setProg] = React.useState(false);
+    const progress = (link) => {
+      setProg(true);
+      setTimeout(() => {
+        history.push(link);
+      }, 4000);
+    };
     return (
+      <div>
+      <LinearDeterminate bool={prog} />
       <div className={classes.Background}>
         <Grid className={classes.content}>
           <Grid item xs={12} style={{ textAlign: "center" }}>
@@ -86,8 +94,8 @@ export default function Login() {
                       setSubmitting(false);
                       auth.login(() => {
                         history.push("/accueil");
-                      })
-                    }, 500);
+                      });
+                    }, 3000);
                   }}
                   validationSchema={Yup.object().shape({
                     username: Yup.string().required(
@@ -155,6 +163,7 @@ export default function Login() {
                             disabled={isSubmitting}
                             color="primary"
                             variant="contained"
+                            onClick={() => setProg(true)}
                           >
                             Se connecter
                           </Button>
@@ -165,12 +174,12 @@ export default function Login() {
                 </Formik>
                 <div className={classes.link}>
                   <Typography className={classes.link}>
-                    <Link to="" style={{ textDecoration: "none" }}>
+                      <Link style={{ textDecoration: "none" }} onClick={() => progress('/404') }>
                       Mot de passe oublié
                     </Link>
                   </Typography>
                   <Typography className={classes.link}>
-                    <Link to="/inscription" style={{ textDecoration: "none" }}>
+                      <Link style={{ textDecoration: "none" }} onClick={() => progress('/inscription')}>
                       Inscrivez-vous à un compte
                     </Link>
                   </Typography>
@@ -179,6 +188,7 @@ export default function Login() {
             </Card>
           </Grid>
         </Grid>
+      </div>
       </div>
     );
 }

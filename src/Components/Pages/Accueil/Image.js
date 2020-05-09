@@ -57,17 +57,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function SimpleFade() {
     const classes = useStyles();
-    const [checked, setChecked] = React.useState(false);
-    const handleChange = () => {
-        setChecked(prev => !prev);
-    };
     const history = useHistory();
     return (
         <div className={classes.root}>
             <div className={classes.container}>
-                <Fade in={setChecked} timeout={3000}>
+                <Fade in="false" timeout={3000}>
                     <div className={classes.Background}>
-                        <Fade in={setChecked} timeout={3000}>
+                        <Fade in="false" timeout={3000}>
                         <div style={{ paddingTop: '150px'}}>
                         <Typography className={classes.section} variant="h3" >Bienvenue dans Clic'&nbsp;Fest</Typography>
                         <Typography className={classes.section} variant="h5" >Créer&nbsp;votre&nbsp;événement maintenant</Typography>
