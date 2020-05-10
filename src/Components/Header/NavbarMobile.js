@@ -81,7 +81,7 @@ export default function NavbarMobile(props) {
                     <ListItemIcon><HomeIcon /></ListItemIcon>
                     <ListItemText primary="Accueil" />
                 </ListItem>
-                <ListItem button onClick={() => progress('/mes_événements')}>
+                <ListItem button onClick={() => progress('/mes_evenements')}>
                     <ListItemIcon><EventIcon /></ListItemIcon>
                     <ListItemText primary="Mes événements" />
                 </ListItem>
@@ -117,6 +117,7 @@ export default function NavbarMobile(props) {
                                 <AccountCircle />
                             </IconButton>
                         </Toolbar>
+                        <div style={{ height: '3px', background: 'white' }} />
                     </AppBar>
                     <Menu
                         anchorEl={anchorEl}

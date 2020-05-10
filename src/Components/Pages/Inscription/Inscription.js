@@ -6,13 +6,13 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from '@material-ui/core/TextField';
 import { isMobile, isMobileOnly } from "react-device-detect";
-import clicnfest from '../../../clicnfest.PNG';
+import clicnfest from '../../../Images/clicnfest.PNG';
 import Grid from '@material-ui/core/Grid';
 import { useHistory } from 'react-router-dom';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
-import eventu from '../../../eventu.png';
+import eventu from '../../../Images/eventu.png';
 
 
 const useStyles = makeStyles(theme => ({

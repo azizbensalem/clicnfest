@@ -53,8 +53,8 @@ export default function NavbarBrowser(props) {
                          </Typography>
                         <div className={classes.grow} />
                         <Button color="inherit" onClick={() => progress('/accueil')}>Accueil</Button>
-                        <Button color="inherit" onClick={() => progress('/mes_événements')}>Mes événements</Button>
-                        <Button color="inherit" onClick={() => progress('/evenements/lieux')}>Nouveau événement</Button>
+                        <Button color="inherit" onClick={() => progress('/mes_evenements')}>Mes événements</Button>
+                        <Button color="inherit" onClick={() => progress('/evenements/lieux')}>Nouvel évènement</Button>
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
@@ -66,6 +66,7 @@ export default function NavbarBrowser(props) {
                             <AccountCircle />
                         </IconButton>
                     </Toolbar>
+                <div style={{ height: '3px' , background: 'white' }} />
                 </AppBar>
                 <Toolbar id="back-to-top-anchor" />
                 <Menu

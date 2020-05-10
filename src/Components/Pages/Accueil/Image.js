@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
 import { Typography, Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import eventu from '../../../eventu.png';
+import eventu from '../../../Images/eventu.png';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -67,7 +67,7 @@ export default function SimpleFade() {
                         <div style={{ paddingTop: '150px'}}>
                         <Typography className={classes.section} variant="h3" >Bienvenue dans Clic'&nbsp;Fest</Typography>
                         <Typography className={classes.section} variant="h5" >Créer&nbsp;votre&nbsp;événement maintenant</Typography>
-                        <Button onClick={() => history.push('/evenements/lieux')} variant="contained" color="primary">Nouveau événement</Button>
+                        <Button onClick={() => history.push('/evenements/lieux')} variant="contained" color="primary">Nouvel événement</Button>
                         </div>
                         </Fade>
                     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import clicnfest from '../../clicnfest.PNG';
+import clicnfest from '../../Images/clicnfest.PNG';
 import Grid from '@material-ui/core/Grid';
 
 
