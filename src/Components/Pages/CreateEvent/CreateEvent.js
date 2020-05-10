@@ -68,7 +68,7 @@ export default function CreerEvent() {
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                   console.log("Logging in", values);
-                  history.push("/mes_événements");
+                  history.push("/mes_evenements");
                   setSubmitting(false);
                 }, 500);
               }}

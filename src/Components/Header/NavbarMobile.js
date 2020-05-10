@@ -127,8 +127,8 @@ export default function NavbarMobile(props) {
                         open={isMenuOpen}
                         onClose={handleMenuClose}
                     >
-                        <MenuItem onClick={() => history.push('/monprofil')}>Mon Profil</MenuItem>
-                        <MenuItem onClick={() => auth.logout(() => { history.push('/')})}>Déconnexion</MenuItem>
+                        <MenuItem onClick={() => progress('/monprofil')}>Mon Profil</MenuItem>
+                        <MenuItem onClick={() => auth.logout(() => { progress('/')})}>Déconnexion</MenuItem>
                     </Menu>
                     <Toolbar id="back-to-top-anchor" />
                 </div>

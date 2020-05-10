@@ -16,12 +16,14 @@ import { Boissons } from './Components/Pages/Boissons/Boissons';
 import { Extras } from './Components/Pages/Extras/Extras';
 import Error from './Components/Pages/404/404';
 import { ProtectedRoute } from './Components/ProtectedRoute';
+import { useDispatch, useSelector } from "react-redux";
 
 
 export default function App() {
  const [state, setState] = React.useState(true);
-
+ const items = useSelector(state => state.addedItems);
  React.useEffect(() =>{
+    localStorage.setItem('item', JSON.stringify(items));
     setTimeout(() => {
       setState(false)
     }, 3000);
@@ -40,7 +42,7 @@ export default function App() {
         <Route exact path="/evenements/participants" component={Invite} />
         <Route exact path="/inscription" component={Inscription} />
         <Route exact path="/monprofil" component={Profil} />
-        <Route exact path="/mes_événements" component={MyEvent} />
+        <Route exact path="/mes_evenements" component={MyEvent} />
         <Route exact path="/accueil" component={Home} />
         <Route exact path="/" component={Login} />
         <Route path="*" component={Error} />
