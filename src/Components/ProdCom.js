@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Modal from './Modal';
+import { Detail } from './Detail';
 import { removeItem, addQuantity, subtractQuantity } from '../Components/Data/actions/cartActions';
 import { useDispatch } from "react-redux";
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
@@ -106,7 +106,7 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id ,
                                 <Button color="secondary" onClick={() => { handleRemove(id) }}>Supprimer</Button>
                             </Grid>
                         </Grid>
-                        <Modal handleClose={handleClose} open={open} image={image} titre={titre}
+                        <Detail handleClose={handleClose} open={open} image={image} titre={titre}
                             volume={volume} type={type} prix={prix} description={description} />
                         <Grid item>
                             <Typography variant="subtitle1">{quantity == null ? prix : prix * quantity}&nbsp;DT</Typography>

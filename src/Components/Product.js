@@ -4,7 +4,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Modal from './Modal';
+import { Detail } from './Detail';
 import { addToCart , removeItem } from './Data/actions/cartActions';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -147,7 +147,7 @@ const Product = ({ id, image, titre, volume , type , prix , description , quanti
                                         <Typography variant="h5" className={classes.price}>{quantity == null ? prix : prix * quantity}&nbsp;DT</Typography>
                                 </Grid>
                     </Grid>
-                    <Modal handleClose={handleClose} open={open} image={image} titre={titre}
+                    <Detail handleClose={handleClose} open={open} image={image} titre={titre}
                     volume={volume} type={type} prix={prix} description={description} />
                     </Paper><br></br>
                 </div>

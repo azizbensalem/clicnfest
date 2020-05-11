@@ -27,7 +27,7 @@ export const Event = ({ data }) => {
       (<Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Type d'événement</TableCell>
+            <TableCell>Type d'évènement</TableCell>
             <TableCell align="right">État</TableCell>
             <TableCell align="right">Action</TableCell>
           </TableRow>

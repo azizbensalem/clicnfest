@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import { Somme } from '../Pages/Confirmation/Total';
-import { Detail } from '../Detail';
+import { Confirmation } from '../Confirmation';
 import { Typography, SnackbarContent } from '@material-ui/core';
 
 
@@ -34,11 +34,11 @@ export const TotalSb = ({ page }) => {
                     style={{ backgroundColor: '#4caf50' }} 
                     message={<Typography variant="h6"><Somme /></Typography>}
                     action={<Button color="inherit" size="small" onClick={handleClickOpen}>
-                        Voir les détails
+                        Confirmer la commande
                      </Button>}
                 />
             </Snackbar>
-            <Detail handleClose={handleClose} open={open} page={page} />
+            <Confirmation handleClose={handleClose} open={open} page={page} />
         </div>
     );
 }

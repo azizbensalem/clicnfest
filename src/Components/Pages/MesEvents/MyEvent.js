@@ -104,8 +104,8 @@ export default function MyEvent() {
       setSearchResults(result);
     }, [searchTerm , etat]);
     const etatChange = event => {
-      setEtat(event.target.value);
-      console.log(event.target.value);
+      event.target.value == 'Tous' ?
+        setEtat('') : setEtat(event.target.value)
     };
     const handleChange = event => {
     setSearchTerm(event.target.value);
@@ -130,7 +130,7 @@ export default function MyEvent() {
                           <FormControl variant="outlined">
                             <TextField
                               id="outlined-basic"
-                              label="Nom du produit"
+                              label="Nom d'évènement"
                               variant="outlined"
                               className={classes.formControl}
                               value={searchTerm}
@@ -138,7 +138,7 @@ export default function MyEvent() {
                             />
                           </FormControl>
                           <FormControl variant="outlined" className={classes.formControl}>
-                                  <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
+                                  <InputLabel ref={inputLabel} >
                                     État
                                   </InputLabel>
                                   <Select
@@ -149,7 +149,7 @@ export default function MyEvent() {
                                     onChange={etatChange}
                                     name="etat"
                                   >
-                                      <option name="etat" value=""></option>
+                                      <option name="etat" value="Tous">Tous</option>
                                       <option name="etat" value="Pas encore commencé">Pas encore commencé</option>
                                       <option name="etat" value="Terminé">Terminé</option>
                                   </Select>

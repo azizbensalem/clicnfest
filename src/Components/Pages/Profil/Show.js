@@ -2,11 +2,14 @@ import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
 import { useHistory } from 'react-router-dom';
-import Edit from './Edit';
 import { Typography, Button } from '@material-ui/core';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import { Modifier } from './Modifier';
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -17,7 +20,6 @@ const useStyles = makeStyles(theme => ({
     },
     content: {
         textAlign: "center",
-        paddingBottom: "40px",
         paddingTop: "40px",
     },
     img: {
@@ -28,43 +30,42 @@ const useStyles = makeStyles(theme => ({
     image: {
         textAlign: "center",
         paddingTop: "40px",
+        paddingBottom: "20px",
     },
-
+    card: {
+        maxWidth: '600px',
+        margin: 'auto',
+        marginBottom: '40px',
+    },
 }));
 export default function Show() {
     const classes = useStyles();
-    const [state, setState] = React.useState(true);
-    const modifier = () => {
-        setState(false);
-    }
-    const history = useHistory();
-
-    return(
-        <div>
-        {state ? <Formik
+    const [open, setOpen] = React.useState(false);
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+     return(
+        <div style={{ display: 'flow-root' }}>
+        <Modifier handleClose={handleClose} open={open}/>
+        <Formik
                     initialValues={{
                         nom: "Hello World",
                         prenom: "Hello World",
-                        username: "Hello World",
                         email: "foulenelfouleni@gmail.com",
                         tel: "Hello World",
-                        pwd: "Hello World",
-                        confirmpwd: "Hello World",
                         img: ""
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
-                            console.log(values);
                             setSubmitting(false);
-                            modifier();
                         }, 500);
                     }}
                     validationSchema={Yup.object().shape({
                         nom: Yup.string().required("Ce champ est obligatoire."),
                         prenom: Yup.string().required("Ce champ est obligatoire."),
-                        username: Yup.string().required(
-                            "Ce champ est obligatoire."
-                        ),
                         email: Yup.string()
                             .required("Ce champ est obligatoire.")
                             .email("Email"),
@@ -73,14 +74,7 @@ export default function Show() {
                 >
                     {props => {
                         const {
-                            values,
-                            touched,
-                            errors,
-                            isSubmitting,
-                            handleChange,
-                            handleBlur,
-                            handleSubmit
-                        } = props;
+                        values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit} = props;
                         return (
                             <form
                                 className={classes.root}
@@ -95,9 +89,11 @@ export default function Show() {
                                             src='https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg' />
                                         : <img
                                             className={classes.img}
-                                            src={values.img} />
-                                    }                                    <Typography variant="h5">Foulen el fouleni</Typography>
+                                            src={values.img} />}                                       
+                                      <Typography variant="h5">{values.prenom} {values.nom}</Typography>
                                 </div>
+                                <Card className={classes.card} variant="outlined">
+                                <CardContent>
                                 <div className={classes.content}>
                                     <TextField
                                         error={errors.nom && touched.nom && true}
@@ -143,27 +139,6 @@ export default function Show() {
                                     />
                                     <br></br>
                                     <TextField
-                                        error={errors.username && touched.username && true}
-                                        name="username"
-                                        label="Nom d'utilisateur"
-                                        type="text"
-                                        value={values.username}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        variant="outlined"
-                                        helperText={
-                                            errors.username &&
-                                            touched.username && (
-                                                <FormHelperText error>
-                                                    {errors.username}
-                                                </FormHelperText>
-                                            )
-                                        }
-                                        InputProps={{
-                                        readOnly: true,
-                                         }}
-                                    />
-                                    <TextField
                                         error={errors.email && touched.email && true}
                                         name="email"
                                         label="Email"
@@ -184,7 +159,6 @@ export default function Show() {
                                         readOnly: true,
                                         }}
                                     />
-                                    <br></br>
                                     <TextField
                                         error={errors.tel && touched.tel && true}
                                         name="tel"
@@ -206,43 +180,34 @@ export default function Show() {
                                         readOnly: true,
                                         }}
                                     />
-                                    <TextField
-                                        error={errors.pwd && touched.pwd && true}
-                                        name="pwd"
-                                        label="Mot de passe"
-                                        type="text"
-                                        value={values.pwd}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        variant="outlined"
-                                        helperText={
-                                            errors.pwd &&
-                                            touched.pwd && (
-                                                <FormHelperText error>
-                                                    {errors.pwd}
-                                                </FormHelperText>
-                                            )
-                                        }
-                                        InputProps={{
-                                        readOnly: true,
-                                        }}
-                                    />
-                                    <br></br>
-                                    <div style={{ textAlign: "center" }}>
+                                    </div>
+                                    </CardContent>
+                                    <div style={{ textAlign: "center" , marginBottom: "20px"}}>
                                     <Button
                                         type="submit"
                                         disabled={isSubmitting}
+                                        onClick={handleClickOpen}
                                         color="primary"
                                         variant="contained"
+                                        style={{ margin: '5px' }}
                                     >
                                         Modifier
                                     </Button>
+                                    <Button
+                                            color="primary"
+                                            variant="contained"
+                                            style={{ margin: '5px' }}
+                                    >
+                                        Changer mot de passe
+                                    </Button>
                                 </div>
-                            </div>
+                         </Card>
                         </form>
+                        
                 );
             }}
-                </Formik>  : <Edit/> }
-        </div>
-    );
+                </Formik>
+            </div>
+        );
 }
+

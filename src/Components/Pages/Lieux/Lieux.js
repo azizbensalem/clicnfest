@@ -125,7 +125,7 @@ export const Lieux = () => {
                     <Pagination count={Math.round(searchResults.length / 5)} page={pages} onChange={change} color="primary" />
                     : null}
             </Container>
-            <TotalSb page="boissons" />
+            <TotalSb page="lieux" />
             <ScrollTop />
         </div>
     );

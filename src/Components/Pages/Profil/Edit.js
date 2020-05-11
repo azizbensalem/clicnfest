@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
@@ -16,7 +16,6 @@ const useStyles = makeStyles(theme => ({
     },
     content: {
         textAlign: "center",
-        paddingBottom: "40px",
         paddingTop: "40px",
     },
     img: {
@@ -34,32 +33,22 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Show() {
-    const [profil, setProfil] = React.useState([{
-       username: "",
-       nom: "",
-       prenom: "",
-       tel: "",
-       email: "",
-    }]);
     const classes = useStyles();
-    const history = useHistory();
     return (
         <div>
             <Formik
                 initialValues={{
                     nom: "Hello World",
                     prenom: "Hello World",
-                    username: "Hello World",
                     email: "foulenelfouleni@gmail.com",
                     tel: "Hello World",
-                    pwd: "Hello World",
                     img: ""
                 }}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
-                        console.log("Logging in", values);
                         window.location.reload();
                         setSubmitting(false);
+                        console.log('hello');
                     }, 500);
                 }}
                 validationSchema={Yup.object().shape({
@@ -155,24 +144,6 @@ export default function Show() {
                             />
                             <br></br>
                             <TextField
-                                error={errors.username && touched.username && true}
-                                name="username"
-                                label="Nom d'utilisateur"
-                                type="text"
-                                value={values.username}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                variant="outlined"
-                                helperText={
-                                    errors.username &&
-                                    touched.username && (
-                                        <FormHelperText error>
-                                            {errors.username}
-                                        </FormHelperText>
-                                    )
-                                }
-                            />
-                            <TextField
                                 error={errors.email && touched.email && true}
                                 name="email"
                                 label="Email"
@@ -190,7 +161,6 @@ export default function Show() {
                                     )
                                 }
                             />
-                            <br></br>
                             <TextField
                                 error={errors.tel && touched.tel && true}
                                 name="tel"
@@ -209,26 +179,8 @@ export default function Show() {
                                     )
                                 }
                             />
-                            <TextField
-                                error={errors.pwd && touched.pwd && true}
-                                name="pwd"
-                                label="Mot de passe"
-                                type="text"
-                                value={values.pwd}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                variant="outlined"
-                                helperText={
-                                    errors.pwd &&
-                                    touched.pwd && (
-                                        <FormHelperText error>
-                                            {errors.pwd}
-                                        </FormHelperText>
-                                    )
-                                }
-                            />
                             <br></br>
-                            <div style={{ textAlign: "center" }}>
+                            <div style={{ textAlign: "center" , marginBottom: '10px' }}>
                                 <Button
                                     type="submit"
                                     disabled={isSubmitting}
@@ -236,14 +188,13 @@ export default function Show() {
                                     variant="contained"
                                 >
                                     Confirmer
-                          </Button>
+                                </Button>
                             </div>
                             </div>
                         </form>
                     );
                 }}
             </Formik>        
-
         </div> 
     );
 }
