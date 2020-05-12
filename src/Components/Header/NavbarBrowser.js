@@ -66,7 +66,7 @@ export default function NavbarBrowser(props) {
                             <AccountCircle />
                         </IconButton>
                     </Toolbar>
-                <div style={{ height: '3px' , background: 'white' }} />
+                {/* <div style={{ height: '3px' , background: 'white' }} /> */}
                 </AppBar>
                 <Toolbar id="back-to-top-anchor" />
                 <Menu

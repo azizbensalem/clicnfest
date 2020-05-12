@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    display: 'flex',
+    display: 'grid',
   }
 }));
 
@@ -68,8 +68,8 @@ export default function Login() {
     };
     return (
       <div>
-      <LinearDeterminate bool={prog} />
       <div className={classes.Background}>
+        <LinearDeterminate bool={prog} />
         <Grid className={classes.content}>
           <Grid item xs={12} style={{ textAlign: "center" }}>
             <img src={clicnfest} className={classes.img} />

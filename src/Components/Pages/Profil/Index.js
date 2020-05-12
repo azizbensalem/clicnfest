@@ -25,7 +25,6 @@ export default function Profil() {
     <div>
         <AppBar />
             <div className={classes.image}>
-                {/* <div div className={classes.color} /> */}
                 <Typography variant="h3" className={classes.title}>MON PROFIL</Typography>
             </div>
             <Show />

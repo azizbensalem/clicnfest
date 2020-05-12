@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
+import AppBar from '../../Header/Navbar';
 import TextField from '@material-ui/core/TextField';
 import { useHistory } from 'react-router-dom';
 import { Typography, Button } from '@material-ui/core';
@@ -8,7 +9,6 @@ import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { Modifier } from './Modifier';
 
 
 const useStyles = makeStyles(theme => ({
@@ -37,19 +37,30 @@ const useStyles = makeStyles(theme => ({
         margin: 'auto',
         marginBottom: '40px',
     },
+    cover: {
+        height: '50vh',
+        textAlign: 'center',
+        backgroundSize: 'cover',
+        backgroundImage: 'url("https://www.ucb.ac.uk/content/images/courses/hospitality-tourism-events/events-management-3.jpg")',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+    },
+    title: {
+        paddingTop: '19vh',
+        fontWeight: 'bold',
+        color: 'white',
+    },
 }));
-export default function Show() {
+export const Show = () => {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
+    const history = useHistory();
      return(
+        <div>
+                <AppBar />
+                <div className={classes.cover}>
+                <Typography variant="h3" className={classes.title}>MON PROFIL</Typography>
+                 </div>
         <div style={{ display: 'flow-root' }}>
-        <Modifier handleClose={handleClose} open={open}/>
         <Formik
                     initialValues={{
                         nom: "Hello World",
@@ -60,6 +71,7 @@ export default function Show() {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
+                            history.push('/monprofil/modifier');
                             setSubmitting(false);
                         }, 500);
                     }}
@@ -186,7 +198,6 @@ export default function Show() {
                                     <Button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        onClick={handleClickOpen}
                                         color="primary"
                                         variant="contained"
                                         style={{ margin: '5px' }}
@@ -197,6 +208,7 @@ export default function Show() {
                                             color="primary"
                                             variant="contained"
                                             style={{ margin: '5px' }}
+                                            onClick={() => history.push('/monprofil/password')}
                                     >
                                         Changer mot de passe
                                     </Button>
@@ -208,6 +220,7 @@ export default function Show() {
             }}
                 </Formik>
             </div>
+         </div>
         );
 }
 

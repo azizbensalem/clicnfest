@@ -117,7 +117,7 @@ export default function NavbarMobile(props) {
                                 <AccountCircle />
                             </IconButton>
                         </Toolbar>
-                        <div style={{ height: '3px', background: 'white' }} />
+                        {/* <div style={{ height: '3px', background: 'white' }} /> */}
                     </AppBar>
                     <Menu
                         anchorEl={anchorEl}

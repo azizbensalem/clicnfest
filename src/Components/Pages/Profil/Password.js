@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
         color: 'white',
     },
 }));
-export const Modifier = () => {
+export const Password = () => {
     const classes = useStyles();
     return (
         <div>
@@ -62,11 +62,11 @@ export const Modifier = () => {
             <div style={{ display: 'flow-root' }}>
                 <Formik
                     initialValues={{
-                        nom: "Hello World",
-                        prenom: "Hello World",
-                        email: "foulenelfouleni@gmail.com",
-                        tel: "Hello World",
-                        img: ""
+                       nom: "Hello World",
+                       prenom: "Hello World",
+                       pwd: "",
+                       confirmedpwd: "",
+                       img: "",
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
@@ -75,12 +75,8 @@ export const Modifier = () => {
                         }, 500);
                     }}
                     validationSchema={Yup.object().shape({
-                        nom: Yup.string().required("Ce champ est obligatoire."),
-                        prenom: Yup.string().required("Ce champ est obligatoire."),
-                        email: Yup.string()
-                            .required("Ce champ est obligatoire.")
-                            .email("Email"),
-                        tel: Yup.string().required("Ce champ est obligatoire."),
+                        pwd : Yup.string().required("Ce champ est obligatoire."),
+                        confirmedpwd : Yup.string().required("Ce champ est obligatoire."),
                     })}
                 >
                     {props => {
@@ -107,89 +103,54 @@ export const Modifier = () => {
                                     <CardContent>
                                         <div className={classes.content}>
                                             <TextField
-                                                error={errors.nom && touched.nom && true}
-                                                name="nom"
-                                                label="Nom"
+                                                error={errors.pwd && touched.pwd && true}
+                                                name="pwd"
+                                                label="Mot de passe"
                                                 type="text"
-                                                value={values.nom}
+                                                value={values.pwd}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                                 variant="outlined"
                                                 helperText={
-                                                    errors.nom &&
-                                                    touched.nom && (
+                                                    errors.pwd &&
+                                                    touched.pwd && (
                                                         <FormHelperText error>
-                                                            {errors.nom}
+                                                            {errors.pwd}
                                                         </FormHelperText>
                                                     )
                                                 }
                                             />
                                             <TextField
-                                                error={errors.prenom && touched.prenom && true}
-                                                name="prenom"
-                                                label="Prénom"
+                                                error={errors.confirmedpwd && touched.confirmedpwd && true}
+                                                name="confirmedpwd"
+                                                label="Confirmer le mot de passe"
                                                 type="text"
-                                                value={values.prenom}
+                                                value={values.confirmedpwd}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                                 variant="outlined"
                                                 helperText={
-                                                    errors.prenom &&
-                                                    touched.prenom && (
+                                                    errors.confirmedpwd &&
+                                                    touched.confirmedpwd && (
                                                         <FormHelperText error>
-                                                            {errors.prenom}
+                                                            {errors.confirmedpwd}
                                                         </FormHelperText>
                                                     )
                                                 }
                                             />
                                             <br></br>
-                                            <TextField
-                                                error={errors.email && touched.email && true}
-                                                name="email"
-                                                label="Email"
-                                                type="text"
-                                                value={values.email}
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                variant="outlined"
-                                                helperText={
-                                                    errors.email &&
-                                                    touched.email && (
-                                                        <FormHelperText error>
-                                                            {errors.email}
-                                                        </FormHelperText>
-                                                    )
-                                                }
-                                            />
-                                            <TextField
-                                                error={errors.tel && touched.tel && true}
-                                                name="tel"
-                                                label="Téléphone"
-                                                type="text"
-                                                value={values.tel}
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                variant="outlined"
-                                                helperText={
-                                                    errors.tel &&
-                                                    touched.tel && (
-                                                        <FormHelperText error>
-                                                            {errors.tel}
-                                                        </FormHelperText>
-                                                    )
-                                                }
-                                            />
                                         </div>
                                     </CardContent>
                                     <div style={{ textAlign: "center", marginBottom: "20px" }}>
                                         <Button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            style={{ backgroundColor: '#4caf50', color: 'white', margin: '5px' }}
+                                            color="primary"
                                             variant="contained"
+                                            style={{ backgroundColor: '#4caf50', color: 'white', margin: '5px' }}
                                         >
                                             Confirmer
-                                    </Button>
+                                        </Button>
                                     </div>
                                 </Card>
                             </form>
