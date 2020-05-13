@@ -1,14 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import { Avatar, Typography, IconButton, AppBar, Toolbar, 
+MenuItem, Menu, Button } from '@material-ui/core'
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { useHistory } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 import auth from '../Auth';
 import { LinearDeterminate } from '../LinearDeterminate';
 
@@ -21,6 +16,10 @@ const useStyles = makeStyles(theme => ({
     },
     grow: {
         flexGrow: 1,
+    },
+    small: {
+        width: theme.spacing(3),
+        height: theme.spacing(3),
     },
 }));
 
@@ -63,7 +62,8 @@ export default function NavbarBrowser(props) {
                             onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <AccountCircle />
+                            <Avatar alt="Hello World" src="https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg"
+                            className={classes.small} />
                         </IconButton>
                     </Toolbar>
                 {/* <div style={{ height: '3px' , background: 'white' }} /> */}

@@ -4,7 +4,8 @@ import Image from './Image';
 import Choix from './Choix';
 import Footer from '../../Footer/Footer';
 import ScrollTop from '../../Footer/ScrollTop';
-
+import { Plancom } from './PlanCom';
+import { Theme } from './Theme';
 
 export default function Home() {
     return (
@@ -12,6 +13,8 @@ export default function Home() {
           <AppBar />
           <Image/> 
           <Choix/>
+          <Theme />
+          <Plancom />
           <ScrollTop />
           <Footer />
       </div>

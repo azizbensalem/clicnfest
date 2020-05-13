@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
-import { Container } from '@material-ui/core';
+import { Container, Grow } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
 
@@ -10,34 +10,23 @@ const images = [
     {
         url: "https://q-cf.bstatic.com/images/hotel/max1024x768/681/68184730.jpg",
         title: 'Lieux',
-        width: '33%',
+        width: '25%',
     },
     {
         url: 'https://www.seriouseats.com/recipes/images/2015/07/20150702-sous-vide-hamburger-anova-primary.jpg',
         title: 'Menus',
-        width: '33%',
+        width: '25%',
     },
     {
         url: 'https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2FFAC.2Fvar.2Ffemmeactuelle.2Fstorage.2Fimages.2Fcuisine.2Fnews-cuisine.2Fboissons-sucrees-combien-sucres-par-verre-51791.2F15025615-1-fre-FR.2Fboissons-sucrees-combien-de-sucres-par-verre.2Ejpg/850x478/quality/90/crop-from/center/boissons-sucrees-combien-de-sucres-par-verre.jpeg',
         title: 'Boissons',
-        width: '34%',
+        width: '25%',
     },
     {
         url: "https://www.samma3a.com/tech/ar/wp-content/uploads/sites/3/2019/10/%D8%A7%D9%81%D8%B6%D9%84-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-DJ.jpg",
         title: 'Extras',
-        width: '33%',
+        width: '25%',
     },
-    {
-        url: 'https://assets.entrepreneur.com/content/3x2/2000/20191112054904-FotoJet32.jpeg',
-        title: 'Communication',
-        width: '33%',
-    },
-    {
-        url: 'https://petapixel.com/assets/uploads/2020/01/eosr_feature-800x421.jpg',
-        title: 'Camera',
-        width: '34%',
-    },
-
 ];
 
 const useStyles = makeStyles(theme => ({
@@ -115,6 +104,7 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         fontWeight: 'bold',
         textTransform: 'uppercase',
+        paddingBottom: '20px',
     }
 }));
  
@@ -124,9 +114,10 @@ export default function ButtonBases() {
     return (
         <div className={classes.root}>
          <Container>
-                <Typography variant="h4" className={classes.text}>Nos offres</Typography>
+                <Typography variant="h4" className={classes.text}>Nos services</Typography>
             <br></br>
             {images.map(image => (
+                <Grow in={true}>
                 <ButtonBase
                     focusRipple
                     key={image.title}
@@ -156,6 +147,7 @@ export default function ButtonBases() {
                         </Typography>
                     </span>
                 </ButtonBase>
+                </Grow>
             ))}
             </Container>
         </div>

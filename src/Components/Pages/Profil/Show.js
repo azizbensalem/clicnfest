@@ -102,7 +102,21 @@ export const Show = () => {
                                         : <img
                                             className={classes.img}
                                             src={values.img} />}                                       
-                                      <Typography variant="h5">{values.prenom} {values.nom}</Typography>
+                                    <Typography variant="h5">{values.prenom} {values.nom}</Typography>
+                                    <div style={{ padding: '10px' }}>
+                                    <input
+                                        accept="image/*"
+                                        style={{ display: 'none' }}
+                                        id="contained-button-file"
+                                        multiple
+                                        type="file"
+                                    />
+                                    <label htmlFor="contained-button-file">
+                                        <Button variant="contained" color="primary" component="span">
+                                            Changer la photo de profil
+                                        </Button>
+                                    </label>
+                                    </div>
                                 </div>
                                 <Card className={classes.card} variant="outlined">
                                 <CardContent>

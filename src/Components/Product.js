@@ -12,7 +12,7 @@ import {Rate} from './Rate';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Grow } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
@@ -87,31 +87,32 @@ const Product = ({ id, image, titre, volume , type , prix , description , quanti
     null
     return (
             <div key={id}>
+                <Grow in={true}>
                     <Paper className={classes.paper}>
                         <Grid container spacing={2}>
-                            <Grid item>
-                                <div>
-                                    <div className={classes.sectionMobile}>
-                                        <ButtonBase>
-                                            <img
-                                                className={classes.img}
-                                                alt="complex"
-                                                src={image}
-                                            />
-                                        </ButtonBase></div>
-                                    <div className={classes.sectionDesktop}>
-                                        <ButtonBase className={classes.image}>
-                                            <img
-                                                className={classes.img}
-                                                alt="complex"
-                                                src={image}
-                                            />
-                                        </ButtonBase>
+                                <Grid item>
+                                    <div>
+                                        <div className={classes.sectionMobile}>
+                                            <ButtonBase>
+                                                <img
+                                                    className={classes.img}
+                                                    alt="complex"
+                                                    src={image}
+                                                />
+                                            </ButtonBase></div>
+                                        <div className={classes.sectionDesktop}>
+                                            <ButtonBase className={classes.image}>
+                                                <img
+                                                    className={classes.img}
+                                                    alt="complex"
+                                                    src={image}
+                                                />
+                                            </ButtonBase>
+                                        </div>
                                     </div>
-                                </div>
-                            </Grid>
-                            <Grid item xs={12} sm container>
-                                    <Grid item xs container direction="column" spacing={3}>
+                                </Grid>
+                                <Grid item xs={12} sm container>
+                                        <Grid item xs container direction="column" spacing={3}>
                                             <Grid item xs>
                                                 <Typography gutterBottom variant="h6">
                                                     {titre}
@@ -125,31 +126,32 @@ const Product = ({ id, image, titre, volume , type , prix , description , quanti
                                                 </Typography>
                                             </Grid>
                                             <Grid item xs>
-                                            <IconButton
-                                                className={classes.spacing}
-                                                type="button"
-                                                variant="outlined"
-                                                onClick={handleClickOpen}
-                                            >
-                                                <VisibilityIcon color="primary" />
-                                            </IconButton>                                            <IconButton
-                                                className={classes.spacing}
-                                                type="button"
-                                                variant="outlined"
-                                                onClick={() => ajouter(id)}
-                                            >
-                                                <AddCircleIcon color="primary" />
-                                            </IconButton>                                                {addedItems}
+                                                <IconButton
+                                                    className={classes.spacing}
+                                                    type="button"
+                                                    variant="outlined"
+                                                    onClick={handleClickOpen}
+                                                >
+                                                    <VisibilityIcon color="primary" />
+                                                </IconButton>                                            <IconButton
+                                                    className={classes.spacing}
+                                                    type="button"
+                                                    variant="outlined"
+                                                    onClick={() => ajouter(id)}
+                                                >
+                                                    <AddCircleIcon style={{ color: '#4caf50'}} />
+                                                </IconButton>                                                {addedItems}
                                             </Grid>
-                                    </Grid>
+                                        </Grid>
                                 </Grid>
                                 <Grid item>
                                         <Typography variant="h5" className={classes.price}>{quantity == null ? prix : prix * quantity}&nbsp;DT</Typography>
                                 </Grid>
-                    </Grid>
+                        </Grid>
                     <Detail handleClose={handleClose} open={open} image={image} titre={titre}
                     volume={volume} type={type} prix={prix} description={description} />
-                    </Paper><br></br>
+                    </Paper>
+                 </Grow><br></br>
                 </div>
 
     )

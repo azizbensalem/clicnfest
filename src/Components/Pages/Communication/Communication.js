@@ -1,12 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { ComCard } from './Comcard';
-import { Typography, Container, Grid } from "@material-ui/core";
+import { Typography, Container, Grid, Grow} from "@material-ui/core";
 // import { useDispatch, useSelector } from "react-redux";
 import AppBar from '../../Header/Navbar';
 import { Menu } from '../../Tabs';
 import { TotalSb } from '../../Footer/TotalSb';
 import ScrollTop from '../../Footer/ScrollTop';
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles(theme => ({
         height: '50vh',
         textAlign: 'center',
         backgroundSize: 'cover',
-        backgroundImage: 'url("https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2FFAC.2Fvar.2Ffemmeactuelle.2Fstorage.2Fimages.2Fcuisine.2Fnews-cuisine.2Fboissons-sucrees-combien-sucres-par-verre-51791.2F15025615-1-fre-FR.2Fboissons-sucrees-combien-de-sucres-par-verre.2Ejpg/850x478/quality/90/crop-from/center/boissons-sucrees-combien-de-sucres-par-verre.jpeg")',
+        backgroundImage: 'url("https://assets.entrepreneur.com/content/3x2/2000/20191112054904-FotoJet32.jpeg")',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
     },
@@ -45,18 +46,26 @@ export const Communication = () => {
             </div>
             <Container className={classes.padding}>
                 <Grid className={classes.paper} container spacing={4} >
-                    <Grid item xs lg={6}>
-                        <ComCard />
-                    </Grid>
-                    <Grid item xs lg={6}>
-                        <ComCard />
-                    </Grid>
-                    <Grid item xs lg={6}>
-                        <ComCard />
-                    </Grid>
-                    <Grid item xs lg={6}>
-                        <ComCard />
-                    </Grid>
+                    <Grow in={true}>
+                        <Grid item xs lg={6}>
+                            <ComCard />
+                        </Grid>
+                    </Grow>
+                    <Grow in={true}>
+                        <Grid item xs lg={6}>
+                            <ComCard />
+                        </Grid>
+                    </Grow>
+                    <Grow in={true}>
+                        <Grid item xs lg={6}>
+                            <ComCard />
+                        </Grid>
+                    </Grow>
+                    <Grow in={true}>
+                        <Grid item xs lg={6}>
+                            <ComCard />
+                        </Grid>
+                    </Grow>
                 </Grid>
             </Container>
             <TotalSb page="boissons" />

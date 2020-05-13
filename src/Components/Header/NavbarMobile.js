@@ -1,19 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import { Avatar, Typography, IconButton, AppBar, Toolbar, Drawer, List,
+ListItem, ListItemIcon, ListItemText, MenuItem, Menu } from '@material-ui/core'
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { useHistory } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import EventIcon from '@material-ui/icons/Event';
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -36,6 +27,19 @@ const useStyles = makeStyles(theme => ({
     fullList: {
         width: 'auto',
     },
+    small: {
+        width: theme.spacing(3),
+        height: theme.spacing(3),
+    },
+    img: {
+        width: "100px",
+        height: "100px",
+        margin: "auto",
+        marginTop: "23px",
+    },
+    text: {
+        textAlign: 'center',
+    }
 }));
 
 export default function NavbarMobile(props) {
@@ -76,6 +80,10 @@ export default function NavbarMobile(props) {
             onClick={toggleDrawer(side, false)}
             onKeyDown={toggleDrawer(side, false)}
         >
+            <Avatar alt="Hello World" src="https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg" 
+            className={classes.img} />
+            <Typography variant="h6" className={classes.text}>Hello World</Typography>
+            <Toolbar />
             <List>
                 <ListItem button onClick={() => progress('/accueil')}>
                     <ListItemIcon><HomeIcon /></ListItemIcon>
@@ -87,7 +95,7 @@ export default function NavbarMobile(props) {
                 </ListItem>
                 <ListItem button onClick={() => progress('/evenements/lieux')}>
                     <ListItemIcon><AddBoxIcon /></ListItemIcon>
-                    <ListItemText primary="Nouveau événement" />
+                    <ListItemText primary="Nouvel événement" />
                 </ListItem>
             </List>
         </div>
@@ -114,7 +122,8 @@ export default function NavbarMobile(props) {
                                 onClick={handleProfileMenuOpen}
                                 color="inherit"
                             >
-                                <AccountCircle />
+                                <Avatar alt="Hello World" src="https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg" 
+                                className={classes.small}/>
                             </IconButton>
                         </Toolbar>
                         {/* <div style={{ height: '3px', background: 'white' }} /> */}
