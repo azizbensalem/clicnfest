@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 'bold',
         textTransform: 'uppercase',
         paddingBottom: '20px',
-    }
+    },
 }));
 
 export const Plancom = () => {
