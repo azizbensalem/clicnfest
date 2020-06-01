@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/clicnfest/static/css/main.92bdbabc.chunk.css",
+    "main.css": "/clicnfest/static/css/main.933001c4.chunk.css",
     "main.js": "/clicnfest/static/js/main.bb9d7eee.chunk.js",
     "main.js.map": "/clicnfest/static/js/main.bb9d7eee.chunk.js.map",
     "runtime-main.js": "/clicnfest/static/js/runtime-main.2257920b.js",
@@ -8,9 +8,9 @@
     "static/js/2.f6c9f82f.chunk.js": "/clicnfest/static/js/2.f6c9f82f.chunk.js",
     "static/js/2.f6c9f82f.chunk.js.map": "/clicnfest/static/js/2.f6c9f82f.chunk.js.map",
     "index.html": "/clicnfest/index.html",
-    "precache-manifest.868aaaca52c48e5ed77db7a5c8bd2d94.js": "/clicnfest/precache-manifest.868aaaca52c48e5ed77db7a5c8bd2d94.js",
+    "precache-manifest.db85b95a4cca89060972cdccfb1dda19.js": "/clicnfest/precache-manifest.db85b95a4cca89060972cdccfb1dda19.js",
     "service-worker.js": "/clicnfest/service-worker.js",
-    "static/css/main.92bdbabc.chunk.css.map": "/clicnfest/static/css/main.92bdbabc.chunk.css.map",
+    "static/css/main.933001c4.chunk.css.map": "/clicnfest/static/css/main.933001c4.chunk.css.map",
     "static/js/2.f6c9f82f.chunk.js.LICENSE.txt": "/clicnfest/static/js/2.f6c9f82f.chunk.js.LICENSE.txt",
     "static/media/clicnfest.PNG": "/clicnfest/static/media/clicnfest.d8c8d1e4.PNG",
     "static/media/clicnfestblue.png": "/clicnfest/static/media/clicnfestblue.f2ee4276.png",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.2257920b.js",
     "static/js/2.f6c9f82f.chunk.js",
-    "static/css/main.92bdbabc.chunk.css",
+    "static/css/main.933001c4.chunk.css",
     "static/js/main.bb9d7eee.chunk.js"
   ]
 }
