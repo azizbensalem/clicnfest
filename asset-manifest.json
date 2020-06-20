@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/clicnfest/static/css/main.933001c4.chunk.css",
-    "main.js": "/clicnfest/static/js/main.12d5968d.chunk.js",
-    "main.js.map": "/clicnfest/static/js/main.12d5968d.chunk.js.map",
+    "main.js": "/clicnfest/static/js/main.92590df1.chunk.js",
+    "main.js.map": "/clicnfest/static/js/main.92590df1.chunk.js.map",
     "runtime-main.js": "/clicnfest/static/js/runtime-main.c8d68800.js",
     "runtime-main.js.map": "/clicnfest/static/js/runtime-main.c8d68800.js.map",
     "stencil-polyfills-css-shim.js": "/clicnfest/static/js/stencil-polyfills-css-shim.9c973976.chunk.js",
@@ -29,7 +29,7 @@
     "static/js/12.91f25267.chunk.js": "/clicnfest/static/js/12.91f25267.chunk.js",
     "static/js/12.91f25267.chunk.js.map": "/clicnfest/static/js/12.91f25267.chunk.js.map",
     "index.html": "/clicnfest/index.html",
-    "precache-manifest.c24b71f8bd9d99c90d1a29534ba4da2e.js": "/clicnfest/precache-manifest.c24b71f8bd9d99c90d1a29534ba4da2e.js",
+    "precache-manifest.7c8809585915203fd4d6169549bc384b.js": "/clicnfest/precache-manifest.7c8809585915203fd4d6169549bc384b.js",
     "service-worker.js": "/clicnfest/service-worker.js",
     "static/css/4.75edc52f.chunk.css.map": "/clicnfest/static/css/4.75edc52f.chunk.css.map",
     "static/css/main.933001c4.chunk.css.map": "/clicnfest/static/css/main.933001c4.chunk.css.map",
@@ -52,6 +52,6 @@
     "static/css/4.75edc52f.chunk.css",
     "static/js/4.92e30195.chunk.js",
     "static/css/main.933001c4.chunk.css",
-    "static/js/main.12d5968d.chunk.js"
+    "static/js/main.92590df1.chunk.js"
   ]
 }
