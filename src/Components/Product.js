@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { Detail } from './Detail';
-import { addToCart , removeItem } from './Data/actions/cartActions';
+import { addToCart , removeItem } from '../Data/actions/cartActions';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {Rate} from './Rate';
@@ -43,13 +43,10 @@ const useStyles = makeStyles(theme => ({
     },
     sectionMobile: {
         display: 'flex',
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('sm')]: {
             display: 'none',
         },
     },
-    spacing: {
-
-    }
 }))
 
 const Product = ({ id, image, titre, volume , type , prix , description , quantity}) => {
@@ -88,7 +85,7 @@ const Product = ({ id, image, titre, volume , type , prix , description , quanti
     return (
             <div key={id}>
                 <Grow in={true}>
-                    <Paper className={classes.paper}>
+                <Paper className={classes.paper} variant="outlined">
                         <Grid container spacing={2}>
                                 <Grid item>
                                     <div>
@@ -133,14 +130,16 @@ const Product = ({ id, image, titre, volume , type , prix , description , quanti
                                                     onClick={handleClickOpen}
                                                 >
                                                     <VisibilityIcon color="primary" />
-                                                </IconButton>                                            <IconButton
+                                            </IconButton>
+                                                <IconButton
                                                     className={classes.spacing}
                                                     type="button"
                                                     variant="outlined"
                                                     onClick={() => ajouter(id)}
                                                 >
                                                     <AddCircleIcon style={{ color: '#4caf50'}} />
-                                                </IconButton>                                                {addedItems}
+                                                </IconButton>
+                                                {addedItems}
                                             </Grid>
                                         </Grid>
                                 </Grid>

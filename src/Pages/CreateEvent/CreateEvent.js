@@ -1,0 +1,314 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { FormHelperText, Paper, Grid } from "@material-ui/core";
+import { useHistory } from 'react-router-dom';
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    width: "100%!important",
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+  button: {
+    paddingTop: "15px",
+  },
+  height: {
+    minHeight: "100vh",
+  },
+  padding: {
+    paddingTop: "10px",
+    paddingBottom: "10px",
+  },
+  paper: {
+    paddingRight: theme.spacing(3),
+    paddingLeft: theme.spacing(3),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(2),
+    marginTop: "12px",
+    textAlign: "auto",
+    color: theme.palette.text.secondary,
+  },
+}));
+
+export const CreerEvent = () => {
+    const classes = useStyles();
+    const inputLabel = React.useRef(null);
+    const [labelWidth, setLabelWidth] = React.useState(0);
+    React.useEffect(() => {
+        setLabelWidth(inputLabel.current.offsetWidth);
+    }, []);
+    const history = useHistory();
+    return (
+            <div className={classes.padding}>
+              <Formik
+              initialValues={{
+                theme: 'After Work',
+                type: 'Privé',
+                local: '',
+                date: '',
+                heure: '',
+                description: '',
+                video: '',
+                image: [],
+              }}
+              onSubmit={(values, { setSubmitting }) => {
+                setTimeout(() => {
+                  localStorage.setItem("organisation", JSON.stringify(values));
+                  history.push("/evenements/participants");
+                  setSubmitting(false);
+                  console.log(values);
+                }, 500);
+              }}
+              validationSchema={Yup.object().shape({
+                theme: Yup.string().required("Ce champ est obligatoire."),
+                type: Yup.string().required("Ce champ est obligatoire."),
+                date: Yup.string().required("Ce champ est obligatoire."),
+                heure: Yup.string().required("Ce champ est obligatoire."),
+              })}
+              >
+              {props => {
+                const {
+                  values, touched, errors, isSubmitting, handleChange, handleBlur, 
+                  handleSubmit} = props;
+                return (
+                  <form onSubmit={handleSubmit} noValidate autoComplete="off">
+                    <Paper className={classes.paper} variant="outlined">
+                      <Typography variant="h6">Information générale</Typography>
+                      <br></br>
+                      <Grid container spacing={3}>
+                        <Grid item lg={3} md={4} sm={6} xs={12}>
+                          <FormControl
+                            variant="outlined"
+                            className={classes.formControl}
+                          >
+                            <InputLabel
+                              ref={inputLabel}
+                              htmlFor="outlined-type-native-simple"
+                            >
+                              Type&nbsp;d'événement
+                            </InputLabel>
+                            <Select
+                              native
+                              error={errors.type && touched.type && true}
+                              value={values.type}
+                              name="type"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              labelWidth={labelWidth}
+                              variant="outlined"
+                              helperText={
+                                errors.type &&
+                                touched.type && (
+                                  <FormHelperText error>
+                                    {errors.type}
+                                  </FormHelperText>
+                                )
+                              }
+                            >
+                              <option value="Publique">Publique</option>
+                              <option value="Privé">Privé</option>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item lg={3} md={4} sm={6} xs={12}>
+                          <FormControl
+                            variant="outlined"
+                            className={classes.formControl}
+                          >
+                            <InputLabel
+                              ref={inputLabel}
+                              htmlFor="outlined-type-native-simple"
+                            >
+                              Thème d'événement
+                            </InputLabel>
+                            <Select
+                              native
+                              error={errors.theme && touched.theme && true}
+                              value={values.theme}
+                              name="theme"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              labelWidth={labelWidth}
+                              variant="outlined"
+                              helperText={
+                                errors.theme &&
+                                touched.theme && (
+                                  <FormHelperText error>
+                                    {errors.theme}
+                                  </FormHelperText>
+                                )
+                              }
+                            >
+                              <option value="After Work">After Work</option>
+                              <option value="Conventum">Conventum</option>
+                              <option value="Team building">
+                                Team building
+                              </option>
+                              <option value="Pyjama">Pyjama</option>
+                              <option value="Demande de mariage">
+                                Demande de mariage
+                              </option>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item lg={3} md={4} sm={6} xs={12}>
+                          <FormControl
+                            variant="outlined"
+                            className={classes.formControl}
+                          >
+                            <TextField
+                              error={errors.date && touched.date && true}
+                              name="date"
+                              label="Date d'événement"
+                              type="date"
+                              InputLabelProps={{
+                                shrink: true,
+                              }}
+                              variant="outlined"
+                              value={values.date}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              helperText={
+                                errors.date &&
+                                touched.date && (
+                                  <FormHelperText error>
+                                    {errors.date}
+                                  </FormHelperText>
+                                )
+                              }
+                            />
+                          </FormControl>
+                        </Grid>
+                        <Grid item lg={3} md={4} sm={6} xs={12}>
+                          <FormControl
+                            variant="outlined"
+                            className={classes.formControl}
+                          >
+                            <TextField
+                              error={errors.heure && touched.heure && true}
+                              name="heure"
+                              id="outlined-number"
+                              label="Heure d'événement"
+                              type="time"
+                              InputLabelProps={{
+                                shrink: true,
+                              }}
+                              variant="outlined"
+                              value={values.heure}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              helperText={
+                                errors.heure &&
+                                touched.heure && (
+                                  <FormHelperText error>
+                                    {errors.heure}
+                                  </FormHelperText>
+                                )
+                              }
+                            />
+                          </FormControl>
+                        </Grid>
+                      </Grid>
+                    </Paper>
+                    <Grid container spacing={2}>
+                    <Grid item lg={6} md={6} sm={12} xs={12}>
+                    <Paper className={classes.paper} variant="outlined">
+                      <Typography variant="h6">Description de l'événement</Typography>
+                      <br></br>
+                      <FormControl
+                        variant="outlined"
+                        className={classes.formControl}
+                      >
+                        <TextField
+                          name="description"
+                          multiline
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                          variant="outlined"
+                          value={values.description}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </FormControl>
+                    </Paper>
+                    </Grid>
+                    <Grid item lg={6}  md={6} sm={12} xs={12}>
+                    <Paper className={classes.paper} variant="outlined">
+                      <Typography variant="h6">Vidéo promotionnelle de l'événement</Typography>
+                      <br></br>
+                      <FormControl
+                        variant="outlined"
+                        className={classes.formControl}
+                      >
+                        <TextField
+                          name="video"
+                          type="url"
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                          variant="outlined"
+                          value={values.video}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </FormControl>
+                    </Paper>
+                    </Grid>
+                    </Grid>
+                    <Paper className={classes.paper} variant="outlined">
+                      <Typography variant="h6">Photo de l'événement</Typography>
+                      <br></br>
+                      <FormControl
+                        variant="outlined"
+                        className={classes.formControl}
+                      >
+                        <input
+                          accept="image/*"
+                          style={{ display: 'none' }}
+                          id="contained-button-file"
+                          name="image"
+                          multiple
+                          type="file"
+                          // value={values.image}
+                          // onChange={handleChange}
+                          // onBlur={handleBlur}
+                        />
+                        <label htmlFor="contained-button-file">
+                          <Button variant="contained" color="primary" component="span">
+                            Upload
+                          </Button>
+                        </label>
+                      </FormControl>
+                    </Paper>
+                    <div className={classes.button}>
+                      <Button
+                        className={classes.backButton}
+                      >
+                        Retour
+                      </Button>
+                      <Button
+                        variant="contained"
+                        type="submit"
+                        disabled={isSubmitting}
+                        color="primary"
+                      >
+                        Suivant
+                      </Button>
+                    </div>
+                  </form>
+                );
+                    }}
+                  </Formik>
+            </div>
+    );
+}

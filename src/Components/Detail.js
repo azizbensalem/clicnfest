@@ -58,10 +58,11 @@ export const Detail = ({ handleClose, open, image, titre, volume, type, prix, de
                 <DialogContent dividers>
                     <Container>
                         <Grid container spacing={3}>
-                            <Grid xs>
-                            <img style={{ width: 180 }} src={image} />
+                            <Grid item lg={6}>
+                            <img style={{ width: '100%' }} src={image} />
                             </Grid>
-                            <Grid xs>
+                            <Grid item lg={6}>
+                                <Typography variant="h6" gutterBottom>{titre}</Typography>
                                 <Typography gutterBottom>{type}</Typography>
                                 <Typography gutterBottom>{volume}</Typography>
                                 <Typography gutterBottom>{prix}&nbsp;DT</Typography>

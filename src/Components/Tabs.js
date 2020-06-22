@@ -7,10 +7,9 @@ import PlaceIcon from '@material-ui/icons/Place';
 import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
 import FreeBreakfastIcon from '@material-ui/icons/FreeBreakfast';
 import ForumIcon from '@material-ui/icons/Forum';
-import GroupIcon from '@material-ui/icons/Group';
+import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { useHistory } from 'react-router-dom';
-import { Container } from '@material-ui/core';
 
 
 function a11yProps(index) {
@@ -31,8 +30,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('md')]: {
             display: 'flex',
         },
-        paddingLeft: '220px',
-        paddingRight: '220px',
+        alignSelf: 'center',
     },
     sectionMobile: {
         display: 'flex',
@@ -53,8 +51,8 @@ export const Menu = ({ value }) => {
                     value={value}
                     variant="scrollable"
                     scrollButtons="on"
-                    indicatorColor="primary"
-                    textColor="primary"
+                    indicatorColor="secondary"
+                    textColor="secondary"
                     aria-label="scrollable force tabs example"
                     className={classes.sectionDesktop}
                 >
@@ -68,8 +66,8 @@ export const Menu = ({ value }) => {
                     value={value}
                     variant="scrollable"
                     scrollButtons="on"
-                    indicatorColor="primary"
-                    textColor="primary"
+                    indicatorColor="secondary"
+                    textColor="secondary"
                     aria-label="scrollable force tabs example"
                     className={classes.sectionMobile}
                 >

@@ -2,18 +2,12 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Typography, IconButton, AppBar, Toolbar, 
 MenuItem, Menu, Button } from '@material-ui/core'
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import { useHistory } from 'react-router-dom';
 import auth from '../Auth';
 import { LinearDeterminate } from '../LinearDeterminate';
+import clicnfest from '../../Images/clicnfest.PNG';
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
-    title: {
-        flexGrow: 1,
-    },
     grow: {
         flexGrow: 1,
     },
@@ -21,9 +15,13 @@ const useStyles = makeStyles(theme => ({
         width: theme.spacing(3),
         height: theme.spacing(3),
     },
+    img: {
+        width: '7vh',
+        padding: '10px',
+    },
 }));
 
-export default function NavbarBrowser(props) {
+export default function NavbarBrowser() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const isMenuOpen = Boolean(anchorEl);
@@ -43,44 +41,56 @@ export default function NavbarBrowser(props) {
         }, 3000);
     };
     return (
-            <div>
-            <AppBar style={{ background: '#2748ac' }}>
-                <LinearDeterminate bool={prog} />
-                    <Toolbar>
-                        <Typography className={classes.title} variant="h6" noWrap>
-                            Clic'n Fest
-                         </Typography>
-                        <div className={classes.grow} />
-                        <Button color="inherit" onClick={() => progress('/accueil')}>Accueil</Button>
-                        <Button color="inherit" onClick={() => progress('/mes_evenements')}>Mes événements</Button>
-                        <Button color="inherit" onClick={() => progress('/evenements/lieux')}>Nouvel évènement</Button>
-                        <IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >
-                            <Avatar alt="Hello World" src="https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg"
-                            className={classes.small} />
-                        </IconButton>
-                    </Toolbar>
-                {/* <div style={{ height: '3px' , background: 'white' }} /> */}
-                </AppBar>
-                <Toolbar id="back-to-top-anchor" />
-                <Menu
-                    anchorEl={anchorEl}
-                    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-                    id={menuId}
-                    keepMounted
-                    transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-                    open={isMenuOpen}
-                    onClose={handleMenuClose}
-                >
-                    <MenuItem onClick={() => progress('/monprofil')}>Mon Profil</MenuItem>
-                    <MenuItem onClick={() => auth.logout(() => { progress('/') })}>Déconnexion</MenuItem>
-                </Menu>
-            </div>
+<div>
+    <AppBar style={{ background: '#d21740' }} variant="outlined">
+        <LinearDeterminate bool={prog} />
+            <Toolbar>
+                <img src={clicnfest} className={classes.img} />
+                <div className={classes.grow} />
+                {auth.isAuthenticated() == 'true' ? (
+                <div>
+                    <Button color="inherit" onClick={() => progress('/accueil')}>Accueil</Button>
+                    <Button color="inherit" onClick={() => progress('/mes_evenements')}>Mes événements</Button>
+                    <Button color="inherit" onClick={() => progress('/evenements/organisation')}>Organiser un évènement</Button>
+                    <Button color="inherit" onClick={() => progress('/evenements/lieux')}>Acheter des produits</Button>
+                    <IconButton
+                        edge="end"
+                        aria-label="account of current user"
+                        aria-controls={menuId}
+                        aria-haspopup="true"
+                        onClick={handleProfileMenuOpen}
+                        color="inherit"
+                    >
+                        <Avatar alt="Hello World" src="https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg"
+                        className={classes.small} />
+                    </IconButton>
+                </div>
+                ) : (
+                    <div>
+                    <Button color="inherit" onClick={() => progress('/')}>Se connecter</Button>
+                    <Button color="inherit" onClick={() => progress('/inscription')}>Créer un compte</Button>
+                    </div>
+                ) }
+            </Toolbar>
+        </AppBar>
+        <Toolbar id="back-to-top-anchor" />
+        <Menu
+            anchorEl={anchorEl}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            id={menuId}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={isMenuOpen}
+            onClose={handleMenuClose}
+        >   
+            <MenuItem style={{ display: 'block'}}>
+                <Avatar alt="Hello World" src="https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg"
+                style={{ margin: 'auto' }} />
+                <Typography variant="body2">Aziz Ben Salem</Typography>
+            </MenuItem>
+            <MenuItem onClick={() => progress('/monprofil')}>Mon Profil</MenuItem>
+            <MenuItem onClick={() => auth.logout(window.location.reload())}>Déconnexion</MenuItem>
+        </Menu>
+</div>
     );
 }

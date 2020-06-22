@@ -15,6 +15,12 @@ const useStyles = makeStyles((theme) => ({
             bottom: 80,
         },
     },
+    backgroundColor: {
+        backgroundColor: '#151515!important',
+    },
+    color: {
+        color: '#FFF',
+    }
     
 }));
 
@@ -27,7 +33,7 @@ function ScrollTop(props) {
     const trigger = useScrollTrigger({
         target: window ? window() : undefined,
         disableHysteresis: true,
-        threshold: 100,
+        threshold: 300,
     });
 
     const handleClick = (event) => {
@@ -57,11 +63,12 @@ ScrollTop.propTypes = {
 };
 
 export default function Header(props) {
+    const classes = useStyles();
     return (
         <React.Fragment>
-            <ScrollTop {...props}>
-                <Fab color="primary" size="small" aria-label="scroll back to top">
-                    <KeyboardArrowUpIcon />
+            <ScrollTop {...props} >
+                <Fab className={classes.backgroundColor} size="small" disableFocusRipple={true}>
+                    <KeyboardArrowUpIcon className={classes.color} />
                 </Fab>
             </ScrollTop>
         </React.Fragment>

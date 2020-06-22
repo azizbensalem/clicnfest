@@ -3,7 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import { ContentCom as Cart } from './Pages/Confirmation/Cart';
+import { ContentCom } from './../Pages/Confirmation/ContentCom';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Typography, Button } from '@material-ui/core';
@@ -54,7 +54,7 @@ export const Confirmation = ({ handleClose , open , page}) => {
                     Mon panier
                 </DialogTitle>                
                 <DialogContent style= {{ paddingBottom: '70px'}}>
-                    <Cart page={page}/>
+                    <ContentCom page={page }/>
                     <Button variant="contained" 
                             color="primary" 
                             onClick={() => history.push('/evenements/commande')}

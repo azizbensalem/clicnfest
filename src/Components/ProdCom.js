@@ -6,11 +6,12 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Detail } from './Detail';
-import { removeItem, addQuantity, subtractQuantity } from '../Components/Data/actions/cartActions';
+import { removeItem, addQuantity, subtractQuantity } from '../Data/actions/cartActions';
 import { useDispatch } from "react-redux";
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { Link } from 'react-router-dom'
+import { TextField } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
@@ -63,7 +64,35 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id ,
     const handleSubtractQuantity = (id) => {
         dispatch(subtractQuantity(id));
     };
-
+    const [value, setValue] = React.useState(quantity);
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+    const handleUpdate = (quantity , value, id ) => {
+       let ancValue = quantity;
+       let newValue = value;
+       let updatedValue = ancValue - newValue;
+       let a = newValue - ancValue;
+       let boucle = ancValue - updatedValue;
+       console.log(a);
+            if (a > 0) {
+                for (let index = 1; index < boucle; index++) {
+                dispatch(addQuantity(id));
+                }
+            } 
+            else
+             if (a < 0) {
+                for (let index = 0; index < updatedValue; index++) {
+                dispatch(subtractQuantity(id));
+                }
+            } 
+            else {
+                for (let index = 0; index < updatedValue; index++) {
+                    dispatch(subtractQuantity(id));
+                }            
+            }
+        }
+    
     return (
         <div>
             <Paper className={classes.paper}>
@@ -106,19 +135,24 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id ,
                                 <Button color="secondary" onClick={() => { handleRemove(id) }}>Supprimer</Button>
                             </Grid>
                         </Grid>
-                        <Detail handleClose={handleClose} open={open} image={image} titre={titre}
-                            volume={volume} type={type} prix={prix} description={description} />
                         <Grid item>
                             <Typography variant="subtitle1">{quantity == null ? prix : prix * quantity}&nbsp;DT</Typography>
                             <Grid>
                                 <Typography>Quantité</Typography>
                                 <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
-                                {quantity}
-                                <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link>
-                            </Grid>
+                                <TextField onChange={handleChange} value={value} style={{ width: '6%' }} />
+                                {/* {quantity} */}
+                                <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link><br></br>
+                                <Link to={page == null ? '/evenements/commande' : '/evenements/' + page}>
+                                    <Button onClick={() => handleUpdate(quantity, value, id)}>Click</Button>
+                                </Link>
+                            </Grid> 
                         </Grid>
                     </Grid>
                 </Grid>
+                <Detail handleClose={handleClose} open={open} image={image} titre={titre}
+                    volume={volume} type={type} prix={prix} description={description} />
+
             </Paper><br></br>
         </div>
     )

@@ -1,0 +1,11 @@
+{
+  "appId": "com.simple.android",
+  "appName": "Clicnfest",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {},
+  "server": {
+    "url": "https://azizbensalem.github.io/clicnfest"
+  }
+}

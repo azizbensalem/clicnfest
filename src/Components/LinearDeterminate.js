@@ -34,7 +34,8 @@ export const LinearDeterminate = ({ bool }) => {
 
     return (
         <div className={classes.root}>
-            { bool ? <LinearProgress variant="determinate" value={completed} /> : null}
+            {bool ? <LinearProgress color="secondary" variant="determinate" value={completed} /> 
+            : <LinearProgress style={{ background: '#d21740' }} variant="determinate" value={0} />}
         </div>
     );
 }
