@@ -15,6 +15,8 @@ import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
 import auth from '../../Components/Auth';
 import { LinearDeterminate } from '../../Components/LinearDeterminate';
+import AuthService from "../../Services/AuthService";
+
 
 const useStyles = makeStyles(theme => ({ 
   root: {
@@ -60,6 +62,7 @@ export default function Login() {
     const classes = useStyles();
     const history = useHistory();
     const [prog, setProg] = React.useState(false);
+    const [error, setError] = React.useState(false);
     const progress = (link) => {
       setProg(true);
       setTimeout(() => {
@@ -89,15 +92,19 @@ export default function Login() {
                 <Formik
                   initialValues={{ username: "", password: "" }}
                   onSubmit={(values, { setSubmitting }) => {
-                    if (values.username == 'aziz' && values.password == 'mabs') {
-                    setProg(true);
                     setTimeout(() => {
-                      localStorage.setItem("Logging in", values.username);
-                      setSubmitting(false);
-                      window.location.reload("/");
-                      auth.login();
-                    }, 3000);
-                    }
+                      AuthService.login(values.username, values.password).then(
+                        () => {
+                          localStorage.setItem("Logging in", values.username);
+                          setProg(true);
+                          setSubmitting(false);
+                          window.location.reload("/");
+                          auth.login();
+                        },
+                        (error) => {
+                          setError(true);
+                        });
+                    },10);
                   }}
                   validationSchema={Yup.object().shape({
                     username: Yup.string().required(
@@ -124,7 +131,7 @@ export default function Login() {
                         autoComplete="off"
                       >
                         <TextField
-                          error={errors.username && touched.username && true}
+                          error={errors.username && touched.username && error && true}
                           name="username"
                           label="Nom d'utilisateur"
                           type="text"
@@ -142,7 +149,7 @@ export default function Login() {
                           }
                         />
                         <TextField
-                          error={errors.password && touched.password && true}
+                          error={errors.password && touched.password && error && true}
                           name="password"
                           label="Mot de passe"
                           type="password"

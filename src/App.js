@@ -32,39 +32,51 @@ export default function App() {
       setState(false)
     }, 3000);
   });
-
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div className="App">
-        {auth.isAuthenticated() == 'true' ? (
+      {user && user.token ? (
         <Switch>
-            {state ? <Linprog /> : null}
-            <Route exact path="/accueil" component={Home} />
-            <Route exact path="/evenements/" component={Events} />
-            <Route exact path="/evenements/organisation" component={Organisation} />
-            <Route exact path="/evenements/billetterie" component={Billetterie} />
-            <Route exact path="/evenements/commande" component={Commande} />
-            <Route exact path="/evenements/lieux" component={Lieux} />
-            <Route exact path="/evenements/menus" component={Menus} />
-            <Route exact path="/evenements/boissons" component={Boissons} />
-            <Route exact path="/evenements/communication" component={Communication} />
-            <Route exact path="/evenements/extras" component={Extras} />
-            <Route exact path="/evenements/participants" component={Participants} />
-            <Route exact path="/monprofil" component={Show} />
-            <Route exact path="/monprofil/modifier" component={Modifier} />
-            <Route exact path="/monprofil/password" component={Password} />
-            <Route exact path="/mes_evenements" component={MyEvent} />
-            <Route exact path="/404" component={Error} />
-            <Redirect path="/" to="/accueil" />
-          </Switch>
-        ) : (
-          <Switch>
-            {state ? <Linprog /> : null}
-            <Route exact path="/accueil" component={Home} />
-            <Route exact path="/" component={Login} />
-            <Route exact path="/inscription" component={Inscription} />
-            <Redirect path="*" to="/" />
-          </Switch>
-        )}
+          {state ? <Linprog /> : null}
+          <Route exact path="/accueil" component={Home} />
+          <Route exact path="/evenements/" component={Events} />
+          <Route
+            exact
+            path="/evenements/organisation"
+            component={Organisation}
+          />
+          <Route exact path="/evenements/billetterie" component={Billetterie} />
+          <Route exact path="/evenements/commande" component={Commande} />
+          <Route exact path="/evenements/lieux" component={Lieux} />
+          <Route exact path="/evenements/menus" component={Menus} />
+          <Route exact path="/evenements/boissons" component={Boissons} />
+          <Route
+            exact
+            path="/evenements/communication"
+            component={Communication}
+          />
+          <Route exact path="/evenements/extras" component={Extras} />
+          <Route
+            exact
+            path="/evenements/participants"
+            component={Participants}
+          />
+          <Route exact path="/monprofil" component={Show} />
+          <Route exact path="/monprofil/modifier" component={Modifier} />
+          <Route exact path="/monprofil/password" component={Password} />
+          <Route exact path="/mes_evenements" component={MyEvent} />
+          <Route exact path="/404" component={Error} />
+          <Redirect path="/" to="/accueil" />
+        </Switch>
+      ) : (
+        <Switch>
+          {state ? <Linprog /> : null}
+          <Route exact path="/accueil" component={Home} />
+          <Route exact path="/" component={Login} />
+          <Route exact path="/inscription" component={Inscription} />
+          <Redirect path="*" to="/" />
+        </Switch>
+      )}
     </div>
   );
 }

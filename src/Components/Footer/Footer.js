@@ -61,7 +61,7 @@ export default function Footer() {
                     <Link underline="none" color="inherit" href="/">Tunivisions Ticket</Link><br></br>
                 </Grid>
                 <Grid item md={4}>
-                    <Typography variant="h6" style={{ paddingBottom: '20px', color: '#DDDDDD', fontWeight: 'bold'}}>NEWSLATTER</Typography>
+                    <Typography variant="h6" style={{ paddingBottom: '20px', color: '#DDDDDD', fontWeight: 'bold'}}>NEWSLETTER</Typography>
                     <Grid container spacing={1}>
                         <Grid item xs={6}>
                             <Paper className={classes.paper}>

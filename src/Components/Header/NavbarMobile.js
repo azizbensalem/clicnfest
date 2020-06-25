@@ -12,6 +12,8 @@ import auth from '../Auth';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { LinearDeterminate } from '../LinearDeterminate';
 import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
+import AuthService from "../../Services/AuthService";
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -64,6 +66,10 @@ export default function NavbarMobile(props) {
         left: false,
     });
 
+    const Logout = () => {
+        AuthService.logout();
+        auth.logout(window.location.reload("/"));
+    }
     const toggleDrawer = (side, open) => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -137,7 +143,7 @@ export default function NavbarMobile(props) {
                                     aria-haspopup="true"
                                     onClick={handleProfileMenuOpen}
                                     color="inherit"
-                                    onClick={() => auth.logout(window.location.reload("/"))}
+                                    onClick={() => Logout()}
                                 >
                                     <ExitToAppIcon />
                                 </IconButton>
