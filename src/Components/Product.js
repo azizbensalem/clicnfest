@@ -152,9 +152,6 @@ const Product = ({ id, image, titre, volume , type , prix , description , quanti
                     </Paper>
                  </Grow><br></br>
                 </div>
-
     )
-    
 }
- 
 export default Product;

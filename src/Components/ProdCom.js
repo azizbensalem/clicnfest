@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     },
     sectionMobile: {
         display: 'flex',
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('sm')]: {
             display: 'none',
         },
     },
@@ -75,15 +75,15 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id ,
        let a = newValue - ancValue;
        let boucle = ancValue - updatedValue;
        console.log(a);
-            if (a > 0) {
-                for (let index = 1; index < boucle; index++) {
-                dispatch(addQuantity(id));
+        if (updatedValue > 0) {
+            for (let index = 0; index < updatedValue; index++) {
+                dispatch(subtractQuantity(id));
                 }
             } 
             else
-             if (a < 0) {
-                for (let index = 0; index < updatedValue; index++) {
-                dispatch(subtractQuantity(id));
+            if (updatedValue < 0) {
+                for (let index = 0; index < -updatedValue; index++) {
+                dispatch(addQuantity(id));
                 }
             } 
             else {
@@ -140,7 +140,7 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id ,
                             <Grid>
                                 <Typography>Quantité</Typography>
                                 <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
-                                <TextField onChange={handleChange} value={value} style={{ width: '6%' }} />
+                                <TextField onChange={handleChange} value={value} style={{ width: '10%' }} />
                                 {/* {quantity} */}
                                 <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link><br></br>
                                 <Link to={page == null ? '/evenements/commande' : '/evenements/' + page}>

@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
     },
+    snackbar: {
+        zIndex: 'auto', 
+    }
 }));
 
 export const TotalSb = ({ page }) => {

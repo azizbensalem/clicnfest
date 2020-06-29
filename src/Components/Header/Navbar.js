@@ -8,13 +8,13 @@ import { isMobile, isMobileOnly } from "react-device-detect";
 const useStyles = makeStyles(theme => ({
   sectionDesktop: {
     display: 'none',
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'block',
     },
   },
   sectionMobile: {
     display: 'block',
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none',
     },
   },

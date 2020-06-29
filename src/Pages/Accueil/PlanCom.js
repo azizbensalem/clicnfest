@@ -111,7 +111,7 @@ export const Plancom = () => {
                     </Grow>))}
             </Grid>
             <div className={classes.button}>
-                <Button variant="outlined" color="primary" href="/evenements">
+                <Button variant="outlined" color="primary" href="/#/evenements">
                     Afficher plus
                 </Button>
             </div>

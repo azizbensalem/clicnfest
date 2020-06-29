@@ -47,44 +47,82 @@ export const CreerEvent = () => {
         setLabelWidth(inputLabel.current.offsetWidth);
     }, []);
     const history = useHistory();
+    const SUPPORTED_FORMATS = [
+      "image/jpg",
+      "image/jpeg",
+      "image/gif",
+      "image/png"
+    ];
+  const event = JSON.parse(localStorage.getItem("event"));
     return (
             <div className={classes.padding}>
               <Formik
               initialValues={{
+                nom: event.nom,
                 theme: 'After Work',
                 type: 'Privé',
                 local: '',
-                date: '',
+                date: event.date,
                 heure: '',
                 description: '',
                 video: '',
-                image: [],
+                image: '',
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-                  localStorage.setItem("organisation", JSON.stringify(values));
+                  localStorage.setItem("Organisation", JSON.stringify(values));
                   history.push("/evenements/participants");
                   setSubmitting(false);
-                  console.log(values);
-                }, 500);
+                }, 100);
               }}
               validationSchema={Yup.object().shape({
                 theme: Yup.string().required("Ce champ est obligatoire."),
                 type: Yup.string().required("Ce champ est obligatoire."),
                 date: Yup.string().required("Ce champ est obligatoire."),
                 heure: Yup.string().required("Ce champ est obligatoire."),
+                nom: Yup.string().required("Ce champ est obligatoire."),
               })}
               >
               {props => {
                 const {
                   values, touched, errors, isSubmitting, handleChange, handleBlur, 
-                  handleSubmit} = props;
+                  handleSubmit, setFieldValue
+                  } = props;
                 return (
                   <form onSubmit={handleSubmit} noValidate autoComplete="off">
                     <Paper className={classes.paper} variant="outlined">
                       <Typography variant="h6">Information générale</Typography>
                       <br></br>
                       <Grid container spacing={3}>
+                        <Grid item lg={3} md={4} sm={6} xs={12}>
+                          <FormControl
+                            variant="outlined"
+                            className={classes.formControl}
+                          >
+                            <TextField
+                              native
+                              error={errors.nom && touched.nom && true}
+                              name="nom"
+                              type="text"
+                              label="Nom de l'événement"
+                              InputLabelProps={{
+                                shrink: true,
+                              }}
+                              variant="outlined"
+                              value={values.nom}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              helperText={
+                                errors.nom &&
+                                touched.nom && (
+                                  <FormHelperText error>
+                                    {errors.nom}
+                                  </FormHelperText>
+                                )
+                              }
+                            />
+                          </FormControl>
+                          </Grid>
                         <Grid item lg={3} md={4} sm={6} xs={12}>
                           <FormControl
                             variant="outlined"
@@ -277,25 +315,20 @@ export const CreerEvent = () => {
                           style={{ display: 'none' }}
                           id="contained-button-file"
                           name="image"
+                          setFieldValue={setFieldValue}
                           multiple
                           type="file"
-                          // value={values.image}
-                          // onChange={handleChange}
-                          // onBlur={handleBlur}
+                          value={values.image}
+                          onBlur={handleBlur}
                         />
                         <label htmlFor="contained-button-file">
-                          <Button variant="contained" color="primary" component="span">
+                          <Button variant="contained" color="primary" component="span" >
                             Upload
                           </Button>
                         </label>
                       </FormControl>
                     </Paper>
                     <div className={classes.button}>
-                      <Button
-                        className={classes.backButton}
-                      >
-                        Retour
-                      </Button>
                       <Button
                         variant="contained"
                         type="submit"

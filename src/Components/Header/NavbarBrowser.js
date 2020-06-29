@@ -55,24 +55,24 @@ export default function NavbarBrowser() {
             <div className={classes.grow} />
             {user && user.token ? (
               <div>
-                <Button color="inherit" onClick={() => progress("/accueil")}>
+                <Button color="inherit" href="/#/accueil" >
                   Accueil
                 </Button>
                 <Button
                   color="inherit"
-                  onClick={() => progress("/mes_evenements")}
+                  href="/#/mes_evenements"
                 >
                   Mes événements
                 </Button>
                 <Button
                   color="inherit"
-                  onClick={() => progress("/evenements/organisation")}
+                  href="/#/evenements/organisation"
                 >
                   Organiser un évènement
                 </Button>
                 <Button
                   color="inherit"
-                  onClick={() => progress("/evenements/lieux")}
+                  href="/#/evenements/lieux"
                 >
                   Acheter des produits
                 </Button>
@@ -93,12 +93,12 @@ export default function NavbarBrowser() {
               </div>
             ) : (
               <div>
-                <Button color="inherit" onClick={() => progress("/")}>
+                <Button color="inherit" href="/#">
                   Se connecter
                 </Button>
                 <Button
                   color="inherit"
-                  onClick={() => progress("/inscription")}
+                  href="/#/inscription"
                 >
                   Créer un compte
                 </Button>

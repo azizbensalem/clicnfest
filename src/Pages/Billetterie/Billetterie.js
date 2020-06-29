@@ -86,7 +86,7 @@ export const Billetterie = () => {
                         date_fin: Yup.string().required("Ce champ est obligatoire."),
                         type_ticket: Yup.string().required("Ce champ est obligatoire."),
                         tarif_ticket: Yup.string().required("Ce champ est obligatoire."), 
-                        prix_ticket: Yup.string().required("Ce champ est obligatoire."),
+                        // prix_ticket: Yup.string().required("Ce champ est obligatoire."),
                     })}
                 >
                     {props => {
@@ -241,6 +241,9 @@ export const Billetterie = () => {
                                                 value={values.prix_ticket}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
+                                                InputProps={{
+                                                    readOnly: values.tarif_ticket == 'Gratuit' ? true : false,
+                                                }}
                                                 helperText={
                                                     errors.prix_ticket &&
                                                     touched.prix_ticket && (

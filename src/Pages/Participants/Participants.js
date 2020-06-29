@@ -191,7 +191,7 @@ export const Invite = () => {
                   <div className={classes.button}>
                     <Button
                       className={classes.backButton}
-                      onClick={() => history.push('/evenements/tickets')}
+                      onClick={() => history.push('/evenements/organisation')}
                     >
                       Retour
                     </Button>

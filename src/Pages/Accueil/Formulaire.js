@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { Paper, FormControl, TextField, Container, FormHelperText, Grid , 
 Button} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -52,19 +53,19 @@ const useStyles = makeStyles((theme) => ({
 
 export const Formulaire = () => {
     const classes = useStyles();
-
+    const history = useHistory();
     return (
       <div className={classes.container}>
         <div className={classes.padding}>
             <Formik
               initialValues={{
-                lieu: '',
+                nom: '',
                 date: '',
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                   localStorage.setItem("event", JSON.stringify(values));
-                //   history.push("/evenements/participants");
+                  history.push("/evenements/organisation");
                   setSubmitting(false);
                 }, 500);
               }}
@@ -98,15 +99,15 @@ export const Formulaire = () => {
                             className={classes.formControl}
                           >
                             <TextField
-                              name="lieu"
+                              name="nom"
                               type="text"
-                              label="Lieu de l'événement"
-                              placeholder="Choisissez une ville"
+                              label="Nom de l'événement"
+                              placeholder="Choisissez un nom de l'événement"
                               InputLabelProps={{
                                 shrink: true,
                               }}
                               variant="outlined"
-                              value={values.lieu}
+                              value={values.nom}
                               onChange={handleChange}
                               onBlur={handleBlur}
                             />
