@@ -1,11 +1,19 @@
-// import { createStore } from 'redux';
-// import cartReducer from './reducers/cartReducer';
-// import { loadState , saveState } from '../../localStorage';
+import { createStore } from "redux";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import cartReducer from "./reducers/cartReducer";
 
-// const persistedState = loadState();
-// export const store = createStore(cartReducer , persistedState);
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["addedItems" , "total"],
+};
 
-// store.subscribe(() => {
-//     saveState({ todos: store.getState().todos
-//     });
-// });
+const configureStore = () => {
+  const store = createStore(persistReducer(persistConfig, cartReducer));
+  const persistor = persistStore(store);
+  return { store, persistor };
+};
+
+const {store} = configureStore();
+export default store;

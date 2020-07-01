@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import ReactToPdf from "react-to-pdf";
 
+
 const useStyles = makeStyles(theme => ({
     height : {
         minHeight: '100vh'
@@ -27,11 +28,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const ContentCom = ({ page }) => {
-    React.useEffect(() => {
-        if (items != null) {
-            localStorage.setItem('item',JSON.stringify(items))
-        }
-    }, [])
     const items = useSelector(state => state.addedItems);
     const classes = useStyles();
         let addedItems = items.length ?

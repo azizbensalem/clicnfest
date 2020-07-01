@@ -9,7 +9,7 @@ export const Lieux = () => {
     return (
         <div>
             <AppBar />
-            <Produits img={Lieu} name="Lieux" genre="lieux" value={0} />
+            <Produits img={Lieu} name="Lieux" genre="lieux" page="lieux" value={0} />
             <ScrollTop />
         </div>
     );

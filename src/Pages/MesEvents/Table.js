@@ -8,8 +8,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Chip from '@material-ui/core/Chip';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton, Typography, Paper } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -60,7 +58,7 @@ export const Event = ({ data }) => {
                       <VisibilityIcon color="primary" />
                     </IconButton>
                   </Tooltip>
-                  <Tooltip title="Modifier" placement="top">
+                  {/* <Tooltip title="Modifier" placement="top">
                     <IconButton>
                       <EditIcon style={{ color: '#4caf50' }} />
                     </IconButton>
@@ -69,7 +67,7 @@ export const Event = ({ data }) => {
                     <IconButton>
                       <DeleteIcon color="secondary" />
                     </IconButton>
-                  </Tooltip>
+                  </Tooltip> */}
                 </TableCell>
               </TableRow>
             ))

@@ -72,9 +72,6 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id ,
        let ancValue = quantity;
        let newValue = value;
        let updatedValue = ancValue - newValue;
-       let a = newValue - ancValue;
-       let boucle = ancValue - updatedValue;
-       console.log(a);
         if (updatedValue > 0) {
             for (let index = 0; index < updatedValue; index++) {
                 dispatch(subtractQuantity(id));
@@ -141,9 +138,9 @@ const ProdCom = ({ image, titre, volume, type, prix, description, quantity, id ,
                                 <Typography>Quantité</Typography>
                                 <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
                                 <TextField onChange={handleChange} value={value} style={{ width: '10%' }} />
-                                {/* {quantity} */}
+                                {quantity}
                                 <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link><br></br>
-                                <Link to={page == null ? '/evenements/commande' : '/evenements/' + page}>
+                                <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}>
                                     <Button onClick={() => handleUpdate(quantity, value, id)}>Click</Button>
                                 </Link>
                             </Grid> 

@@ -9,47 +9,48 @@ import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import cover from "../../Images/event.jpg";
 
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: 250,
-        },
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: 250,
     },
-    content: {
-        textAlign: "center",
-        paddingTop: "40px",
-    },
-    img: {
-        width: "150px",
-        borderRadius: "360px",
-        height: "150px"
-    },
-    image: {
-        textAlign: "center",
-        paddingTop: "40px",
-        paddingBottom: "20px",
-    },
-    card: {
-        maxWidth: '600px',
-        margin: 'auto',
-        marginBottom: '40px',
-    },
-    cover: {
-        height: '50vh',
-        textAlign: 'center',
-        backgroundSize: 'cover',
-        backgroundImage: 'url("https://www.ucb.ac.uk/content/images/courses/hospitality-tourism-events/events-management-3.jpg")',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-    },
-    title: {
-        paddingTop: '19vh',
-        fontWeight: 'bold',
-        color: 'white',
-    },
+  },
+  content: {
+    textAlign: "center",
+    paddingTop: "40px",
+  },
+  img: {
+    width: "150px",
+    borderRadius: "360px",
+    height: "150px",
+  },
+  image: {
+    textAlign: "center",
+    paddingTop: "40px",
+    paddingBottom: "20px",
+  },
+  card: {
+    maxWidth: "600px",
+    margin: "auto",
+    marginBottom: "40px",
+  },
+  cover: {
+    height: "50vh",
+    textAlign: "center",
+    backgroundSize: "cover",
+    backgroundImage: `url(${cover})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  },
+  title: {
+    paddingTop: "19vh",
+    fontWeight: "bold",
+    color: "white",
+  },
 }));
 export const Show = () => {
     const classes = useStyles();

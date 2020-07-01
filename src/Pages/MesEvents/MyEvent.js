@@ -4,40 +4,41 @@ import { Event as Table } from './Table';
 import { makeStyles } from "@material-ui/core/styles";
 import { FormControl, InputLabel, Select, Typography, TextField, Container, Paper } from "@material-ui/core";
 import Pagination from '@material-ui/lab/Pagination';
+import cover from "../../Images/event.jpg";
 
 
-const useStyles = makeStyles(theme => ({
-padding :{
-    paddingTop: '25px',
-    paddingBottom: '25px'
-},
+const useStyles = makeStyles((theme) => ({
+  padding: {
+    paddingTop: "25px",
+    paddingBottom: "25px",
+  },
   image: {
-    height: '50vh',
-    textAlign: 'center',
-    backgroundSize: 'cover',
-    backgroundImage: 'url("https://www.ucb.ac.uk/content/images/courses/hospitality-tourism-events/events-management-3.jpg")',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    height: "50vh",
+    textAlign: "center",
+    backgroundSize: "cover",
+    backgroundImage: `url(${cover})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
   },
   title: {
-    paddingTop: '19vh',
-    fontWeight: 'bold',
-    color: 'white',
+    paddingTop: "19vh",
+    fontWeight: "bold",
+    color: "white",
   },
   color: {
-    paddingBottom: '19vh',
-    height: '50vh',
-    background: 'black',
+    paddingBottom: "19vh",
+    height: "50vh",
+    background: "black",
     opacity: 0.5,
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: "auto",
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 220
+    minWidth: 220,
   },
 }));
 
@@ -120,7 +121,6 @@ export default function MyEvent() {
       <div>
         <AppBar />
         <div className={classes.image}>
-              {/* <div div className={classes.color} /> */}
               <Typography variant="h3" className={classes.title}>MES ÉVÉNEMENTS</Typography>
         </div>
         <Container className={classes.padding}>

@@ -20,9 +20,6 @@ import { Organisation }  from './Pages/CreateEvent/Index';
 import { Participants } from './Pages/Participants/Index';
 import { Events } from './Pages/Events/Events';
 import Error from './Pages/404/404';
-import { useSelector } from "react-redux";
-import auth from './Components/Auth';
-
 
 
 export default function App() {

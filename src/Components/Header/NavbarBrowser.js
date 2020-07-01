@@ -58,22 +58,13 @@ export default function NavbarBrowser() {
                 <Button color="inherit" href="/#/accueil" >
                   Accueil
                 </Button>
-                <Button
-                  color="inherit"
-                  href="/#/mes_evenements"
-                >
+                <Button color="inherit" href="/#/mes_evenements" >
                   Mes événements
                 </Button>
-                <Button
-                  color="inherit"
-                  href="/#/evenements/organisation"
-                >
+                <Button color="inherit" href="/#/evenements/organisation" >
                   Organiser un évènement
                 </Button>
-                <Button
-                  color="inherit"
-                  href="/#/evenements/lieux"
-                >
+                <Button color="inherit" href="/#/evenements/lieux" >
                   Acheter des produits
                 </Button>
                 <IconButton

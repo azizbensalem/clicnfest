@@ -39,14 +39,15 @@ export const TotalSb = ({ page }) => {
                     style={{ backgroundColor: '#4caf50' }} 
                     message={<Typography variant="h6"><Somme /></Typography>}
                     action={<Button color="inherit" size="small" onClick={handleClickOpen}
-                    disabled={items.length == 0 ? true : false}>
+                    disabled={items.length == 0 ? true : false}
+                    >
                         Confirmer la commande
                      </Button>}
                 />
             </Snackbar>
-            {items.length > 0 ?
-            (<Confirmation handleClose={handleClose} open={open} page={page} />)
-            : null }
+            {items.length > 0 ?(
+            <Confirmation handleClose={handleClose} open={open} page={page} />
+            ): null }
         </div>
     );
 }

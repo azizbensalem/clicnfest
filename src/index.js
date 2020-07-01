@@ -4,12 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { HashRouter } from "react-router-dom";
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import cartReducer from './Data/reducers/cartReducer';
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
+import store from './Data/store';
 
-const store = createStore(cartReducer);
 ReactDOM.render(
 <HashRouter>
     <Provider store={store}>
