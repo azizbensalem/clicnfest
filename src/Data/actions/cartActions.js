@@ -3,9 +3,28 @@ import {
   REMOVE_ITEM,
   SUB_QUANTITY,
   ADD_QUANTITY,
+  FETCH_POSTS_SUCCESS,
 } from "./action-types/cart-actions";
+import UserService from "../../Services/UserService";
 
-//add cart action
+
+export const fetchPosts = () => {
+    UserService.getProduit().then(
+      (response) => {
+      fetchPostsSuccess(response.data);
+      })
+};
+
+
+export const fetchPostsSuccess = (posts) => {
+  return {
+    type: FETCH_POSTS_SUCCESS,
+    payload: {
+      posts,
+    },
+  };
+};
+
 export const addToCart = (id) => {
   return {
     type: ADD_TO_CART,

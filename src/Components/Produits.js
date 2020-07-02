@@ -4,7 +4,6 @@ import {
     FormControl, Typography, Container, Paper, Grid, ExpansionPanel, ExpansionPanelDetails,
     ExpansionPanelSummary, FormGroup, FormControlLabel, Checkbox
 } from "@material-ui/core";
-import axios from 'axios';
 import Pagination from '@material-ui/lab/Pagination';
 import Product from './Product';
 import { useSelector } from "react-redux";
@@ -14,7 +13,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import {Map} from '../Components/Map';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -72,13 +70,10 @@ export const Produits = ({ img, name , genre , value}) => {
     const handleChange = event => {
         setSearchTerm(event.target.value);
     };
-    const data = useSelector(state => state.items);
-    const lieux = data.filter(item =>
-        item.genre.toString().toLowerCase().includes(genre)
-    );
+    const data = useSelector(state => state.lieux.items);
     useEffect(() => {
-        const results = lieux.filter(item =>
-            item.title.toString().toLowerCase().includes(searchTerm)
+        const results = data.filter(item =>
+            item.nom.toString().toLowerCase().includes(searchTerm)
         );
         setSearchResults(results);
     }, [searchTerm]);
@@ -125,7 +120,7 @@ export const Produits = ({ img, name , genre , value}) => {
                     component="fieldset"
                     className={classes.formControl}
                   >
-                    {lieux.map((item) => (
+                    {/* {lieu.map((item) => (
                       <FormGroup>
                         <FormControlLabel
                           control={<Checkbox value={item.type} />}
@@ -134,25 +129,20 @@ export const Produits = ({ img, name , genre , value}) => {
                           onChange={console.log(item.type)}
                         />
                       </FormGroup>
-                    ))}
+                    ))} */}
                   </FormControl>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             </Grid>
             <Grid item lg={8} style={{ width: "100%" }}>
-              {genre == "lieux" ? (
-                <div className={classes.map}>
-                  <Map />
-                </div>
-              ) : null}
               {currentPosts.length > 0 ? (
                 currentPosts.map((data) => (
                   <div>
                     <Product
                       image={data.img}
-                      titre={data.title}
-                      volume={data.volume}
-                      type={data.type}
+                      titre={data.nom}
+                      volume="Aaaaaa"
+                      type="Aaaaaaa"
                       prix={data.prix}
                       description={data.description}
                       id={data.id}

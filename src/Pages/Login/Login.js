@@ -95,11 +95,9 @@ export default function Login() {
                     setTimeout(() => {
                       AuthService.login(values.username, values.password).then(
                         () => {
-                          localStorage.setItem("Logging in", values.username);
                           setProg(true);
                           setSubmitting(false);
                           window.location.reload("/");
-                          auth.login();
                         },
                         (error) => {
                           setError(true);
@@ -181,11 +179,6 @@ export default function Login() {
                   }}
                 </Formik>
                 <div className={classes.link}>
-                  <Typography className={classes.link}>
-                      <Link style={{ textDecoration: "none" }} onClick={() => progress('/404') }>
-                      Mot de passe oublié
-                    </Link>
-                  </Typography>
                   <Typography className={classes.link}>
                       <Link style={{ textDecoration: "none" }} onClick={() => progress('/inscription')}>
                       Inscrivez-vous à un compte

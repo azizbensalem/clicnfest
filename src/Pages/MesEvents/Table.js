@@ -21,36 +21,35 @@ export const Event = ({ data }) => {
   const classes = useStyles(); 
   return (
     <TableContainer component={Paper} variant="outlined">
-      {data.length > 0 ?
-      (<Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Type d'évènement</TableCell>
-            <TableCell align="right">État</TableCell>
-            <TableCell align="right">Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-        {data.map((events) => (
+      {data.length > 0 ? (
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Type d'évènement</TableCell>
+              <TableCell align="right">Date</TableCell>
+              <TableCell align="right">État</TableCell>
+              <TableCell align="right">Action</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((events) => (
               <TableRow key={events.id}>
                 <TableCell component="th" scope="row">
                   {events.type}
                 </TableCell>
                 <TableCell align="right">
-                  {
-                    events.etat == 'Terminé' ?
-                      <Chip
-                        size="small"
-                        label={events.etat}
-                        color="secondary"
-                      />
-                      :
-                      <Chip
-                        size="small"
-                        label={events.etat}
-                        style={{ backgroundColor: "#4caf50", color: 'white' }}
-                      />
-                  }
+                  {events.date}
+                </TableCell>
+                <TableCell align="right">
+                  {events.etat == "Terminé" ? (
+                    <Chip size="small" label={events.etat} color="secondary" />
+                  ) : (
+                    <Chip
+                      size="small"
+                      label={events.etat}
+                      style={{ backgroundColor: "#4caf50", color: "white" }}
+                    />
+                  )}
                 </TableCell>
                 <TableCell align="right">
                   <Tooltip title="Afficher" placement="top">
@@ -70,12 +69,14 @@ export const Event = ({ data }) => {
                   </Tooltip> */}
                 </TableCell>
               </TableRow>
-            ))
-        }
-        </TableBody>
-        </Table>) : 
-        <Typography variant="h6" style={{ textAlign: 'center' }}>Aucun résultat trouvé</Typography>
-      }
+            ))}
+          </TableBody>
+        </Table>
+      ) : (
+        <Typography variant="h6" style={{ textAlign: "center" }}>
+          Aucun résultat trouvé
+        </Typography>
+      )}
     </TableContainer>
   );
 }

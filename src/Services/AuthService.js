@@ -10,16 +10,16 @@ const register = (username, email, password) => {
 
 const login = (username, password) => {
     return axios
-        .post("/login", {
-            username,
-            password,
-        })
-        .then((response) => {
-            if (response.data.token) {
-                localStorage.setItem("user", JSON.stringify(response.data));
-            }
-            return response.data;
-        });
+      .post("http://localhost:56407/api/Users/authenticate", {
+        username,
+        password,
+      })
+      .then((response) => {
+        if (response.data.token) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+        }
+        return response.data;
+      });
 };
 
 const logout = () => {

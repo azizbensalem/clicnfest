@@ -58,9 +58,9 @@ export const Menu = ({ value }) => {
                 >
                     <Tab label="Lieux" icon={<PlaceIcon />} {...a11yProps(0)} onClick={() => history.push('/evenements/lieux')}/>
                     <Tab label="Menus" icon={<RestaurantMenuIcon />} {...a11yProps(1)} onClick={() => history.push('/evenements/menus')} />
-                    <Tab label="Boissons" icon={<FreeBreakfastIcon />} {...a11yProps(2)} onClick={() => history.push('/evenements/boissons')} />
-                    <Tab label="Extra" icon={<AddCircleIcon />} {...a11yProps(3)} onClick={() => history.push('/evenements/extras')} />
-                    <Tab label="Communication" icon={<ForumIcon />} {...a11yProps(4)} onClick={() => history.push('/evenements/communication')} />
+                    <Tab label="Produits" icon={<FreeBreakfastIcon />} {...a11yProps(2)} onClick={() => history.push('/evenements/boissons')} />
+                    <Tab label="Prestataire" icon={<AddCircleIcon />} {...a11yProps(3)} onClick={() => history.push('/evenements/extras')} />
+                    {/* <Tab label="Communication" icon={<ForumIcon />} {...a11yProps(4)} onClick={() => history.push('/evenements/communication')} /> */}
                 </Tabs>
                 <Tabs
                     value={value}
@@ -73,9 +73,9 @@ export const Menu = ({ value }) => {
                 >
                     <Tab label="Lieux" icon={<PlaceIcon />} {...a11yProps(0)} onClick={() => history.push('/evenements/lieux')} />
                     <Tab label="Menus" icon={<RestaurantMenuIcon />} {...a11yProps(1)} onClick={() => history.push('/evenements/menus')} />
-                    <Tab label="Boissons" icon={<FreeBreakfastIcon />} {...a11yProps(2)} onClick={() => history.push('/evenements/boissons')} />
-                    <Tab label="Extra" icon={<AddCircleIcon />} {...a11yProps(3)} onClick={() => history.push('/evenements/extras')} />
-                    <Tab label="Communication" icon={<ForumIcon />} {...a11yProps(4)} onClick={() => history.push('/evenements/communication')} />
+                    <Tab label="Produits" icon={<FreeBreakfastIcon />} {...a11yProps(2)} onClick={() => history.push('/evenements/boissons')} />
+                    <Tab label="Prestataire" icon={<AddCircleIcon />} {...a11yProps(3)} onClick={() => history.push('/evenements/extras')} />
+                    {/* <Tab label="Communication" icon={<ForumIcon />} {...a11yProps(4)} onClick={() => history.push('/evenements/communication')} /> */}
                 </Tabs>
             </AppBar>
         </div>

@@ -42,8 +42,7 @@ export default function NavbarBrowser() {
         }, 3000);
     };
     const Logout = () => {
-        AuthService.logout();
-        auth.logout(window.location.reload("/"));
+        AuthService.logout(window.location.reload("/"));
     };
       const user = JSON.parse(localStorage.getItem("user"));
     return (

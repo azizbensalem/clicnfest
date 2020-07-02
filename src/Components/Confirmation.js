@@ -3,13 +3,17 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import { ContentCom } from './../Pages/Confirmation/ContentCom';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { useHistory } from 'react-router-dom';
+import { CartProduit } from '../Pages/Boissons/CartProduit';
+import { CartLieux } from '../Pages/Lieux/CartLieux';
+import { CartMenu } from '../Pages/Menus/CartMenu';
+import { CartPrestataire } from '../Pages/Extras/CartPrestataire';
+import { Total } from '../Pages/Confirmation/Total';
 
 
 const styles = (theme) => ({
@@ -54,8 +58,12 @@ export const Confirmation = ({ handleClose , open , page}) => {
                     Mon panier
                 </DialogTitle>                
                 <DialogContent style= {{ paddingBottom: '70px'}}>
-                    <ContentCom page={page }/>
-                    <Button variant="contained" 
+                    <CartLieux page={page} />
+                    <CartMenu page={page} />
+                    <CartProduit page={page} />
+                    <CartPrestataire page={page} />
+                    <Total />
+                <Button variant="contained" 
                             color="primary" 
                             onClick={() => history.push('/evenements/commande')}
                     >

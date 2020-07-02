@@ -1,12 +1,15 @@
 import React from 'react';
 import { Total } from './Total'
 import AppBar from '../../Components/Header/Navbar';
-import ProdCom from '../../Components/ProdCom';
 import { Button, Container, Typography } from '@material-ui/core';
 import { useSelector } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import ReactToPdf from "react-to-pdf";
+import { CartProduit } from '../Boissons/CartProduit';
+import { CartLieux } from '../Lieux/CartLieux';
+import { CartPrestataire } from '../Extras/CartPrestataire';
+import { CartMenu } from '../Menus/CartMenu';
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,36 +30,14 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export const ContentCom = ({ page }) => {
-    const items = useSelector(state => state.addedItems);
-    const classes = useStyles();
-        let addedItems = items.length ?
-            (
-                items.map(item => {
-                    return (
-                        <div className={classes.button}>
-                            <ProdCom image={item.img} titre={item.title} volume={item.volume}
-                                type={item.type} prix={item.prix} description={item.desc} quantity={item.quantity}
-                                id={item.id} page={page}/>
-                        </div>
-                    )
-                })
-            ) :
-            (
-                <p>Aucun produit</p>
-            )
-        return (
-            <div>
-                    {addedItems}
-                    <Total />
-            </div>
-        );
-    };
-
 
     export const Commande = ({ page }) => {
         const history = useHistory();
-        const items = useSelector(state => state.addedItems);
+        const ProduitItems = useSelector(state => state.produit.addedItems).length;
+        const MenuItems = useSelector(state => state.menu.addedItems).length;
+        const LieuxItems = useSelector(state => state.lieux.addedItems).length;
+        const PrestataireItems = useSelector(state => state.prestataire.addedItems).length;
+        const items = ProduitItems + MenuItems + LieuxItems + PrestataireItems;
         const classes = useStyles();
         const ref = React.createRef();
         return (
@@ -65,20 +46,24 @@ export const ContentCom = ({ page }) => {
             <Container className={classes.paddingTop}>
                 <Typography variant="h6">Confirmer la commande</Typography>
                 <div ref={ref}>
-                    <ContentCom page={page}/>
+                    <CartLieux page={page} />
+                    <CartMenu page={page} />
+                    <CartProduit page={page} />
+                    <CartPrestataire page={page} />
+                    <Total />
                 </div>
                 <Button onClick={() => history.push('/evenements/lieux')}
                 className={classes.paddingButton} >Retour</Button>
                 <Button onClick={() => history.push('/evenements/organisation')} 
                 variant="contained" color="primary"
                 className={classes.paddingButton} 
-                disabled={items.length > 0 ? false : true}>Passer au payement</Button>
+                disabled={items > 0 ? false : true}>Passer au payement</Button>
                 <ReactToPdf targetRef={ref} filename="devis.pdf">
                     {({toPdf}) =>  (
                         <Button onClick={toPdf}
                         variant="contained" color="secondary" 
                         className={classes.paddingButton} 
-                        disabled={items.length > 0 ? false : true}>Générer un devis</Button>
+                        disabled={items > 0 ? false : true}>Générer un devis</Button>
                     )}
                 </ReactToPdf>
                 <br></br><br></br>

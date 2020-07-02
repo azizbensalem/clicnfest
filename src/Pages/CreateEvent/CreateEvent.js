@@ -53,7 +53,10 @@ export const CreerEvent = () => {
       "image/gif",
       "image/png"
     ];
-  const event = JSON.parse(localStorage.getItem("event"));
+  const event =
+    JSON.parse(localStorage.getItem("event")) == null
+      ? ""
+      : JSON.parse(localStorage.getItem("event"));
     return (
             <div className={classes.padding}>
               <Formik

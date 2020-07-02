@@ -4,10 +4,12 @@ import { Button, Typography } from '@material-ui/core';
 
 
 export const Somme = () => {
-    const total = useSelector(state => state.total);
-    return (
-        <div>{total} DT</div>
-    );
+    const totalLieux = useSelector(state => state.lieux.total);
+    const totalMenus = useSelector(state => state.menu.total);
+    const totalProduits = useSelector(state => state.produit.total);
+    const totalPrestataire = useSelector(state => state.prestataire.total);
+    const total = totalLieux + totalMenus + totalProduits + totalPrestataire;
+    return total;
 };
 
 export const Total = () => {
@@ -15,7 +17,7 @@ export const Total = () => {
         return(
             <div>
                 <Button variant="contained" color="primary" style={{ backgroundColor: '#4caf50' }} >
-                    <Typography variant="h6">Total: {total} DT</Typography>
+                    <Typography variant="h6">Total:&nbsp;<Somme />&nbsp;DT</Typography>
                 </Button>
                 <br></br><br></br>
             </div>

@@ -4,11 +4,11 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { Detail } from './Detail';
-import { addToCart , removeItem } from '../Data/actions/cartActions';
+import { Detail } from '../../Components/Detail';
+import { addProduit , removeProduit } from '../../Data/actions/produitActions';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import {Rate} from './Rate';
+import {Rate} from '../../Components/Rate';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const Product = ({ id, image, titre, volume , type , prix , description , quantity , item}) => {
+const ProductProduit = ({ id, image, titre, volume , type , prix , description , quantity , item}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -61,12 +61,12 @@ const Product = ({ id, image, titre, volume , type , prix , description , quanti
     };
     const dispatch = useDispatch();
     const ajouter = (id) => {
-        dispatch(addToCart(id));
+        dispatch(addProduit(id));
     };
     const supprimer = (id) => {
-        dispatch(removeItem(id));
+        dispatch(removeProduit(id));
     }
-    const items = useSelector(state => state.lieux.addedItems);
+    const items = useSelector(state => state.produit.addedItems);
     const results = items.filter(item =>
         item.id.toString().toLowerCase().includes(id)
     );    
@@ -154,4 +154,4 @@ const Product = ({ id, image, titre, volume , type , prix , description , quanti
                 </div>
     )
 }
-export default Product;
+export default ProductProduit;

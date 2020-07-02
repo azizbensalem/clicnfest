@@ -26,7 +26,11 @@ export const TotalSb = ({ page }) => {
     const handleClose = () => {
         setOpen(false);
     };
-    const items = useSelector(state => state.addedItems);
+    const ProduitItems = useSelector(state => state.produit.addedItems).length;
+    const MenuItems = useSelector(state => state.menu.addedItems).length;
+    const LieuxItems = useSelector(state => state.lieux.addedItems).length;
+    const PrestataireItems = useSelector(state => state.prestataire.addedItems).length;
+    const items = ProduitItems + MenuItems + LieuxItems + PrestataireItems;
     return (
         <div className={classes.root}>
             <Snackbar
@@ -37,15 +41,15 @@ export const TotalSb = ({ page }) => {
             >
                 <SnackbarContent
                     style={{ backgroundColor: '#4caf50' }} 
-                    message={<Typography variant="h6"><Somme /></Typography>}
+                    message={<Typography variant="h6"><Somme />&nbsp;DT</Typography>}
                     action={<Button color="inherit" size="small" onClick={handleClickOpen}
-                    disabled={items.length == 0 ? true : false}
+                    disabled={items == 0 ? true : false}
                     >
                         Confirmer la commande
                      </Button>}
                 />
             </Snackbar>
-            {items.length > 0 ?(
+            {items > 0 ?(
             <Confirmation handleClose={handleClose} open={open} page={page} />
             ): null }
         </div>
