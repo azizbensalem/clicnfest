@@ -97,13 +97,17 @@ export const Show = () => {
                                 onSubmit={handleSubmit}
                             >
                                 <div className={classes.image}>
-                                    {values.img == ""
+                                    {values.img === ""
                                         ? <img
                                             className={classes.img}
-                                            src='https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg' />
+                                            src='https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg' 
+                                            alt="profil"
+                                            />
                                         : <img
                                             className={classes.img}
-                                            src={values.img} />}                                       
+                                            src={values.img} 
+                                            alt="profil"
+                                            />}                                       
                                     <Typography variant="h5">{values.prenom} {values.nom}</Typography>
                                     <div style={{ padding: '10px' }}>
                                     <input

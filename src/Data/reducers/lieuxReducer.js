@@ -1,9 +1,4 @@
-import {
-  ADD_TO_CART,
-  REMOVE_ITEM,
-  FETCH_POSTS_SUCCESS,
-} from "../actions/action-types/cart-actions";
-import { ADD_LIEUX, REMOVE_LIEUX } from "../actions/action-types/lieux-actions";
+import { ADD_LIEUX, REMOVE_LIEUX, GET_LIEUX } from "../actions/action-types/lieux-actions";
 
 const initState = {
   items: [

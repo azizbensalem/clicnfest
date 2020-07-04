@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Typography, IconButton, AppBar, Toolbar, 
 MenuItem, Menu, Button } from '@material-ui/core'
 import { useHistory } from 'react-router-dom';
-import auth from '../Auth';
 import { LinearDeterminate } from '../LinearDeterminate';
 import clicnfest from '../../Images/clicnfest.PNG';
 import AuthService from "../../Services/AuthService";
@@ -54,16 +53,16 @@ export default function NavbarBrowser() {
             <div className={classes.grow} />
             {user && user.token ? (
               <div>
-                <Button color="inherit" href="/#/accueil" >
+                <Button color="inherit" href="#/accueil" >
                   Accueil
                 </Button>
-                <Button color="inherit" href="/#/mes_evenements" >
+                <Button color="inherit" href="#/mes_evenements" >
                   Mes événements
                 </Button>
-                <Button color="inherit" href="/#/evenements/organisation" >
+                <Button color="inherit" href="#/evenements/organisation" >
                   Organiser un évènement
                 </Button>
-                <Button color="inherit" href="/#/evenements/lieux" >
+                <Button color="inherit" href="#/evenements/lieux" >
                   Acheter des produits
                 </Button>
                 <IconButton
