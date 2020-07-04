@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Extras = () => {
+export const Prestataire = () => {
       const classes = useStyles();
       const [searchTerm, setSearchTerm] = React.useState("");
       const [searchResults, setSearchResults] = React.useState([]);

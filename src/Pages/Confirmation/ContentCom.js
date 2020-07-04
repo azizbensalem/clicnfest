@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import ReactToPdf from "react-to-pdf";
-import { CartProduit } from '../Boissons/CartProduit';
+import { CartProduit } from '../Produits/CartProduit';
 import { CartLieux } from '../Lieux/CartLieux';
 import { CartPrestataire } from '../Extras/CartPrestataire';
 import { CartMenu } from '../Menus/CartMenu';
@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
                 <Button onClick={() => history.push('/evenements/organisation')} 
                 variant="contained" color="primary"
                 className={classes.paddingButton} 
-                disabled={items > 0 ? false : true}>Passer au payement</Button>
+                disabled={items > 0 ? false : true}>Créer un événement</Button>
                 <ReactToPdf targetRef={ref} filename="devis.pdf">
                     {({toPdf}) =>  (
                         <Button onClick={toPdf}

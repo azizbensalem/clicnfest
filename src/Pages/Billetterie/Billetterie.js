@@ -77,7 +77,6 @@ export const Billetterie = () => {
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
                             localStorage.setItem('billetterie',JSON.stringify(values))
-                            history.push("/mes_evenements");
                             setSubmitting(false);
                         }, 500);
                     }}

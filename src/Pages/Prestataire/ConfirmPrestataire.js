@@ -116,8 +116,8 @@ const ConfirmPrestataire = ({ image, titre, volume, type, prix, description, qua
                             </div>
                         </div>
                     </Grid>
-                    <Grid item xs={12} sm container>
-                        <Grid item xs container direction="column" spacing={2}>
+                    <Grid item xs sm container>
+                        <Grid item lg={11} xs container direction="column" spacing={2}>
                             <Grid item xs>
                                 <Typography style={{ paddingRight: '60px' }} gutterBottom variant="subtitle1">
                                     {titre}
@@ -133,17 +133,17 @@ const ConfirmPrestataire = ({ image, titre, volume, type, prix, description, qua
                                 <Button color="secondary" onClick={() => { handleRemove(id) }}>Supprimer</Button>
                             </Grid>
                         </Grid>
-                        <Grid item>
+                        <Grid item lg={1} direction="column" spacing={2}>
                             <Typography variant="subtitle1">{quantity == null ? prix : prix * quantity}&nbsp;DT</Typography>
                             <Grid>
                                 <Typography>Quantité</Typography>
                                 <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
-                                <TextField onChange={handleChange} value={value} style={{ width: '10%' }} />
+                                {/* <TextField onChange={handleChange} value={value} style={{ width: '10%' }} /> */}
                                 {quantity}
                                 <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link><br></br>
-                                <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}>
+                                {/* <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}>
                                     <Button onClick={() => handleUpdate(quantity, value, id)}>Click</Button>
-                                </Link>
+                                </Link> */}
                             </Grid> 
                         </Grid>
                     </Grid>

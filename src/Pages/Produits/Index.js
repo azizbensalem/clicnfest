@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
-import AppBar from "../../Components/Header/Navbar";
 import ScrollTop from "../../Components/Footer/ScrollTop";
 import ProduitImage from "../../Images/Boissons.jpg";
 import Pagination from "@material-ui/lab/Pagination";
 import ProductProduit from "./ProductProduit";
 import { useSelector, useDispatch } from "react-redux";
 import { TotalSb } from "../../Components/Footer/TotalSb";
-import { Menu } from "../../Components/Tabs";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
@@ -64,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Boissons = () => {
+export const Produits = () => {
  const classes = useStyles();
  const [searchTerm, setSearchTerm] = React.useState("");
  const [searchResults, setSearchResults] = React.useState([]);
@@ -89,9 +87,6 @@ export const Boissons = () => {
  };
     return (
       <div>
-        <AppBar />
-        <div>
-          <Menu value={2} />
           <div
             className={classes.image}
             style={{
@@ -176,9 +171,7 @@ export const Boissons = () => {
               </Grid>
             </Grid>
           </Container>
-          <TotalSb page="boissons" />
-        </div>
-
+          <TotalSb page="produits" />
         <ScrollTop />
       </div>
     );

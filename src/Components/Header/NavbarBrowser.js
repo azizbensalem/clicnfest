@@ -59,10 +59,10 @@ export default function NavbarBrowser() {
                 <Button color="inherit" href="#/mes_evenements" >
                   Mes événements
                 </Button>
-                <Button color="inherit" href="#/evenements/organisation" >
+                <Button color="inherit" href="#/evenements/lieux" >
                   Organiser un évènement
                 </Button>
-                <Button color="inherit" href="#/evenements/lieux" >
+                <Button color="inherit" href="#/produits" >
                   Acheter des produits
                 </Button>
                 <IconButton
@@ -82,12 +82,12 @@ export default function NavbarBrowser() {
               </div>
             ) : (
               <div>
-                <Button color="inherit" href="/#">
+                <Button color="inherit" href="#">
                   Se connecter
                 </Button>
                 <Button
                   color="inherit"
-                  href="/#/inscription"
+                  href="#/inscription"
                 >
                   Créer un compte
                 </Button>

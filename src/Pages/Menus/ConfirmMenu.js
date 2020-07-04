@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux";
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { Link } from 'react-router-dom'
-import { TextField } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
@@ -49,15 +48,12 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const ConfirmMenu= ({ image, titre, volume, type, prix, description, quantity, id , page}) => {
+const ConfirmMenu = ({ image, titre, volume, type, prix, description, quantity, id , page}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleClose = () => {
         setOpen(false);
     };
-    React.useEffect(() => {
-        setValue(quantity);
-    }, []);
     const dispatch = useDispatch();
     const handleRemove = (id) => {
         dispatch(removeMenu(id));
@@ -68,12 +64,11 @@ const ConfirmMenu= ({ image, titre, volume, type, prix, description, quantity, i
     const handleSubtractQuantity = (id) => {
         dispatch(subtractQuantityMenu(id));
     };
-    const [value, setValue] = React.useState();
+    const [value, setValue] = React.useState(quantity);
     const handleChange = (event) => {
         setValue(event.target.value);
     };
-    const handleUpdate = (quantity , event, id ) => {
-       setValue(event.target.value);
+    const handleUpdate = (quantity , value, id ) => {
        let ancValue = quantity;
        let newValue = value;
        let updatedValue = ancValue - newValue;
@@ -94,6 +89,9 @@ const ConfirmMenu= ({ image, titre, volume, type, prix, description, quantity, i
                 }            
             }
         }
+        React.useEffect((quantity) => {
+            setValue(quantity);
+        }, [])
     
     return (
         <div>
@@ -120,8 +118,8 @@ const ConfirmMenu= ({ image, titre, volume, type, prix, description, quantity, i
                             </div>
                         </div>
                     </Grid>
-                    <Grid container>
-                        <Grid lg={11}>
+                    <Grid item xs sm container>
+                        <Grid item lg={11} xs container direction="column" spacing={2}>
                             <Grid item xs>
                                 <Typography style={{ paddingRight: '60px' }} gutterBottom variant="subtitle1">
                                     {titre}
@@ -137,16 +135,18 @@ const ConfirmMenu= ({ image, titre, volume, type, prix, description, quantity, i
                                 <Button color="secondary" onClick={() => { handleRemove(id) }}>Supprimer</Button>
                             </Grid>
                         </Grid>
-                        <Grid lg={1}>
+                        <Grid item lg={1} direction="column" spacing={2}>
                             <Typography variant="subtitle1">{quantity == null ? prix : prix * quantity}&nbsp;DT</Typography>
+                            <Grid>
                                 <Typography>Quantité</Typography>
                                 <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowLeftIcon onClick={() => { handleSubtractQuantity(id) }} /></Link>
-                                <TextField onChange={handleUpdate} value={value} style={{ width: '20%' }} />
+                                {/* <TextField onChange={handleChange} value={value} style={{ width: '10%' }} /> */}
                                 {quantity}
                                 <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}><ArrowRightIcon onClick={() => { handleAddQuantity(id) }} /></Link><br></br>
-                                <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}>
-                                    <Button onClick={() => handleUpdate(quantity, id)}>Click</Button>
-                                </Link>
+                                {/* <Link to={page == null ? '/evenements/commande' : '/evenements/'+page}>
+                                    <Button onClick={() => handleUpdate(quantity, value, id)}>Click</Button>
+                                </Link> */}
+                            </Grid> 
                         </Grid>
                     </Grid>
                 </Grid>

@@ -9,7 +9,7 @@ import { Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import { useHistory } from 'react-router-dom';
-import { CartProduit } from '../Pages/Boissons/CartProduit';
+import { CartProduit } from '../Pages/Produits/CartProduit';
 import { CartLieux } from '../Pages/Lieux/CartLieux';
 import { CartMenu } from '../Pages/Menus/CartMenu';
 import { CartPrestataire } from '../Pages/Extras/CartPrestataire';
@@ -32,7 +32,7 @@ const styles = (theme) => ({
 export const Confirmation = ({ handleClose , open , page}) => {
     const theme = useTheme();
     const history = useHistory();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const fullScreen = useMediaQuery(theme.breakpoints.down('lg'));
     const DialogTitle = withStyles(styles)((props) => {
     const { children, classes, onClose, ...other } = props;
         return (
@@ -65,7 +65,7 @@ export const Confirmation = ({ handleClose , open , page}) => {
                     <Total />
                 <Button variant="contained" 
                             color="primary" 
-                            onClick={() => history.push('/evenements/commande')}
+                            onClick={() => history.push('/evenements/organisation')}
                     >
                         Confirmer la commande
                     </Button>

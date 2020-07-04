@@ -13,13 +13,14 @@ import { Commande } from './Pages/Confirmation/ContentCom';
 import { Lieux } from './Pages/Lieux/Lieux';
 import { Billetterie } from './Pages/Billetterie/Billetterie';
 import { Menus } from './Pages/Menus/Menus';
-import { Boissons } from './Pages/Boissons/Boissons';
-import { Extras } from './Pages/Extras/Extras';
+import { ProduitEvent } from './Pages/Produits/ProduitsEvent';
 import { Communication } from './Pages/Communication/Communication';
 import { Organisation }  from './Pages/CreateEvent/Index';
 import { Participants } from './Pages/Participants/Index';
 import { Events } from './Pages/Events/Events';
 import Error from './Pages/404/404';
+import { Produit } from './Pages/Produits/Produits';
+import { Prestataire } from './Pages/Prestataire/Prestataire';
 
 
 export default function App() {
@@ -37,27 +38,16 @@ export default function App() {
           {state ? <Linprog /> : null}
           <Route exact path="/accueil" component={Home} />
           <Route exact path="/evenements/" component={Events} />
-          <Route
-            exact
-            path="/evenements/organisation"
-            component={Organisation}
-          />
+          <Route exact path="/evenements/organisation" component={Organisation} />
           <Route exact path="/evenements/billetterie" component={Billetterie} />
           <Route exact path="/evenements/commande" component={Commande} />
           <Route exact path="/evenements/lieux" component={Lieux} />
           <Route exact path="/evenements/menus" component={Menus} />
-          <Route exact path="/evenements/boissons" component={Boissons} />
-          <Route
-            exact
-            path="/evenements/communication"
-            component={Communication}
-          />
-          <Route exact path="/evenements/extras" component={Extras} />
-          <Route
-            exact
-            path="/evenements/participants"
-            component={Participants}
-          />
+          <Route exact path="/evenements/produits" component={ProduitEvent} />
+          <Route exact path="/produits" component={Produit} />
+          <Route exact path="/evenements/communication" component={Communication} />
+          <Route exact path="/evenements/prestataire" component={Prestataire} />
+          <Route exact path="/evenements/participants" component={Participants} />
           <Route exact path="/monprofil" component={Show} />
           <Route exact path="/monprofil/modifier" component={Modifier} />
           <Route exact path="/monprofil/password" component={Password} />

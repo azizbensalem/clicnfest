@@ -64,7 +64,8 @@ export const Formulaire = () => {
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-                  localStorage.setItem("event", JSON.stringify(values));
+                  localStorage.setItem("name_event", values.nom);
+                  localStorage.setItem("date_event", values.date);
                   history.push("/evenements/organisation");
                   setSubmitting(false);
                 }, 500);

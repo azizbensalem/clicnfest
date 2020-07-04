@@ -48,7 +48,7 @@ const DialogContent = withStyles(theme => ({
 
 export const Detail = ({ handleClose, open, image, titre, volume, type, prix, description }) => {
     const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     return (
         <div>
             <Dialog fullScreen={fullScreen} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>

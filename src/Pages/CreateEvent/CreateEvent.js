@@ -53,23 +53,24 @@ export const CreerEvent = () => {
       "image/gif",
       "image/png"
     ];
-  const event =
-    JSON.parse(localStorage.getItem("event")) == null
-      ? ""
-      : JSON.parse(localStorage.getItem("event"));
+    const name_event = localStorage.getItem("name_event") === null ? '' : 
+    localStorage.getItem("name_event");
+    const date_event = localStorage.getItem("date_event") === null ? '' : 
+    localStorage.getItem("date_event");
+    const event = JSON.parse(localStorage.getItem("Organisation"));
     return (
             <div className={classes.padding}>
               <Formik
               initialValues={{
-                nom: event.nom,
-                theme: 'After Work',
-                type: 'Privé',
-                local: '',
-                date: event.date,
-                heure: '',
-                description: '',
-                video: '',
-                image: '',
+                nom: name_event,
+                theme: event.theme === null ? '' : event.theme ,
+                type: event.type === null ? '' : event.type,
+                local: event.local === null ? '' : event.local,
+                date: date_event,
+                heure: event.heure === null ? '' : event.heure,
+                description: event.description === null ? '' : event.description,
+                video: event.video === null ? '' : event.video,
+                image: event.image === null ? '' : event.image,
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {

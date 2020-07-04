@@ -111,9 +111,9 @@ export default function MyEvent() {
         item.etat.toString().includes(etat)
       );
       setSearchResults(result);
-    }, [searchTerm , etat, events]);
+    }, [searchTerm , etat]);
     const etatChange = event => {
-      event.target.value === 'Tous' ?
+      event.target.value == 'Tous' ?
         setEtat('') : setEtat(event.target.value)
     };
     const handleChange = event => {
