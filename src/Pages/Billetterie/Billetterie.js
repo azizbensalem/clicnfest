@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -57,6 +58,8 @@ export const Billetterie = () => {
     React.useEffect(() => {
         setLabelWidth(inputLabel.current.offsetWidth);
     }, []);
+    const event = JSON.parse(localStorage.getItem("Organisation"));
+    const panier = JSON.parse(localStorage.getItem("persist:root"));
     return (
     <div>
     <AppBar />
@@ -76,7 +79,32 @@ export const Billetterie = () => {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
-                            localStorage.setItem('billetterie',JSON.stringify(values))
+                            localStorage.setItem('billetterie',JSON.stringify(values));
+                            axios.post("http://localhost:56407/api/Evenements", {
+                                name: event.nom,
+                                description: event.description,
+                                theme: event.theme,
+                                type: event.type,
+                                startDate: values.date_debut,
+                                endDate: values.date_fin,
+                                // typeTicket: values.type_ticket,
+                                // prixTicket: values.prix_ticket,
+                                // tarifTicket: values.tarif_ticket,
+                                menuIds: [
+                                    0
+                                ],
+                                commandeItems: [
+                                    {
+                                        quantite: 1,
+                                        lieuxId: panier.lieux.addedItems,
+                                    }
+                                ]
+                            })
+                                .then((response) => {
+                                    console.log(response);
+                                }, (error) => {
+                                    console.log(error);
+                                });
                             setSubmitting(false);
                         }, 500);
                     }}

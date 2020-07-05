@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 import { CartProduit } from '../Pages/Produits/CartProduit';
 import { CartLieux } from '../Pages/Lieux/CartLieux';
 import { CartMenu } from '../Pages/Menus/CartMenu';
-import { CartPrestataire } from '../Pages/Extras/CartPrestataire';
+import { CartPrestataire } from '../Pages/Prestataire/CartPrestataire';
 import { Total } from '../Pages/Confirmation/Total';
 
 

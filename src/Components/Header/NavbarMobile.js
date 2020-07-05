@@ -84,6 +84,7 @@ export default function NavbarMobile(props) {
             history.push(link);
         }, 4000);
     };
+    const user = AuthService.getCurrentUser();
     const sideList = side => (
         <div
             className={classes.list}
@@ -94,7 +95,7 @@ export default function NavbarMobile(props) {
             <div className={classes.padding}>
             <Avatar alt="Hello World" src="https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg" 
             className={classes.img} />
-            <Typography variant="h6" className={classes.text}>Hello World</Typography>
+            <Typography variant="h6" className={classes.text}>{user.username}</Typography>
             </div>
             <Divider />
             <List>

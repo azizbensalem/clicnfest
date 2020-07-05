@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import ReactToPdf from "react-to-pdf";
 import { CartProduit } from '../Produits/CartProduit';
 import { CartLieux } from '../Lieux/CartLieux';
-import { CartPrestataire } from '../Extras/CartPrestataire';
+import { CartPrestataire } from '../Prestataire/CartPrestataire';
 import { CartMenu } from '../Menus/CartMenu';
 
 

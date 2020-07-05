@@ -10,6 +10,7 @@ import { FormHelperText } from "@material-ui/core";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import cover from "../../Images/event.jpg";
+import AuthService from '../../Services/AuthService';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
 export const Show = () => {
     const classes = useStyles();
     const history = useHistory();
+    const profil = AuthService.getCurrentUser();
      return(
         <div>
                 <AppBar />
@@ -64,8 +66,8 @@ export const Show = () => {
         <div style={{ display: 'flow-root' }}>
         <Formik
                     initialValues={{
-                        nom: "Hello World",
-                        prenom: "Hello World",
+                        nom: profil.lastName,
+                        prenom: profil.firstName,
                         email: "foulenelfouleni@gmail.com",
                         tel: "Hello World",
                         img: "",
@@ -108,7 +110,7 @@ export const Show = () => {
                                             src={values.img} 
                                             alt="profil"
                                             />}                                       
-                                    <Typography variant="h5">{values.prenom} {values.nom}</Typography>
+                                    <Typography variant="h5">{profil.username}</Typography>
                                     <div style={{ padding: '10px' }}>
                                     <input
                                         accept="image/*"

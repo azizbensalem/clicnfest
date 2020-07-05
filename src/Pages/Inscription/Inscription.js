@@ -13,6 +13,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@material-ui/core";
 import eventu from '../../Images/eventu.png';
+import AuthService from "../../Services/AuthService";
 
 
 const useStyles = makeStyles(theme => ({
@@ -85,9 +86,16 @@ export default function Inscription() {
                   onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
                       console.log("Logging in", values);
-                      history.push("/");
-                      setSubmitting(false);
-                    }, 500);
+                      AuthService.register(values.prenom, values.nom, values.username, 
+                        values.name, values.pwd).then(
+                        () => {
+                          setSubmitting(false);
+                          window.location.reload("/");
+                        },
+                        (error) => {
+                          console.log(error);
+                        });
+                    }, 10);
                   }}
                   validationSchema={Yup.object().shape({
                     nom: Yup.string().required("Ce champ est obligatoire."),

@@ -4,7 +4,7 @@ import ScrollTop from '../../Components/Footer/ScrollTop';
 import LieuxImage from '../../Images/Lieux.png';
 import Pagination from "@material-ui/lab/Pagination";
 import ProductLieux from "./ProductLieux";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { TotalSb } from "../../Components/Footer/TotalSb";
 import { Menu } from "../../Components/Tabs";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -16,6 +16,7 @@ import {
     FormControl, Typography, Container, Paper, Grid, ExpansionPanel, ExpansionPanelDetails,
     ExpansionPanelSummary, FormGroup, FormControlLabel, Checkbox
 } from "@material-ui/core";
+import { fetchLieux } from "../../Data/actions/lieuxActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,16 +70,20 @@ export const Lieux = () => {
         const classes = useStyles();
         const [searchTerm, setSearchTerm] = React.useState("");
         const [searchResults, setSearchResults] = React.useState([]);
+        const dispatch = useDispatch();
         const handleChange = (event) => {
           setSearchTerm(event.target.value);
         };
         const data = useSelector((state) => state.lieux.items);
         useEffect(() => {
           const results = data.filter((item) =>
-            item.nom.toString().toLowerCase().includes(searchTerm)
+            item.name.toString().toLowerCase().includes(searchTerm)
           );
           setSearchResults(results);
         }, [searchTerm]);
+        useEffect(() => {
+          dispatch(fetchLieux());
+        }, []);
         const [pages, setPages] = React.useState(1);
         const currentPosts = searchResults.slice(pages * 5 - 5, pages * 5);
         const change = (event, value) => {
@@ -148,9 +153,9 @@ export const Lieux = () => {
                     <div>
                       <ProductLieux
                         image={data.img}
-                        titre={data.nom}
+                        titre={data.name}
                         volume={data.ville}
-                        type={data.capcite}
+                        type={data.capacite}
                         prix={data.prix}
                         description={data.description}
                         id={data.id}

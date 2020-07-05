@@ -21,6 +21,7 @@ import { Events } from './Pages/Events/Events';
 import Error from './Pages/404/404';
 import { Produit } from './Pages/Produits/Produits';
 import { Prestataire } from './Pages/Prestataire/Prestataire';
+import { isMobile, isBrowser } from 'react-device-detect';
 
 
 export default function App() {
@@ -58,7 +59,8 @@ export default function App() {
       ) : (
         <Switch>
           {state ? <Linprog /> : null}
-          <Route exact path="/accueil" component={Home} />
+            {isBrowser ? <Route exact path="/accueil" component={Home} />
+            : null }
           <Route exact path="/" component={Login} />
           <Route exact path="/inscription" component={Inscription} />
           <Redirect path="*" to="/" />

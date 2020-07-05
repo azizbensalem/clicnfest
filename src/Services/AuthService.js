@@ -1,10 +1,12 @@
 import axios from "axios";
 
-const register = (username, email, password) => {
-    return axios.post("/register", {
-        username,
-        email,
-        password,
+const register = (firstName, lastName, username, email, password) => {
+  return axios.post("http://localhost:56407/api/Users/adduser", {
+      firstName: firstName,
+      lastName: lastName,
+      userName: username,
+      email: email,
+      password: password,
     });
 };
 

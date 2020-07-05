@@ -1,38 +1,17 @@
 import { ADD_LIEUX, REMOVE_LIEUX, GET_LIEUX } from "../actions/action-types/lieux-actions";
 
 const initState = {
-  items: [
-    {
-      id: 1,
-      nom: "Movenmpick",
-      ville: "Sousse",
-      prix: 500,
-      capacite: 100,
-      img:
-        "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg",
-      description: "Aaaaaa",
-    },
-    {
-      id: 2,
-      nom: "Bilionnaire",
-      ville: "Gammarth",
-      prix: 200,
-      capacite: 100,
-      img:
-        "https://sc01.alicdn.com/kf/UTB8wEL.nFPJXKJkSahVq6xyzFXaG/Newly-Stock-Coca-Cola-Soft-Drink-In.jpg",
-      description: "Aaaaaa",
-    },
-  ],
+  items: [],
   addedItems: [],
   total: 0,
 };
 const lieuxReducer = (state = initState, action) => {
-  // if (action.type === FETCH_POSTS_SUCCESS) {
-  //           return {
-  //             ...state,
-  //             items: action.payload.posts,
-  //           };
-  // }
+  if (action.type === GET_LIEUX) {
+            return {
+              ...state,
+              items: action.payload.posts,
+            };
+  }
   if (action.type === ADD_LIEUX) {
     let addedItem = state.items.find((item) => item.id === action.id);
     let existed_item = state.addedItems.find((item) => action.id === item.id);

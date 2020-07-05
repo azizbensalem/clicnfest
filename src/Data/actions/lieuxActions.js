@@ -1,24 +1,27 @@
 import {
   ADD_LIEUX,
   REMOVE_LIEUX,
-//   GET_LIEUX,
+  GET_LIEUX,
 } from "./action-types/lieux-actions";
-// import UserService from "../../Services/UserService";
+import UserService from "../../Services/UserService";
 
-// export const fetchPosts = () => {
-//   UserService.getProduit().then((response) => {
-//     fetchPostsSuccess(response.data);
-//   });
-// };
+export function fetchLieux() {
+  return (dispatch) => {
+    return UserService.getLieux()
+      .then(((response) => {
+        dispatch(fetchLieuxSuccess(response.data));
+      }))
+  };
+}
 
-// export const fetchPostsSuccess = (posts) => {
-//   return {
-//     type: FETCH_POSTS_SUCCESS,
-//     payload: {
-//       posts,
-//     },
-//   };
-// };
+export const fetchLieuxSuccess = posts => {
+  return {
+    type: GET_LIEUX,
+    payload: {
+      posts,
+    },
+  };
+};
 
 export const addLieux = (id) => {
   return {

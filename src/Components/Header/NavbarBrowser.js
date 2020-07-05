@@ -43,7 +43,7 @@ export default function NavbarBrowser() {
     const Logout = () => {
         AuthService.logout(window.location.reload("/"));
     };
-      const user = JSON.parse(localStorage.getItem("user"));
+    const user = AuthService.getCurrentUser();
     return (
       <div>
         <AppBar style={{ background: "#d21740" }} variant="outlined">
@@ -111,7 +111,7 @@ export default function NavbarBrowser() {
               src="https://kwsmdigital.com/wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg"
               style={{ margin: "auto" }}
             />
-            <Typography variant="body2">Aziz Ben Salem</Typography>
+            <Typography variant="body2">{user.username}</Typography>
           </MenuItem>
           <MenuItem onClick={() => progress("/monprofil")}>Mon Profil</MenuItem>
           <MenuItem onClick={() => Logout()}>Déconnexion</MenuItem>
